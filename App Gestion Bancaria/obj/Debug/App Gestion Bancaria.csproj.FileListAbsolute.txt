@@ -1,0 +1,7 @@
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\App Gestion Bancaria\bin\Debug\App Gestion Bancaria.exe.config
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\App Gestion Bancaria\bin\Debug\App Gestion Bancaria.exe
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\App Gestion Bancaria\bin\Debug\App Gestion Bancaria.pdb
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.csprojAssemblyReference.cache
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.csproj.CoreCompileInputs.cache
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.exe
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.pdb

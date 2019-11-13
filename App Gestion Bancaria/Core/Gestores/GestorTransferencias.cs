@@ -1,4 +1,5 @@
-﻿using App_Gestion_Bancaria.Core.Clases;
+﻿using App_Gestion_Bancaria.Core.Acceso_a_datos;
+using App_Gestion_Bancaria.Core.Clases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,24 +10,38 @@ namespace App_Gestion_Bancaria.Core.Gestores
 {
     public class GestorTransferencias
     {
-        private List<Transferencia> transferencias;
+        private TransferenciasRepositorio Repositorio;
+        private List<Transferencia> Transferencias;
 
         public GestorTransferencias()
         {
-            this.transferencias = new List<Transferencia>();
+            this.Transferencias = Repositorio.Leer();
         }
 
-        public void addTransferencia(Transferencia transferencia)
+        public void AddTransferencia(Transferencia transferencia)
         {
+            this.Transferencias.Add(transferencia);
         }
 
-        public void removeTransferencia(Transferencia transferencia)
+        public void RemoveTransferencia(Transferencia transferencia)
         {
+            this.Transferencias.Remove(transferencia);
         }
 
-        public Transferencia getTransferencia(int id)
+        public bool Modificar(Transferencia transferencia)
         {
-            return new Transferencia();
+            if (this.GetTransferencia(transferencia.Id) != null)
+            {
+                this.RemoveTransferencia(transferencia);
+                this.AddTransferencia(transferencia);
+                return true;
+            }
+            return false;
+        }
+
+        public Transferencia GetTransferencia(int id)
+        {
+            return (this.Transferencias.Where(x => x.Id == id).ToList()).FirstOrDefault();
         }
     }
 }

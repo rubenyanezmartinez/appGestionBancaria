@@ -23,7 +23,7 @@ namespace App_Gestion_Bancaria.Core.Acceso_a_datos
             cuentasXML.Save(CUENTAS_FICHERO);
         }
 
-        public static List<Cuenta> LeerDeFichero()
+        public static List<Cuenta> Leer()
         {
             List<Cuenta> toret = new List<Cuenta>();
             XElement cuentasXML = null;

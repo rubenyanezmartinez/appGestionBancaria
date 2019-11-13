@@ -1,0 +1,9 @@
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\Proyectos\bin\Debug\Proyectos.exe.config
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\Proyectos\bin\Debug\Proyectos.exe
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\Proyectos\bin\Debug\Proyectos.pdb
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\Proyectos\obj\Debug\Proyectos.csprojAssemblyReference.cache
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\Proyectos\obj\Debug\Proyectos.Properties.Resources.resources
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\Proyectos\obj\Debug\Proyectos.csproj.GenerateResource.cache
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\Proyectos\obj\Debug\Proyectos.csproj.CoreCompileInputs.cache
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\Proyectos\obj\Debug\Proyectos.exe
+C:\Users\Jana\Desktop\DIA\Proyectos\appGestionBancaria\Proyectos\obj\Debug\Proyectos.pdb

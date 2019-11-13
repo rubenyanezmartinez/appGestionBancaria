@@ -93,6 +93,7 @@ namespace App_Gestion_Bancaria.Core.Clases
         }
 
         public enum TipoCuenta { CORRIENTE, AHORRO, VIVIENDA };
+
         public String CCC { get; set; }
 
         public TipoCuenta Tipo { get; set; }

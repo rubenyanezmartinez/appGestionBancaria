@@ -13,7 +13,7 @@ namespace App_Gestion_Bancaria.Core.Gestores
     {
         public GestorCuentas()
         {
-            this.Cuentas = CuentasRepositorio.LeerDeFichero();
+            this.Cuentas = CuentasRepositorio.Leer();
 
             if(this.Cuentas == null)
             {

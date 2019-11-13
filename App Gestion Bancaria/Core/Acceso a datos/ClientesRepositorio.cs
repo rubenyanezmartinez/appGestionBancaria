@@ -10,7 +10,7 @@ namespace App_Gestion_Bancaria.Core.Acceso_a_datos
 {
     public static class ClientesRepositorio
     {
-        public static List<Cliente> RecuperarClientes(string etiquetFichero)
+        public static List<Cliente> Leer(string etiquetFichero)
         {
             List<Cliente> toret = new List<Cliente>();
 
@@ -63,7 +63,7 @@ namespace App_Gestion_Bancaria.Core.Acceso_a_datos
             return toret;
         }
 
-        public static void GuardarClientes(string etiquetFichero, List<Cliente> clientes)
+        public static void Guardar(string etiquetFichero, List<Cliente> clientes)
         {
             using (var xmlWriter = new XmlTextWriter(etiquetFichero, Encoding.UTF8))
             {
