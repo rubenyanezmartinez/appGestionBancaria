@@ -48,6 +48,7 @@
     <Compile Include="Core\Acceso a datos\TransferenciasRepositorio.cs" />
     <Compile Include="Core\Clases\Cliente.cs" />
     <Compile Include="Core\Clases\Cuenta.cs" />
+    <Compile Include="Core\Clases\Movimiento.cs" />
     <Compile Include="Core\Clases\Transferencia.cs" />
     <Compile Include="Core\Gestores\GestorClientes.cs" />
     <Compile Include="Core\Gestores\GestorCuentas.cs" />
