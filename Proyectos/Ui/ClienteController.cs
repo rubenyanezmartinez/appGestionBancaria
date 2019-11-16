@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Proyectos.Ui
 {
-    class ClienteController
+    using WFrms = System.Windows.Forms;
+    public class ClienteController
     {
+        public ClienteController()
+        {
+
+        }
     }
 }
