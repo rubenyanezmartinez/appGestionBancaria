@@ -15,10 +15,10 @@ namespace App_Gestion_Bancaria.Core.Acceso_a_datos
             List<Cliente> toret = new List<Cliente>();
 
             XmlDocument docXml = new XmlDocument();
-            docXml.Load(etiquetFichero);
 
-            if (docXml != null)
+            try
             {
+                docXml.Load(etiquetFichero);
                 foreach (XmlNode clientes in docXml.DocumentElement.ChildNodes)
                 {
                     string dni = "";
@@ -59,7 +59,11 @@ namespace App_Gestion_Bancaria.Core.Acceso_a_datos
                     toret.Add(c);
                 }
             }
+            catch (Exception e)
+            {
 
+            }
+           
             return toret;
         }
 
