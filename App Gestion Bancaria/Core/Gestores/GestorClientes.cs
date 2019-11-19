@@ -45,9 +45,9 @@ namespace App_Gestion_Bancaria.Core.Gestores
         //Insertar cliente pasandole todos los atributos necesarios. Devuelve T si se ha insertado y F en caso contrario.
         public Boolean Insertar(string dni, string nombre, string telefono, string email, string direccionPostal)
         {
-            if (this.ConsultarPorDni(dni) != null
-                && this.ConsultarPorEmail(email) != null
-                && this.ConsultarPorTelefono(telefono) != null)
+            if (this.ConsultarPorDni(dni) == null
+                && this.ConsultarPorEmail(email) == null
+                && this.ConsultarPorTelefono(telefono) == null)
             {
                 Cliente cliente = new Cliente(dni, nombre, telefono, email, direccionPostal);
                 this.ContenedorClientes.Add(cliente);
