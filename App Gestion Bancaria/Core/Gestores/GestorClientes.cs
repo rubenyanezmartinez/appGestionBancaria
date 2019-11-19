@@ -14,11 +14,9 @@ namespace App_Gestion_Bancaria.Core.Gestores
         public List<Cliente> ContenedorClientes { get; private set; }
 
         //Recupera los datos del fichero XML en caso de existir. Devuelve T en caso de existir clientes almacenados.
-        public Boolean RecuperarClientes()
+        public void RecuperarClientes()
         {
             this.ContenedorClientes = ClientesRepositorio.Leer(EtiquetaFichero);
-
-            return this.ContenedorClientes.Count() != 0;
         }
         
         //Guarda la lista de clientes en el archivo XML
