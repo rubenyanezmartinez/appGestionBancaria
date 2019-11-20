@@ -11,10 +11,11 @@ namespace App_Gestion_Bancaria.Core.Gestores
     public class GestorTransferencias
     {
         private TransferenciasRepositorio Repositorio;
-        private List<Transferencia> Transferencias;
+        public List<Transferencia> Transferencias { get; private set; }
 
         public GestorTransferencias()
         {
+            this.Repositorio = new TransferenciasRepositorio();
             this.Transferencias = Repositorio.Leer();
         }
 

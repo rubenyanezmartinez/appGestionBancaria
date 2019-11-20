@@ -31,36 +31,39 @@ namespace App_Gestion_Bancaria.Core.Acceso_a_datos
             try
             {
                 transferenciasXML = XElement.Load(NombreFicheroXML);
+                foreach (XElement transferencia in transferenciasXML.Elements())
+                {
+                    int id = Int32.Parse(transferencia.Element("id").Value);
+                    String tipo = transferencia.Element("tipo").Value;
+                    String cuentaOrigen = transferencia.Element("cccorigen").Value;
+                    String cuentaDestino = transferencia.Element("cccdestino").Value;
+                    /*
+                    Cuenta cuentaOrigen = new Cuenta(
+                        transferencia.Element("cccorigen").Element("ccc").Value,
+                        (Cuenta.TipoCuenta)Enum.Parse(typeof(Cuenta.TipoCuenta), transferencia.Element("cccorigen").Element("tipo").Value),
+                        Int32.Parse(transferencia.Element("cccorigen").Element("saldo").Value),
+                        DateTime.Parse(transferencia.Element("cccorigen").Element("fechaApertura").Value),
+                        Int32.Parse(transferencia.Element("cccorigen").Element("interesMensual").Value)
+                    );
+                    Cuenta cuentaDestino = new Cuenta(
+                        transferencia.Element("cccdestino").Element("ccc").Value,
+                        (Cuenta.TipoCuenta)Enum.Parse(typeof(Cuenta.TipoCuenta), transferencia.Element("cccdestino").Element("tipo").Value),
+                        Int32.Parse(transferencia.Element("cccdestino").Element("saldo").Value),
+                        DateTime.Parse(transferencia.Element("cccdestino").Element("fechaApertura").Value),
+                        Int32.Parse(transferencia.Element("cccdestino").Element("interesMensual").Value)
+                    );
+                    */
+                    float importe = float.Parse(transferencia.Element("importe").Value);
+                    DateTime fecha = DateTime.Parse(transferencia.Element("fecha").Value);
+
+                    Transferencia nuevaTransferencia = new Transferencia(id, tipo, cuentaOrigen, cuentaDestino, importe, fecha);
+
+                    toret.Add(nuevaTransferencia);
+                }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine("Error al recuperar transferencias de fichero");
-            }
-
-            foreach (XElement transferencia in transferenciasXML.Elements())
-            {
-                int id = Int32.Parse(transferencia.Element("id").Value);
-                String tipo = transferencia.Element("tipo").Value;
-                Cuenta cuentaOrigen = new Cuenta(
-                    transferencia.Element("cccorigen").Element("ccc").Value,
-                    (Cuenta.TipoCuenta)Enum.Parse(typeof(Cuenta.TipoCuenta), transferencia.Element("cccorigen").Element("tipo").Value),
-                    Int32.Parse(transferencia.Element("cccorigen").Element("saldo").Value),
-                    DateTime.Parse(transferencia.Element("cccorigen").Element("fechaApertura").Value),
-                    Int32.Parse(transferencia.Element("cccorigen").Element("interesMensual").Value)
-                );
-                Cuenta cuentaDestino = new Cuenta(
-                    transferencia.Element("cccdestino").Element("ccc").Value,
-                    (Cuenta.TipoCuenta)Enum.Parse(typeof(Cuenta.TipoCuenta), transferencia.Element("cccdestino").Element("tipo").Value),
-                    Int32.Parse(transferencia.Element("cccdestino").Element("saldo").Value),
-                    DateTime.Parse(transferencia.Element("cccdestino").Element("fechaApertura").Value),
-                    Int32.Parse(transferencia.Element("cccdestino").Element("interesMensual").Value)
-                );
-                float importe = float.Parse(transferencia.Element("importe").Value);
-                DateTime fecha = DateTime.Parse(transferencia.Element("fecha").Value);
-
-                Transferencia nuevaTransferencia = new Transferencia(id, tipo, cuentaOrigen, cuentaDestino, importe, fecha);
-
-                toret.Add(nuevaTransferencia);
             }
 
             return toret;
