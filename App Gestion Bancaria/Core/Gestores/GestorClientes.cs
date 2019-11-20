@@ -32,9 +32,9 @@ namespace App_Gestion_Bancaria.Core.Gestores
             string telefono = cliente.Telefono;
             string email = cliente.Email;
 
-            if (this.ConsultarPorDni(dni) != null 
-                && this.ConsultarPorEmail(email) != null
-                && this.ConsultarPorTelefono(telefono) != null)
+            if (this.ConsultarPorDni(dni) == null 
+                && this.ConsultarPorEmail(email) == null
+                && this.ConsultarPorTelefono(telefono) == null)
             {
                 this.ContenedorClientes.Add(cliente);
                 return true;
@@ -74,7 +74,9 @@ namespace App_Gestion_Bancaria.Core.Gestores
         //Sustituye el cliente en la lista con por el pasado como parámetro. T en caso de que se edite correctamente, F en caso contrario.
         public Boolean Editar(Cliente cliente)
         {
-            if (this.ConsultarPorDni(cliente.Dni) != null)
+            if (this.ConsultarPorDni(cliente.Dni) == null ||
+                this.ConsultarPorEmail(cliente.Email) == null ||
+                this.ConsultarPorTelefono(cliente.Telefono) == null)
             {
                 this.Eliminar(cliente.Dni);
                 this.Insertar(cliente);
@@ -85,27 +87,32 @@ namespace App_Gestion_Bancaria.Core.Gestores
             return false;
         }
 
-        //Edita los parametros pasados que no sean null. T en caso de que se edite correctamente, F en caso contrario.
-        public Boolean Editar(string dni, string nombre, string telefono, string email, string direccionPostal)
+        //Edita los parametros pasados que no sean null.
+        public void Editar(string dni, string nombre, string telefono, string email, string direccionPostal)
         {
-            Cliente consulta = this.ConsultarPorDni(dni);
+            Cliente consultaDni = this.ConsultarPorDni(dni);
+            Cliente consultaTelefono = this.ConsultarPorTelefono(telefono);
+            Cliente consultaEmail = this.ConsultarPorEmail(email);
+            this.ContenedorClientes.Remove(consultaDni);
 
-            if (consulta != null)
-            {
-                this.Eliminar(dni);
+            string dniNuevo = dni;
+            string nombreNuevo = nombre;
+            string telefonoNuevo = telefono;
+            string emailNuevo = email;
+            string direccionPostalNueva = direccionPostal;
 
-                string dniNuevo = dni == null ? consulta.Dni : dni;
-                string nombreNuevo = nombre == null ? consulta.Nombre : nombre;
-                string telefonoNuevo = telefono == null ? consulta.Telefono : telefono;
-                string emailNuevo = email == null ? consulta.Email : email;
-                string direccionPostalNuevo = direccionPostal == null ? consulta.DireccionPostal : direccionPostal;
-                
-                return this.Insertar(dniNuevo, nombreNuevo, telefonoNuevo, emailNuevo, direccionPostalNuevo);
-            }
-            else
+            if (consultaTelefono != null)
             {
-                return false;
+                telefonoNuevo = consultaDni.Telefono;
             }
+            if (consultaEmail != null)
+            {
+                emailNuevo = consultaDni.Email;
+            }
+
+            Cliente almacenar = new Cliente(dniNuevo, nombreNuevo, telefonoNuevo, emailNuevo, direccionPostalNueva);
+
+            this.ContenedorClientes.Add(almacenar);
         }
 
         //Devuelve el cliente con ese DNI:

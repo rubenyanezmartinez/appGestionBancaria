@@ -92,6 +92,7 @@ namespace Proyectos.Ui
         public TextBox DireccionPostal { get; set; }
         public WFrms.Button BotonVolver {get; set;}
         public WFrms.Button BotonAdd { get; set; }
+        public WFrms.Button BotonEdit { get; set; }
 
         public WFrms.Panel BuildDni()
         {
@@ -224,6 +225,16 @@ namespace Proyectos.Ui
 
             return toret;
         }
+        public WFrms.Button builtBotonEditCliente()
+        {
+            WFrms.Button toret = new WFrms.Button();
+            toret.Text = "Modificar";
+            toret.Width = 200;
+
+            this.BotonEdit = toret;
+
+            return toret;
+        }
         public WFrms.Button builtBotonVolver()
         {
             WFrms.Button toret = new WFrms.Button();
@@ -245,8 +256,9 @@ namespace Proyectos.Ui
             this.mainPanel.Controls.Add(this.BuildTelefono(c.Telefono));
             this.mainPanel.Controls.Add(this.BuildEmail(c.Email));
             this.mainPanel.Controls.Add(this.BuildDireccionPostal(c.DireccionPostal));
-
-            this.mainPanel.Controls.Add(this.builtBotonAddCliente());
+            Label lb1 = new Label() { Text = "* Deben ser unicos"};
+            this.mainPanel.Controls.Add(lb1);
+            this.mainPanel.Controls.Add(this.builtBotonEditCliente());
             this.mainPanel.Controls.Add(this.builtBotonVolver());
 
         }
@@ -255,7 +267,8 @@ namespace Proyectos.Ui
         {
             var panel = new WFrms.Panel
             {
-                Dock = WFrms.DockStyle.Top
+                Dock = WFrms.DockStyle.Top,
+                Visible = false
             };
 
             var etiquetaFila = new WFrms.Label
@@ -312,7 +325,7 @@ namespace Proyectos.Ui
             var etiquetaFila = new WFrms.Label
             {
                 Dock = WFrms.DockStyle.Left,
-                Text = "Telefono"
+                Text = "Telefono *"
             };
 
             this.Telefono = new WFrms.TextBox
@@ -337,7 +350,7 @@ namespace Proyectos.Ui
             var etiquetaFila = new WFrms.Label
             {
                 Dock = WFrms.DockStyle.Left,
-                Text = "Email"
+                Text = "Email *"
             };
 
             this.Email = new WFrms.TextBox
@@ -404,7 +417,7 @@ namespace Proyectos.Ui
 
             botonEditCliente = new Button();
 
-            botonEditCliente.Location = new Point(25, 50);
+            botonEditCliente.Location = new Point(140, 16);
             botonEditCliente.AutoSize = true;
             botonEditCliente.Text = "Modificar cliente";
 

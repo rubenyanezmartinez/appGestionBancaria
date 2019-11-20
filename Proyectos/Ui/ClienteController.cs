@@ -62,6 +62,26 @@ namespace Proyectos.Ui
 
         }
 
+        private void accionEdit(object sender, System.EventArgs e)
+        {
+            DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TablaClientes.SelectedRows;
+            int indiceTabla = filasSeleccionadas[0].Index;
+
+            Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
+
+            string dniRecuperado = this.View.Dni.Text;
+            string telefonoRecuperado = this.View.Telefono.Text;
+            string emailRecuperado = this.View.Email.Text;
+            string nombreRecuperado = this.View.Nombre.Text;
+            string direccionPostalRecuperada = this.View.DireccionPostal.Text;
+
+            this.Gestor.Editar(dniRecuperado, nombreRecuperado, telefonoRecuperado, emailRecuperado, direccionPostalRecuperada);
+
+            this.View.ClienteViewMethod(this.Gestor);
+            this.IniciarBotones();            
+
+        }
+
         private void accionVolver(object sender, System.EventArgs e)
         {
             this.View.ClienteViewMethod(this.Gestor);
@@ -93,7 +113,7 @@ namespace Proyectos.Ui
             Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
 
             this.View.BuiltEditCliente(clienteSeleccionado);
-            this.View.BotonAdd.Click += new System.EventHandler(accionAdd); //BOTON EDIT
+            this.View.BotonEdit.Click += new System.EventHandler(accionEdit);
             this.View.BotonVolver.Click += new System.EventHandler(accionVolver);
         }
     }
