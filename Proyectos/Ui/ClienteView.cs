@@ -18,6 +18,7 @@ namespace Proyectos.Ui
 
         public Button botonAddCliente { get; private set; }
         public Button botonDeleteCliente { get; private set; }
+        public Button botonEditCliente { get; private set; }
 
         public ClienteView(GestorClientes gestor)
         {
@@ -84,13 +85,13 @@ namespace Proyectos.Ui
         }
 
 
-        public TextBox Dni { get; private set; }
-        public TextBox Nombre { get; private set; }
-        public TextBox Telefono { get; private set; }
-        public TextBox Email { get; private set; }
-        public TextBox DireccionPostal { get; private set; }
-        public WFrms.Button BotonVolver {get; private set;}
-        public WFrms.Button BotonAdd { get; private set; }
+        public TextBox Dni { get; set; }
+        public TextBox Nombre { get; set; }
+        public TextBox Telefono { get; set; }
+        public TextBox Email { get; set; }
+        public TextBox DireccionPostal { get; set; }
+        public WFrms.Button BotonVolver {get; set;}
+        public WFrms.Button BotonAdd { get; set; }
 
         public WFrms.Panel BuildDni()
         {
@@ -235,6 +236,149 @@ namespace Proyectos.Ui
         }
 
 
+        public void BuiltEditCliente(Cliente c)
+        {
+            this.mainPanel.Controls.Clear();
+
+            this.mainPanel.Controls.Add(this.BuildDni(c.Dni));
+            this.mainPanel.Controls.Add(this.BuildNombre(c.Nombre));
+            this.mainPanel.Controls.Add(this.BuildTelefono(c.Telefono));
+            this.mainPanel.Controls.Add(this.BuildEmail(c.Email));
+            this.mainPanel.Controls.Add(this.BuildDireccionPostal(c.DireccionPostal));
+
+            this.mainPanel.Controls.Add(this.builtBotonAddCliente());
+            this.mainPanel.Controls.Add(this.builtBotonVolver());
+
+        }
+
+        public WFrms.Panel BuildDni(string dni)
+        {
+            var panel = new WFrms.Panel
+            {
+                Dock = WFrms.DockStyle.Top
+            };
+
+            var etiquetaFila = new WFrms.Label
+            {
+                Dock = WFrms.DockStyle.Left,
+                Text = "DNI"
+            };
+
+            this.Dni = new WFrms.TextBox
+            {
+                Dock = WFrms.DockStyle.Left,
+                Width = 70,
+                Text = dni
+            };
+
+            panel.Controls.Add(this.Dni);
+            panel.Controls.Add(etiquetaFila);
+
+            return panel;
+        }
+
+        public WFrms.Panel BuildNombre(string nombre)
+        {
+            var panel = new WFrms.Panel
+            {
+                Dock = WFrms.DockStyle.Top
+            };
+
+            var etiquetaFila = new WFrms.Label
+            {
+                Dock = WFrms.DockStyle.Left,
+                Text = "Nombre"
+            };
+
+            this.Nombre = new WFrms.TextBox
+            {
+                Dock = WFrms.DockStyle.Left,
+                Width = 170,
+                Text = nombre
+            };
+
+            panel.Controls.Add(this.Nombre);
+            panel.Controls.Add(etiquetaFila);
+
+            return panel;
+        }
+        public WFrms.Panel BuildTelefono(string telefono)
+        {
+            var panel = new WFrms.Panel
+            {
+                Dock = WFrms.DockStyle.Top
+            };
+
+            var etiquetaFila = new WFrms.Label
+            {
+                Dock = WFrms.DockStyle.Left,
+                Text = "Telefono"
+            };
+
+            this.Telefono = new WFrms.TextBox
+            {
+                Dock = WFrms.DockStyle.Left,
+                Width = 80,
+                Text = telefono
+            };
+
+            panel.Controls.Add(this.Telefono);
+            panel.Controls.Add(etiquetaFila);
+
+            return panel;
+        }
+        public WFrms.Panel BuildEmail(string email)
+        {
+            var panel = new WFrms.Panel
+            {
+                Dock = WFrms.DockStyle.Top
+            };
+
+            var etiquetaFila = new WFrms.Label
+            {
+                Dock = WFrms.DockStyle.Left,
+                Text = "Email"
+            };
+
+            this.Email = new WFrms.TextBox
+            {
+                Dock = WFrms.DockStyle.Left,
+                Width = 170,
+                Text = email
+            };
+
+            panel.Controls.Add(this.Email);
+            panel.Controls.Add(etiquetaFila);
+
+            return panel;
+        }
+        public WFrms.Panel BuildDireccionPostal(string direccionPostal)
+        {
+            var panel = new WFrms.Panel
+            {
+                Dock = WFrms.DockStyle.Top
+            };
+
+            var etiquetaFila = new WFrms.Label
+            {
+                Dock = WFrms.DockStyle.Left,
+                Text = "Direccion Postal"
+            };
+
+            this.DireccionPostal = new WFrms.TextBox
+            {
+                Dock = WFrms.DockStyle.Left,
+                Width = 270,
+                Text = direccionPostal
+            };
+
+            panel.Controls.Add(this.DireccionPostal);
+            panel.Controls.Add(etiquetaFila);
+
+            return panel;
+        }
+
+
         Panel BotonesPanel()
         {
             var pnl = new Panel { Dock = DockStyle.Bottom };
@@ -248,7 +392,7 @@ namespace Proyectos.Ui
 
             pnl.Controls.Add(botonAddCliente);
 
-
+            
             botonDeleteCliente = new Button();
 
             botonDeleteCliente.Location = new Point(25, 50);
@@ -256,11 +400,15 @@ namespace Proyectos.Ui
             botonDeleteCliente.Text = "Eliminar cliente";
 
             pnl.Controls.Add(botonDeleteCliente);
+            
 
+            botonEditCliente = new Button();
 
-            /***********************************************/
-            /*MODIFICAR CLIENTE*/
-            /***********************************************/
+            botonEditCliente.Location = new Point(25, 50);
+            botonEditCliente.AutoSize = true;
+            botonEditCliente.Text = "Modificar cliente";
+
+            pnl.Controls.Add(botonEditCliente);
 
             /***********************************************/
             /*GUARDAR Y CERRAR this.Close(); en vista*/

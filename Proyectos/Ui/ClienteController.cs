@@ -28,6 +28,7 @@ namespace Proyectos.Ui
         {
             this.View.botonAddCliente.Click += new System.EventHandler(accionAddCliente);
             this.View.botonDeleteCliente.Click += new System.EventHandler(accionDeleteCliente);
+            this.View.botonEditCliente.Click += new System.EventHandler(accionEditCliente);
         }
 
 
@@ -82,6 +83,18 @@ namespace Proyectos.Ui
             }
             this.View.ClienteViewMethod(this.Gestor);
             this.IniciarBotones();
+        }
+
+        private void accionEditCliente(object sender, System.EventArgs e)
+        {
+            DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TablaClientes.SelectedRows;
+            int indiceTabla = filasSeleccionadas[0].Index;
+
+            Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
+
+            this.View.BuiltEditCliente(clienteSeleccionado);
+            this.View.BotonAdd.Click += new System.EventHandler(accionAdd); //BOTON EDIT
+            this.View.BotonVolver.Click += new System.EventHandler(accionVolver);
         }
     }
 }
