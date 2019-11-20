@@ -54,6 +54,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ui\ClienteController.cs" />
+    <Compile Include="Ui\ClienteView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ui\TransferenciaController.cs" />
+    <Compile Include="Ui\TransferenciaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +83,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\App Gestion Bancaria\App Gestion Bancaria.csproj">
+      <Project>{b1a62e88-a475-44ac-a434-378aa2bda7cd}</Project>
+      <Name>App Gestion Bancaria</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
