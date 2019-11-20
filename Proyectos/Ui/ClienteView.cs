@@ -65,6 +65,25 @@ namespace Proyectos.Ui
 
         }
 
+        public Boolean BuiltDeleteCliente(string mensaje)
+        {
+
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            result = MessageBox.Show(mensaje, "ERROR", buttons);
+            if (result == System.Windows.Forms.DialogResult.No)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+
         public TextBox Dni { get; private set; }
         public TextBox Nombre { get; private set; }
         public TextBox Telefono { get; private set; }

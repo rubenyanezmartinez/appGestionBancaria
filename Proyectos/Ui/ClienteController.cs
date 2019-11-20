@@ -70,23 +70,18 @@ namespace Proyectos.Ui
 
         private void accionDeleteCliente(object sender, System.EventArgs e)
         {
-            /*Camion c = this.flota.GetCamiones().Where(x => (x.GetToneladas() == 1.5)).ToList().FirstOrDefault();
+            DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TablaClientes.SelectedRows;
+            int indiceTabla = filasSeleccionadas[0].Index;
 
-            if (c != null)
+            Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
+
+            if (this.View.BuiltDeleteCliente("¿Seguro que desea eliminar el cliente con DNI " + clienteSeleccionado.Dni
+                + " ?"))
             {
-                //this.flota.DarBajaCamion(c);
-
-                foreach (DataGridViewRow row in this.TablaCamiones.Rows)
-                {
-                    if ((int)row.Cells[0].Value == c.GetIdentificador())
-                    {
-                        this.TablaCamiones.Rows.Remove(row);
-                    }
-                }
-            }*/
+                this.Gestor.Eliminar(clienteSeleccionado.Dni);
+            }
+            this.View.ClienteViewMethod(this.Gestor);
+            this.IniciarBotones();
         }
-
-
-
     }
 }
