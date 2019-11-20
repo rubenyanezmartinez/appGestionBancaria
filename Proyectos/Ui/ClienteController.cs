@@ -29,6 +29,7 @@ namespace Proyectos.Ui
             this.View.botonAddCliente.Click += new System.EventHandler(accionAddCliente);
             this.View.botonDeleteCliente.Click += new System.EventHandler(accionDeleteCliente);
             this.View.botonEditCliente.Click += new System.EventHandler(accionEditCliente);
+            this.View.botonCloseCliente.Click += new System.EventHandler(accionCloseSave);
         }
 
 
@@ -116,5 +117,13 @@ namespace Proyectos.Ui
             this.View.BotonEdit.Click += new System.EventHandler(accionEdit);
             this.View.BotonVolver.Click += new System.EventHandler(accionVolver);
         }
+
+        private void accionCloseSave(object sender, System.EventArgs e)
+        {
+            this.Gestor.GuardarClientes();
+            this.View.Close();
+        }
+
+
     }
 }

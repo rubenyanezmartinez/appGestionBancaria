@@ -20,6 +20,8 @@ namespace Proyectos.Ui
         public Button botonDeleteCliente { get; private set; }
         public Button botonEditCliente { get; private set; }
 
+        public Button botonCloseCliente { get; private set; }
+
         public ClienteView(GestorClientes gestor)
         {
             mainPanel = new TableLayoutPanel
@@ -423,9 +425,13 @@ namespace Proyectos.Ui
 
             pnl.Controls.Add(botonEditCliente);
 
-            /***********************************************/
-            /*GUARDAR Y CERRAR this.Close(); en vista*/
-            /***********************************************/
+            botonCloseCliente = new Button();
+
+            botonCloseCliente.Location = new Point(140, 50);
+            botonCloseCliente.AutoSize = true;
+            botonCloseCliente.Text = "Cerrar y guardar";
+
+            pnl.Controls.Add(botonCloseCliente);
 
             return pnl;
 
@@ -446,10 +452,15 @@ namespace Proyectos.Ui
                 Location = new Point(25, 16)
             };
             this.TablaClientes.Columns[0].Name = "DNI";
+            this.TablaClientes.Columns[0].Width = 70;
             this.TablaClientes.Columns[1].Name = "NOMBRE";
+            this.TablaClientes.Columns[1].Width = 170;
             this.TablaClientes.Columns[2].Name = "TELEFONO";
+            this.TablaClientes.Columns[2].Width = 80;
             this.TablaClientes.Columns[3].Name = "EMAIL";
+            this.TablaClientes.Columns[3].Width = 170;
             this.TablaClientes.Columns[4].Name = "DIRECCION POSTAL";
+            this.TablaClientes.Columns[4].Width = 270;
 
             foreach (var cliente in gestor.ContenedorClientes)
             {
