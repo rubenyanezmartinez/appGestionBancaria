@@ -164,7 +164,7 @@ namespace Proyectos.Ui
             {
                 Dock = WFrms.DockStyle.Left,
                 Width = 80,
-                MaxLength = 14
+                MaxLength = 12
             };
 
             panel.Controls.Add(this.Telefono);
@@ -342,7 +342,7 @@ namespace Proyectos.Ui
                 Dock = WFrms.DockStyle.Left,
                 Width = 80,
                 Text = telefono,
-                MaxLength = 14
+                MaxLength = 12
             };
 
             panel.Controls.Add(this.Telefono);
