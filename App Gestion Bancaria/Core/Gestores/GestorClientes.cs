@@ -71,22 +71,6 @@ namespace App_Gestion_Bancaria.Core.Gestores
             return false;
         }
 
-        //Sustituye el cliente en la lista con por el pasado como parámetro. T en caso de que se edite correctamente, F en caso contrario.
-        public Boolean Editar(Cliente cliente)
-        {
-            if (this.ConsultarPorDni(cliente.Dni) == null ||
-                this.ConsultarPorEmail(cliente.Email) == null ||
-                this.ConsultarPorTelefono(cliente.Telefono) == null)
-            {
-                this.Eliminar(cliente.Dni);
-                this.Insertar(cliente);
-
-                return true;
-            }
-
-            return false;
-        }
-
         //Edita los parametros pasados que no sean null.
         public void Editar(string dni, string nombre, string telefono, string email, string direccionPostal)
         {
