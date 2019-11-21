@@ -48,38 +48,50 @@ namespace Proyectos.Ui
             string nombreRecuperado = this.View.Nombre.Text;
             string direccionPostalRecuperada = this.View.DireccionPostal.Text;
 
-            Boolean noExiste = this.Gestor.Insertar(dniRecuperado, nombreRecuperado, telefonoRecuperado, emailRecuperado, direccionPostalRecuperada);
-
-            if (!noExiste)
+            if (dniRecuperado.Equals("") || telefonoRecuperado.Equals("") || emailRecuperado.Equals("") || nombreRecuperado.Equals("") || direccionPostalRecuperada.Equals(""))
             {
-                this.View.BuiltError("Los campos DNI, telefono y email deben ser únicos", this.Gestor);
+                this.View.BuiltError("Ningún campo puede estar vacío", this.Gestor);
                 this.IniciarBotones();
             }
             else
             {
-                this.View.ClienteViewMethod(this.Gestor);
-                this.IniciarBotones();
+                Boolean noExiste = this.Gestor.Insertar(dniRecuperado, nombreRecuperado, telefonoRecuperado, emailRecuperado, direccionPostalRecuperada);
+
+                if (!noExiste)
+                {
+                    this.View.BuiltError("Los campos DNI, telefono y email deben ser únicos", this.Gestor);
+                    this.IniciarBotones();
+                }
+                else
+                {
+                    this.View.ClienteViewMethod(this.Gestor);
+                    this.IniciarBotones();
+                }
             }
 
         }
 
         private void accionEdit(object sender, System.EventArgs e)
         {
-            DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TablaClientes.SelectedRows;
-            int indiceTabla = filasSeleccionadas[0].Index;
-
-            Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
-
             string dniRecuperado = this.View.Dni.Text;
             string telefonoRecuperado = this.View.Telefono.Text;
             string emailRecuperado = this.View.Email.Text;
             string nombreRecuperado = this.View.Nombre.Text;
             string direccionPostalRecuperada = this.View.DireccionPostal.Text;
 
-            this.Gestor.Editar(dniRecuperado, nombreRecuperado, telefonoRecuperado, emailRecuperado, direccionPostalRecuperada);
+            if (dniRecuperado.Equals("") || telefonoRecuperado.Equals("") || emailRecuperado.Equals("") || nombreRecuperado.Equals("") || direccionPostalRecuperada.Equals(""))
+            {
+                this.View.BuiltError("Ningún campo puede estar vacío", this.Gestor);
+                this.IniciarBotones();
+            }
+            else
+            {
+                
+                this.Gestor.Editar(dniRecuperado, nombreRecuperado, telefonoRecuperado, emailRecuperado, direccionPostalRecuperada);
 
-            this.View.ClienteViewMethod(this.Gestor);
-            this.IniciarBotones();            
+                this.View.ClienteViewMethod(this.Gestor);
+                this.IniciarBotones();
+            }
 
         }
 

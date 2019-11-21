@@ -112,7 +112,8 @@ namespace Proyectos.Ui
             this.Dni = new WFrms.TextBox
             {
                 Dock = WFrms.DockStyle.Left,
-                Width = 70
+                Width = 70,
+                MaxLength = 9
             };
 
             panel.Controls.Add(this.Dni);
@@ -137,7 +138,8 @@ namespace Proyectos.Ui
             this.Nombre = new WFrms.TextBox
             {
                 Dock = WFrms.DockStyle.Left,
-                Width = 170
+                Width = 170,
+                MaxLength = 160
             };
 
             panel.Controls.Add(this.Nombre);
@@ -161,7 +163,8 @@ namespace Proyectos.Ui
             this.Telefono = new WFrms.TextBox
             {
                 Dock = WFrms.DockStyle.Left,
-                Width = 80
+                Width = 80,
+                MaxLength = 14
             };
 
             panel.Controls.Add(this.Telefono);
@@ -185,7 +188,8 @@ namespace Proyectos.Ui
             this.Email = new WFrms.TextBox
             {
                 Dock = WFrms.DockStyle.Left,
-                Width = 170
+                Width = 170,
+                MaxLength = 160
             };
 
             panel.Controls.Add(this.Email);
@@ -209,7 +213,8 @@ namespace Proyectos.Ui
             this.DireccionPostal = new WFrms.TextBox
             {
                 Dock = WFrms.DockStyle.Left,
-                Width = 270
+                Width = 270,
+                MaxLength = 260
             };
 
             panel.Controls.Add(this.DireccionPostal);
@@ -283,7 +288,8 @@ namespace Proyectos.Ui
             {
                 Dock = WFrms.DockStyle.Left,
                 Width = 70,
-                Text = dni
+                Text = dni,
+                MaxLength = 9
             };
 
             panel.Controls.Add(this.Dni);
@@ -309,7 +315,8 @@ namespace Proyectos.Ui
             {
                 Dock = WFrms.DockStyle.Left,
                 Width = 170,
-                Text = nombre
+                Text = nombre,
+                MaxLength = 160
             };
 
             panel.Controls.Add(this.Nombre);
@@ -334,7 +341,8 @@ namespace Proyectos.Ui
             {
                 Dock = WFrms.DockStyle.Left,
                 Width = 80,
-                Text = telefono
+                Text = telefono,
+                MaxLength = 14
             };
 
             panel.Controls.Add(this.Telefono);
@@ -359,7 +367,8 @@ namespace Proyectos.Ui
             {
                 Dock = WFrms.DockStyle.Left,
                 Width = 170,
-                Text = email
+                Text = email,
+                MaxLength = 160
             };
 
             panel.Controls.Add(this.Email);
@@ -384,7 +393,8 @@ namespace Proyectos.Ui
             {
                 Dock = WFrms.DockStyle.Left,
                 Width = 270,
-                Text = direccionPostal
+                Text = direccionPostal,
+                MaxLength = 260
             };
 
             panel.Controls.Add(this.DireccionPostal);
@@ -443,7 +453,7 @@ namespace Proyectos.Ui
             {
                 Dock = DockStyle.Left,
                 ColumnCount = 5,
-                MinimumSize = new Size(2000, 1000),
+                MinimumSize = new Size(802, 1000),
                 AllowUserToAddRows = false,
                 AllowUserToDeleteRows = false,
                 ReadOnly = true,
@@ -485,10 +495,10 @@ namespace Proyectos.Ui
             Panel pnl = new Panel() { Dock = DockStyle.Fill };
             Panel pnl1 = new Panel() { Dock = DockStyle.Fill };
             pnl1.Controls.Add(ClientesTabla(gestor));
-            Panel pnl2 = new Panel() { Dock = DockStyle.Bottom };
+            Panel pnl2 = new Panel() { Dock = DockStyle.Bottom};
             Panel pnl3 = new Panel() { Dock = DockStyle.Top };
 
-            Label lb1 = new Label() { Text = "CLIENTES", Location = new Point(25, 16) };
+            Label lb1 = new Label() { Text = "GESTIÓN DE CLIENTES", Size = new System.Drawing.Size(1000, 1000), Font = new Font("Arial", 35, FontStyle.Regular) };
             pnl3.Controls.Add(lb1);
 
             pnl2.Controls.Add(BotonesPanel());
