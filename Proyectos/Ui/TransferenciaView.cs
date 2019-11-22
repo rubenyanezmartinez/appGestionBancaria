@@ -219,7 +219,8 @@ namespace Proyectos.Ui
             {
                 Dock = WFrms.DockStyle.Left,
                 Width = 200,
-                Text = tipo
+                Text = tipo,
+                DropDownStyle = ComboBoxStyle.DropDownList
             };
             this.Tipo.Items.AddRange ( new String[] { "puntual", "periodica" });
 
