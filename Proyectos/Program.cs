@@ -1,4 +1,5 @@
-﻿using Proyectos.Ui;
+﻿using App_Gestion_Bancaria.Core.Gestores;
+using Proyectos.Ui;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,9 @@ namespace Proyectos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TransferenciaController().View);
+            //GestorTransferencias gestorTransferencias = new GestorTransferencias();
+            //GestorCuentas gestorCuentas = new GestorCuentas();
+            //Application.Run(new TransferenciaController(gestorTransferencias, gestorCuentas).View);
         }
     }
 }

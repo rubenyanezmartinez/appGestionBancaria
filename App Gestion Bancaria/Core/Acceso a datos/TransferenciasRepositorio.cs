@@ -10,7 +10,7 @@ namespace App_Gestion_Bancaria.Core.Acceso_a_datos
 {
     public class TransferenciasRepositorio
     {
-        private static String NombreFicheroXML = "Transferencias.xml";
+        private static readonly String NombreFicheroXML = "Transferencias.xml";
         public void Guardar(List<Transferencia> transferencias)
         {
             XElement transferenciasXML = new XElement("transferencias");
@@ -35,8 +35,16 @@ namespace App_Gestion_Bancaria.Core.Acceso_a_datos
                 {
                     int id = Int32.Parse(transferencia.Element("id").Value);
                     String tipo = transferencia.Element("tipo").Value;
-                    String cuentaOrigen = transferencia.Element("cccorigen").Value;
-                    String cuentaDestino = transferencia.Element("cccdestino").Value;
+                    Cuenta cuentaOrigen = new Cuenta()
+                    {
+                        CCC = transferencia.Element("cccorigen").Value
+                    };
+                    Cuenta cuentaDestino = new Cuenta()
+                    {
+                        CCC = transferencia.Element("cccdestino").Value
+                    };
+                    //String cuentaOrigen = transferencia.Element("cccorigen").Value;
+                    //String cuentaDestino = transferencia.Element("cccdestino").Value;
                     /*
                     Cuenta cuentaOrigen = new Cuenta(
                         transferencia.Element("cccorigen").Element("ccc").Value,

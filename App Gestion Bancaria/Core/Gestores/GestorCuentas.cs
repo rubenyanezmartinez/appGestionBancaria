@@ -27,6 +27,10 @@ namespace App_Gestion_Bancaria.Core.Gestores
         }
         public List<Cuenta> Cuentas { get; set; }
 
+        public Cuenta GetCuentaByCCC(String ccc)
+        {
+            return Cuentas.Where(x => x.CCC == ccc).FirstOrDefault();
+        }
     }
 
 

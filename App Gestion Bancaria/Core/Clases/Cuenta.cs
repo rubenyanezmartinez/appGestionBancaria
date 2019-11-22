@@ -22,6 +22,8 @@ namespace App_Gestion_Bancaria.Core.Clases
             Retiradas = new List<Movimiento>();
         }
 
+        public Cuenta() { }
+
         public XElement ToXML()
         {
             XElement titulares = new XElement("titulares");
