@@ -11,6 +11,7 @@ namespace App_Gestion_Bancaria.Core.Gestores
 {
     public class GestorCuentas
     {
+        public List<Cuenta> Cuentas { get; set; }
         public GestorCuentas()
         {
             this.Cuentas = CuentasRepositorio.Leer();
@@ -25,7 +26,6 @@ namespace App_Gestion_Bancaria.Core.Gestores
         {
             CuentasRepositorio.Guardar(Cuentas);
         }
-        public List<Cuenta> Cuentas { get; set; }
 
         public Cuenta GetCuentaByCCC(String ccc)
         {

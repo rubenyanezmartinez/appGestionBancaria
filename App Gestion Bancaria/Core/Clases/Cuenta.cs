@@ -28,14 +28,14 @@ namespace App_Gestion_Bancaria.Core.Clases
         {
             XElement titulares = new XElement("titulares");
 
-            foreach(Cliente cliente in this.Titulares)
+            foreach (Cliente cliente in this.Titulares)
             {
                 titulares.Add(cliente.ToXml());
             }
 
             XElement depositos = new XElement("depositos");
 
-            foreach(Movimiento deposito in this.Depositos)
+            foreach (Movimiento deposito in this.Depositos)
             {
                 depositos.Add(deposito.ToXml());
             }
@@ -47,7 +47,7 @@ namespace App_Gestion_Bancaria.Core.Clases
                 retiradas.Add(retirada.ToXml());
             }
 
-            XElement toret =  new XElement("cuenta", 
+            XElement toret = new XElement("cuenta",
                 new XElement("tipo", this.Tipo.ToString()),
                 titulares,
                 new XElement("ccc", this.CCC),
@@ -65,21 +65,21 @@ namespace App_Gestion_Bancaria.Core.Clases
         {
             String titularesString = "";
 
-            foreach(Cliente titular in this.Titulares)
+            foreach (Cliente titular in this.Titulares)
             {
                 titularesString += titular.Nombre + ", ";
             }
 
             String depositosString = "";
 
-            foreach(Movimiento deposito in this.Depositos)
+            foreach (Movimiento deposito in this.Depositos)
             {
                 depositosString += deposito.Cantidad + ", ";
             }
 
             String retiradasString = "";
 
-            foreach(Movimiento retirada in this.Retiradas)
+            foreach (Movimiento retirada in this.Retiradas)
             {
                 retiradasString += retirada.Cantidad + ", ";
             }
@@ -111,6 +111,6 @@ namespace App_Gestion_Bancaria.Core.Clases
         public List<Movimiento> Depositos { get; set; }
 
         public List<Movimiento> Retiradas { get; set; }
-        
+
     }
 }

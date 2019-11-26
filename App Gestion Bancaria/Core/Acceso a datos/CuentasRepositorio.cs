@@ -15,7 +15,7 @@ namespace App_Gestion_Bancaria.Core.Acceso_a_datos
         {
             XElement cuentasXML = new XElement("cuentas");
 
-            foreach(Cuenta cuenta in listaCuentas)
+            foreach (Cuenta cuenta in listaCuentas)
             {
                 cuentasXML.Add(cuenta.ToXML());
             }
@@ -31,15 +31,16 @@ namespace App_Gestion_Bancaria.Core.Acceso_a_datos
             try
             {
                 cuentasXML = XElement.Load(CUENTAS_FICHERO);
-            } catch(Exception e)
+            }
+            catch (Exception e)
             {
                 return null;
             }
 
-            foreach(XElement cuenta in cuentasXML.Elements())
+            foreach (XElement cuenta in cuentasXML.Elements())
             {
                 Cuenta nuevaCuenta = new Cuenta(cuenta.Element("ccc").Value, (Cuenta.TipoCuenta)Enum.Parse(typeof(Cuenta.TipoCuenta),
-                    cuenta.Element("tipo").Value), Int32.Parse(cuenta.Element("saldo").Value), 
+                    cuenta.Element("tipo").Value), Int32.Parse(cuenta.Element("saldo").Value),
                     Convert.ToDateTime(cuenta.Element("fechaApertura").Value), Int32.Parse(cuenta.Element("interesMensual").Value));
 
                 foreach (XElement titular in cuenta.Element("titulares").Elements())

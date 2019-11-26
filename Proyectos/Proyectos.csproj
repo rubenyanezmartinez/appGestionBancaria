@@ -58,6 +58,10 @@
     <Compile Include="Ui\ClienteView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Ui\CuentaController.cs" />
+    <Compile Include="Ui\CuentaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Ui\TransferenciaController.cs" />
     <Compile Include="Ui\TransferenciaView.cs">
       <SubType>Form</SubType>

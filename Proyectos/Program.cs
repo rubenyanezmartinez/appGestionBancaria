@@ -21,6 +21,8 @@ namespace Proyectos
             //GestorTransferencias gestorTransferencias = new GestorTransferencias();
             //GestorCuentas gestorCuentas = new GestorCuentas();
             //Application.Run(new TransferenciaController(gestorTransferencias, gestorCuentas).View);
+            //Application.Run(new CuentaController().View);
+            //Application.Run(new ClienteController().View);
         }
     }
 }
