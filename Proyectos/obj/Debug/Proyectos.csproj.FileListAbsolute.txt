@@ -20,3 +20,15 @@ C:\Users\Jana\Documents\GitHub\appGestionBancaria\Proyectos\bin\Debug\App Gestio
 C:\Users\Jana\Documents\GitHub\appGestionBancaria\Proyectos\bin\Debug\App Gestion Bancaria.pdb
 C:\Users\Jana\Documents\GitHub\appGestionBancaria\Proyectos\bin\Debug\App Gestion Bancaria.exe.config
 C:\Users\Jana\Documents\GitHub\appGestionBancaria\Proyectos\obj\Debug\Proyectos.csproj.CopyComplete
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\bin\Debug\Proyectos.exe.config
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\bin\Debug\Proyectos.exe
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\bin\Debug\Proyectos.pdb
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\bin\Debug\App Gestion Bancaria.exe
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\bin\Debug\App Gestion Bancaria.pdb
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\bin\Debug\App Gestion Bancaria.exe.config
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\obj\Debug\Proyectos.csprojAssemblyReference.cache
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\obj\Debug\Proyectos.Properties.Resources.resources
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\obj\Debug\Proyectos.csproj.GenerateResource.cache
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\obj\Debug\Proyectos.csproj.CopyComplete
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\obj\Debug\Proyectos.exe
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\obj\Debug\Proyectos.pdb
