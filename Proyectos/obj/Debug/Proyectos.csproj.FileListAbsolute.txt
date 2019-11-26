@@ -20,6 +20,7 @@ C:\Users\Jana\Documents\GitHub\appGestionBancaria\Proyectos\bin\Debug\App Gestio
 C:\Users\Jana\Documents\GitHub\appGestionBancaria\Proyectos\bin\Debug\App Gestion Bancaria.pdb
 C:\Users\Jana\Documents\GitHub\appGestionBancaria\Proyectos\bin\Debug\App Gestion Bancaria.exe.config
 C:\Users\Jana\Documents\GitHub\appGestionBancaria\Proyectos\obj\Debug\Proyectos.csproj.CopyComplete
+<<<<<<< HEAD
 C:\Users\Jana\Documents\Proyectos\Proyectos\bin\Debug\Proyectos.exe.config
 C:\Users\Jana\Documents\Proyectos\Proyectos\bin\Debug\Proyectos.exe
 C:\Users\Jana\Documents\Proyectos\Proyectos\bin\Debug\Proyectos.pdb
@@ -33,3 +34,17 @@ C:\Users\Jana\Documents\Proyectos\Proyectos\obj\Debug\Proyectos.csproj.CoreCompi
 C:\Users\Jana\Documents\Proyectos\Proyectos\obj\Debug\Proyectos.csproj.CopyComplete
 C:\Users\Jana\Documents\Proyectos\Proyectos\obj\Debug\Proyectos.exe
 C:\Users\Jana\Documents\Proyectos\Proyectos\obj\Debug\Proyectos.pdb
+=======
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\bin\Debug\Proyectos.exe.config
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\bin\Debug\Proyectos.exe
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\bin\Debug\Proyectos.pdb
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\bin\Debug\App Gestion Bancaria.exe
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\bin\Debug\App Gestion Bancaria.pdb
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\bin\Debug\App Gestion Bancaria.exe.config
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\obj\Debug\Proyectos.csprojAssemblyReference.cache
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\obj\Debug\Proyectos.Properties.Resources.resources
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\obj\Debug\Proyectos.csproj.GenerateResource.cache
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\obj\Debug\Proyectos.csproj.CopyComplete
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\obj\Debug\Proyectos.exe
+C:\Users\Carlos\Desktop\DIA\Proyecto\appGestionBancaria\Proyectos\obj\Debug\Proyectos.pdb
+>>>>>>> 5141d03ba43d00cb6614dcf13235c6abfe2585b1
