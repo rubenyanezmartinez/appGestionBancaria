@@ -11,3 +11,10 @@ C:\Users\Jana\Documents\GitHub\appGestionBancaria\App Gestion Bancaria\bin\Debug
 C:\Users\Jana\Documents\GitHub\appGestionBancaria\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.csproj.CoreCompileInputs.cache
 C:\Users\Jana\Documents\GitHub\appGestionBancaria\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.exe
 C:\Users\Jana\Documents\GitHub\appGestionBancaria\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.pdb
+C:\Users\Jana\Documents\Proyectos\App Gestion Bancaria\bin\Debug\App Gestion Bancaria.exe.config
+C:\Users\Jana\Documents\Proyectos\App Gestion Bancaria\bin\Debug\App Gestion Bancaria.exe
+C:\Users\Jana\Documents\Proyectos\App Gestion Bancaria\bin\Debug\App Gestion Bancaria.pdb
+C:\Users\Jana\Documents\Proyectos\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.csprojAssemblyReference.cache
+C:\Users\Jana\Documents\Proyectos\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.csproj.CoreCompileInputs.cache
+C:\Users\Jana\Documents\Proyectos\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.exe
+C:\Users\Jana\Documents\Proyectos\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.pdb
