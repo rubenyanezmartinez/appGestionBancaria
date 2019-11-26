@@ -58,13 +58,12 @@
     <Compile Include="Ui\ClienteView.cs">
       <SubType>Form</SubType>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Ui\CuentaController.cs" />
     <Compile Include="Ui\CuentaView.cs">
-=======
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Ui\ProductosPersonaController.cs" />
     <Compile Include="Ui\ProductosPersonaView.cs">
->>>>>>> 5141d03ba43d00cb6614dcf13235c6abfe2585b1
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ui\TransferenciaController.cs" />
