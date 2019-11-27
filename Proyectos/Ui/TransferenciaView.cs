@@ -3,6 +3,7 @@ using App_Gestion_Bancaria.Core.Gestores;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,14 +27,24 @@ namespace Proyectos.Ui
             mainPanel.Controls.Add(PanelTransferencias(transferencias));
             this.Controls.Add(mainPanel);
         }
-
-        public TextBox Tipo { get; private set; }
+        public ComboBox Tipo { get; private set; }
         public TextBox CCCOrigen { get; private set; }
         public TextBox CCCDestino { get; private set; }
         public TextBox Importe { get; private set; }
         public Button BotonHome { get; private set; }
         public Button BotonAddTransferencia { get; private set; }
         public Button BotonDeleteTransferencia { get; private set; }
+        public Button BotonCerraryGuardar { get; private set; }
+        public Button BotonModifyTransferencia { get; private set; }
+        public Button BotonAddPanel { get; private set; }
+        public Button BotonModifyPanel { get; private set; }
+
+        public void GetTransferenciasMainPanel(GestorTransferencias gestor)
+        {
+            this.mainPanel.Controls.Clear();
+            mainPanel.Controls.Add(PanelTransferencias(gestor.Transferencias));
+            this.Controls.Add(mainPanel);
+        }
 
         Panel PanelTransferencias(List<Transferencia> transferencias)
         {
@@ -47,6 +58,8 @@ namespace Proyectos.Ui
             Label etiqueta1 = new Label() {
                 Text = "TRANSFERENCIAS",
                 Location = new Point(25, 16),
+                Size = new Size(1000, 1000),
+                Font = new Font("Arial", 35, FontStyle.Regular)
             };
             panel3.Controls.Add(etiqueta1);
 
@@ -63,23 +76,42 @@ namespace Proyectos.Ui
         {
             var panel = new Panel { Dock = DockStyle.Bottom };
 
-            BotonAddTransferencia = new Button()
+            BotonAddPanel = new Button()
             {
                 Location = new Point(25, 16),
-                AutoSize = true,
                 Text = "Añadir transferencia",
+                Width = 120
             };
 
-            panel.Controls.Add(BotonAddTransferencia);
+            panel.Controls.Add(BotonAddPanel);
 
             BotonDeleteTransferencia = new Button()
             {
                 Location = new Point(25, 50),
-                AutoSize = true,
-                Text = "Eliminar transferencia"
+                Text = "Eliminar transferencia",
+                Width = 120
             };
 
-            panel.Controls.Add(BotonDeleteTransferencia);            
+            panel.Controls.Add(BotonDeleteTransferencia);
+
+
+            BotonModifyPanel = new Button()
+            {
+                Location = new Point(160, 16),
+                Text = "Modificar transferencia",
+                Width = 120
+            };
+
+            panel.Controls.Add(BotonModifyPanel);
+
+            BotonCerraryGuardar = new Button()
+            {
+                Location = new Point(160, 50),
+                Text = "Cerrar y guardar",
+                Width = 120
+            };
+
+            panel.Controls.Add(BotonCerraryGuardar);
 
             return panel;
         }
@@ -111,7 +143,7 @@ namespace Proyectos.Ui
 
                 foreach (DataGridViewRow row in this.TablaTransferencias.Rows)
                 {
-                    if ((int)row.Cells[0].Value == t.Id)
+                    if (row.Cells[0].Value.Equals(t.Id))
                     {
                         aux = true;
                     }
@@ -120,9 +152,9 @@ namespace Proyectos.Ui
                     this.TablaTransferencias.Rows.Add(
                         t.Id.ToString(),
                         t.Tipo,
-                        t.CCCOrigen,
-                        t.CCCDestino,
-                        t.Importe.ToString(),
+                        t.CCCOrigen.CCC,
+                        t.CCCDestino.CCC,
+                        t.Importe.ToString("N", CultureInfo.CreateSpecificCulture("es-ES")) + "€",
                         t.Fecha.ToString("dd-MM-yyyy hh:mm")
                     );
             }
@@ -132,12 +164,26 @@ namespace Proyectos.Ui
         {
             this.mainPanel.Controls.Clear();
 
-            this.mainPanel.Controls.Add(this.BuildTipo());
-            this.mainPanel.Controls.Add(this.BuildCuentaOrigen());
-            this.mainPanel.Controls.Add(this.BuildCuentaDestino());
-            this.mainPanel.Controls.Add(this.BuildImporte());
+            this.mainPanel.Controls.Add(this.BuildTipo(""));
+            this.mainPanel.Controls.Add(this.BuildCuentaOrigen(""));
+            this.mainPanel.Controls.Add(this.BuildCuentaDestino(""));
+            this.mainPanel.Controls.Add(this.BuildImporte(""));
 
             this.mainPanel.Controls.Add(this.BuildBotonAddTransferencia());
+            this.mainPanel.Controls.Add(this.BuildBotonHome());
+
+        }
+
+        public void ModifyTransferenciaPanel(Transferencia transferencia)
+        {
+            this.mainPanel.Controls.Clear();
+
+            this.mainPanel.Controls.Add(this.BuildTipo(transferencia.Tipo));
+            this.mainPanel.Controls.Add(this.BuildCuentaOrigen(transferencia.CCCOrigen.CCC));
+            this.mainPanel.Controls.Add(this.BuildCuentaDestino(transferencia.CCCDestino.CCC));
+            this.mainPanel.Controls.Add(this.BuildImporte(transferencia.Importe.ToString()));
+
+            this.mainPanel.Controls.Add(this.BuildBotonModifyTransferencia());
             this.mainPanel.Controls.Add(this.BuildBotonHome());
 
         }
@@ -158,7 +204,7 @@ namespace Proyectos.Ui
             }
         }
 
-        public Panel BuildTipo()
+        public Panel BuildTipo(String tipo)
         {
             var panel = new Panel
             {
@@ -171,18 +217,22 @@ namespace Proyectos.Ui
                 Text = "Tipo"
             };
 
-            this.Tipo = new TextBox
+            this.Tipo = new ComboBox
             {
                 Dock = WFrms.DockStyle.Left,
-                Width = 200
+                Width = 200,
+                Text = tipo,
+                DropDownStyle = ComboBoxStyle.DropDownList
             };
+            this.Tipo.Items.AddRange ( new String[] { "puntual", "periodica" });
 
             panel.Controls.Add(this.Tipo);
             panel.Controls.Add(etiqueta);
 
             return panel;
         }
-        public Panel BuildCuentaOrigen()
+ 
+        public Panel BuildCuentaOrigen(String cccOrigen)
         {
             var panel = new Panel
             {
@@ -198,7 +248,8 @@ namespace Proyectos.Ui
             this.CCCOrigen = new TextBox
             {
                 Dock = WFrms.DockStyle.Left,
-                Width = 200
+                Width = 200,
+                Text = cccOrigen
             };
 
             panel.Controls.Add(this.CCCOrigen);
@@ -206,7 +257,7 @@ namespace Proyectos.Ui
 
             return panel;
         }
-        public Panel BuildCuentaDestino()
+        public Panel BuildCuentaDestino(String cccDestino)
         {
             var panel = new Panel
             {
@@ -216,13 +267,14 @@ namespace Proyectos.Ui
             var etiqueta = new Label
             {
                 Dock = DockStyle.Left,
-                Text = "CCC Origen"
+                Text = "CCC Destino"
             };
 
             this.CCCDestino = new TextBox
             {
                 Dock = WFrms.DockStyle.Left,
-                Width = 200
+                Width = 200,
+                Text = cccDestino
             };
 
             panel.Controls.Add(this.CCCDestino);
@@ -230,7 +282,7 @@ namespace Proyectos.Ui
 
             return panel;
         }
-        public Panel BuildImporte()
+        public Panel BuildImporte(String importe)
         {
             var panel = new Panel
             {
@@ -246,7 +298,8 @@ namespace Proyectos.Ui
             this.Importe = new TextBox
             {
                 Dock = WFrms.DockStyle.Left,
-                Width = 200
+                Width = 200, 
+                Text = importe
             };
 
             panel.Controls.Add(this.Importe);
@@ -256,23 +309,64 @@ namespace Proyectos.Ui
         }
         public Button BuildBotonAddTransferencia()
         {
-            Button toret = new Button();
-            toret.Text = "Insertar";
-            toret.Width = 200;
+            this.BotonAddTransferencia = new Button()
+            {
+                Text = "Insertar",
+                Width = 120
+            };            
 
-            this.BotonAddTransferencia = toret;
-
-            return toret;
+            return BotonAddTransferencia;
         }
         public Button BuildBotonHome()
         {
-            Button toret = new Button();
-            toret.Text = "Home";
-            toret.Width = 200;
+            BotonHome = new Button()
+            {
+                Text = "Home",
+                Width = 120
+            };
 
-            this.BotonHome = toret;
+            return BotonHome;
+        }
+        public Button BuildBotonModifyTransferencia()
+        {
+            this.BotonModifyTransferencia = new Button()
+            {
+                Text = "Modificar",
+                Width = 120
+            };
 
-            return toret;
+            return BotonModifyTransferencia;
+        }
+        public Boolean AlertDeleteTransferencia(string mensaje)
+        {
+
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            result = MessageBox.Show(mensaje, "ERROR", buttons);
+            if (result == DialogResult.No)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+        public void AlertError(string mensaje, GestorTransferencias gestor)
+        {
+
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult result;
+
+            result = MessageBox.Show(mensaje, "ERROR", buttons);
+            if (result == DialogResult.OK)
+            {
+                this.GetTransferenciasMainPanel(gestor);
+            }
+
         }
     }
 }

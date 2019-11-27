@@ -17,6 +17,7 @@ namespace App_Gestion_Bancaria.Core.Gestores
         {
             this.Repositorio = new TransferenciasRepositorio();
             this.Transferencias = Repositorio.Leer();
+            ActualizarTransferenciasPeriodicas();
         }
 
         public void AddTransferencia(Transferencia transferencia)
@@ -29,20 +30,35 @@ namespace App_Gestion_Bancaria.Core.Gestores
             this.Transferencias.Remove(transferencia);
         }
 
-        public bool Modificar(Transferencia transferencia)
+        public void Modificar(Transferencia transferencia)
         {
-            if (this.GetTransferencia(transferencia.Id) != null)
+            Transferencia transferenciaOriginal = this.GetTransferencia(transferencia.Id);
+            if(transferenciaOriginal != null)
             {
-                this.RemoveTransferencia(transferencia);
-                this.AddTransferencia(transferencia);
-                return true;
-            }
-            return false;
+                RemoveTransferencia(transferenciaOriginal);
+                AddTransferencia(transferencia);
+            }            
         }
 
         public Transferencia GetTransferencia(int id)
         {
             return (this.Transferencias.Where(x => x.Id == id).ToList()).FirstOrDefault();
+        }
+
+        public void GuardarTransferencias(List<Transferencia> transferencias)
+        {
+            this.Repositorio.Guardar(transferencias);
+        }
+
+        public void ActualizarTransferenciasPeriodicas()
+        {
+            foreach (Transferencia transferencia in this.Transferencias)
+            {
+                if (transferencia.Tipo.Equals("periodica") && DateTime.Compare(transferencia.Fecha, DateTime.Now) < 0)
+                {
+                    transferencia.Fecha = transferencia.Fecha.AddMonths(1);
+                }
+            }
         }
     }
 }
