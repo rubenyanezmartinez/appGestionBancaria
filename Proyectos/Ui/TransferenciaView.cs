@@ -58,6 +58,8 @@ namespace Proyectos.Ui
             Label etiqueta1 = new Label() {
                 Text = "TRANSFERENCIAS",
                 Location = new Point(25, 16),
+                Size = new Size(1000, 1000),
+                Font = new Font("Arial", 35, FontStyle.Regular)
             };
             panel3.Controls.Add(etiqueta1);
 
@@ -265,7 +267,7 @@ namespace Proyectos.Ui
             var etiqueta = new Label
             {
                 Dock = DockStyle.Left,
-                Text = "CCC Origen"
+                Text = "CCC Destino"
             };
 
             this.CCCDestino = new TextBox

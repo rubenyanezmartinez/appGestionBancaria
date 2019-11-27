@@ -42,7 +42,7 @@ namespace Proyectos.Ui
         {
             string Tipo = this.View.Tipo.Text;
             Cuenta CCCOrigen = GestorCuentas.GetCuentaByCCC(this.View.CCCOrigen.Text);
-            Cuenta CCCDestino = GestorCuentas.GetCuentaByCCC(this.View.CCCOrigen.Text);
+            Cuenta CCCDestino = GestorCuentas.GetCuentaByCCC(this.View.CCCDestino.Text);
             double Importe;
             Double.TryParse(this.View.Importe.Text, out Importe);
 
@@ -67,7 +67,7 @@ namespace Proyectos.Ui
                     Id = (GestorTransferencias.Transferencias.Last().Id) + 1;
                 }
 
-                this.GestorTransferencias.AddTransferencia(new Transferencia(Id, Tipo, CCCOrigen, CCCDestino, Importe, DateTime.Today));
+                this.GestorTransferencias.AddTransferencia(new Transferencia(Id, Tipo, CCCOrigen, CCCDestino, Importe, DateTime.Now));
 
                 this.View.GetTransferenciasMainPanel(this.GestorTransferencias);
             }
@@ -104,7 +104,7 @@ namespace Proyectos.Ui
 
             string Tipo = this.View.Tipo.Text;
             Cuenta CCCOrigen = GestorCuentas.GetCuentaByCCC(this.View.CCCOrigen.Text);
-            Cuenta CCCDestino = GestorCuentas.GetCuentaByCCC(this.View.CCCOrigen.Text);
+            Cuenta CCCDestino = GestorCuentas.GetCuentaByCCC(this.View.CCCDestino.Text);
             double Importe;
             Double.TryParse(this.View.Importe.Text, out Importe);
 
@@ -127,7 +127,7 @@ namespace Proyectos.Ui
                     Tipo, CCCOrigen,
                     CCCDestino,
                     Importe,
-                    DateTime.Today
+                    DateTime.Now
                 );
 
                 this.GestorTransferencias.Modificar(transferenciaModificada);
