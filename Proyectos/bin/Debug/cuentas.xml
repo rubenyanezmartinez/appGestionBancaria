@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cuentas>
+  <cuenta>
+    <tipo>AHORRO</tipo>
+    <titulares>
+      <cliente>
+        <dni>12345678K</dni>
+        <nombre>Paco</nombre>
+        <telefono>666111222</telefono>
+        <email>pacopaco@franco.com</email>
+        <direccionPostal>Mi calle nº 2</direccionPostal>
+      </cliente>
+      <cliente>
+        <dni>11223344H</dni>
+        <nombre>Paca</nombre>
+        <telefono>988334455</telefono>
+        <email>pacapaco@franco.com</email>
+        <direccionPostal>Mi calle nº 2</direccionPostal>
+      </cliente>
+      <cliente>
+        <dni>00000000T</dni>
+        <nombre>Ruber</nombre>
+        <telefono>988332211</telefono>
+        <email>rubermalo@franco.com</email>
+        <direccionPostal>Mi calle nº 5</direccionPostal>
+      </cliente>
+    </titulares>
+    <ccc>2</ccc>
+    <saldo>500000</saldo>
+    <fechaApertura>2004-12-02T00:00:00</fechaApertura>
+    <interesMensual>3</interesMensual>
+    <depositos>
+      <movimiento>
+        <cantidad>300</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>12345678K</dni>
+          <nombre>Paco</nombre>
+          <telefono>666111222</telefono>
+          <email>pacopaco@franco.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>200</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>11223344H</dni>
+          <nombre>Paca</nombre>
+          <telefono>988334455</telefono>
+          <email>pacapaco@franco.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+    </depositos>
+    <retiradas>
+      <movimiento>
+        <cantidad>100</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>00000000T</dni>
+          <nombre>Ruber</nombre>
+          <telefono>988332211</telefono>
+          <email>rubermalo@franco.com</email>
+          <direccionPostal>Mi calle nº 5</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>100</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>00000000T</dni>
+          <nombre>Ruber</nombre>
+          <telefono>988332211</telefono>
+          <email>rubermalo@franco.com</email>
+          <direccionPostal>Mi calle nº 5</direccionPostal>
+        </cliente>
+      </movimiento>
+    </retiradas>
+  </cuenta>
+  <cuenta>
+    <tipo>AHORRO</tipo>
+    <titulares>
+      <cliente>
+        <dni>12345678K</dni>
+        <nombre>Paco</nombre>
+        <telefono>666111222</telefono>
+        <email>pacopaco@franco.com</email>
+        <direccionPostal>Mi calle nº 2</direccionPostal>
+      </cliente>
+      <cliente>
+        <dni>11223344H</dni>
+        <nombre>Paca</nombre>
+        <telefono>988334455</telefono>
+        <email>pacapaco@franco.com</email>
+        <direccionPostal>Mi calle nº 2</direccionPostal>
+      </cliente>
+      <cliente>
+        <dni>00000000T</dni>
+        <nombre>Ruber</nombre>
+        <telefono>988332211</telefono>
+        <email>rubermalo@franco.com</email>
+        <direccionPostal>Mi calle nº 5</direccionPostal>
+      </cliente>
+    </titulares>
+    <ccc>1</ccc>
+    <saldo>500000</saldo>
+    <fechaApertura>2004-12-02T00:00:00</fechaApertura>
+    <interesMensual>3</interesMensual>
+    <depositos>
+      <movimiento>
+        <cantidad>300</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>12345678K</dni>
+          <nombre>Paco</nombre>
+          <telefono>666111222</telefono>
+          <email>pacopaco@franco.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>200</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>11223344H</dni>
+          <nombre>Paca</nombre>
+          <telefono>988334455</telefono>
+          <email>pacapaco@franco.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+    </depositos>
+    <retiradas>
+      <movimiento>
+        <cantidad>100</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>00000000T</dni>
+          <nombre>Ruber</nombre>
+          <telefono>988332211</telefono>
+          <email>rubermalo@franco.com</email>
+          <direccionPostal>Mi calle nº 5</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>100</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>00000000T</dni>
+          <nombre>Ruber</nombre>
+          <telefono>988332211</telefono>
+          <email>rubermalo@franco.com</email>
+          <direccionPostal>Mi calle nº 5</direccionPostal>
+        </cliente>
+      </movimiento>
+    </retiradas>
+  </cuenta>
+  <cuenta>
+    <tipo>AHORRO</tipo>
+    <titulares>
+      <cliente>
+        <dni>12345678K</dni>
+        <nombre>Paco</nombre>
+        <telefono>666111222</telefono>
+        <email>pacopaco@franco.com</email>
+        <direccionPostal>Mi calle nº 2</direccionPostal>
+      </cliente>
+      <cliente>
+        <dni>11223344H</dni>
+        <nombre>Paca</nombre>
+        <telefono>988334455</telefono>
+        <email>pacapaco@franco.com</email>
+        <direccionPostal>Mi calle nº 2</direccionPostal>
+      </cliente>
+      <cliente>
+        <dni>00000000T</dni>
+        <nombre>Ruber</nombre>
+        <telefono>988332211</telefono>
+        <email>rubermalo@franco.com</email>
+        <direccionPostal>Mi calle nº 5</direccionPostal>
+      </cliente>
+    </titulares>
+    <ccc>4</ccc>
+    <saldo>500000</saldo>
+    <fechaApertura>2004-12-02T00:00:00</fechaApertura>
+    <interesMensual>3</interesMensual>
+    <depositos>
+      <movimiento>
+        <cantidad>300</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>12345678K</dni>
+          <nombre>Paco</nombre>
+          <telefono>666111222</telefono>
+          <email>pacopaco@franco.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>200</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>11223344H</dni>
+          <nombre>Paca</nombre>
+          <telefono>988334455</telefono>
+          <email>pacapaco@franco.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+    </depositos>
+    <retiradas>
+      <movimiento>
+        <cantidad>100</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>00000000T</dni>
+          <nombre>Ruber</nombre>
+          <telefono>988332211</telefono>
+          <email>rubermalo@franco.com</email>
+          <direccionPostal>Mi calle nº 5</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>100</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>00000000T</dni>
+          <nombre>Ruber</nombre>
+          <telefono>988332211</telefono>
+          <email>rubermalo@franco.com</email>
+          <direccionPostal>Mi calle nº 5</direccionPostal>
+        </cliente>
+      </movimiento>
+    </retiradas>
+  </cuenta>
+  <cuenta>
+    <tipo>AHORRO</tipo>
+    <titulares>
+      <cliente>
+        <dni>12345678K</dni>
+        <nombre>Paco</nombre>
+        <telefono>666111222</telefono>
+        <email>pacopaco@franco.com</email>
+        <direccionPostal>Mi calle nº 2</direccionPostal>
+      </cliente>
+      <cliente>
+        <dni>11223344H</dni>
+        <nombre>Paca</nombre>
+        <telefono>988334455</telefono>
+        <email>pacapaco@franco.com</email>
+        <direccionPostal>Mi calle nº 2</direccionPostal>
+      </cliente>
+      <cliente>
+        <dni>00000000T</dni>
+        <nombre>Ruber</nombre>
+        <telefono>988332211</telefono>
+        <email>rubermalo@franco.com</email>
+        <direccionPostal>Mi calle nº 5</direccionPostal>
+      </cliente>
+    </titulares>
+    <ccc>3</ccc>
+    <saldo>500000</saldo>
+    <fechaApertura>2004-12-02T00:00:00</fechaApertura>
+    <interesMensual>3</interesMensual>
+    <depositos>
+      <movimiento>
+        <cantidad>300</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>12345678K</dni>
+          <nombre>Paco</nombre>
+          <telefono>666111222</telefono>
+          <email>pacopaco@franco.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>200</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>11223344H</dni>
+          <nombre>Paca</nombre>
+          <telefono>988334455</telefono>
+          <email>pacapaco@franco.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+    </depositos>
+    <retiradas>
+      <movimiento>
+        <cantidad>100</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>00000000T</dni>
+          <nombre>Ruber</nombre>
+          <telefono>988332211</telefono>
+          <email>rubermalo@franco.com</email>
+          <direccionPostal>Mi calle nº 5</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>100</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>00000000T</dni>
+          <nombre>Ruber</nombre>
+          <telefono>988332211</telefono>
+          <email>rubermalo@franco.com</email>
+          <direccionPostal>Mi calle nº 5</direccionPostal>
+        </cliente>
+      </movimiento>
+    </retiradas>
+  </cuenta>
+</cuentas>

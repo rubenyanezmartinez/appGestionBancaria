@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<transferencias>
+  <transferencia>
+    <id>1</id>
+    <tipo>puntual</tipo>
+    <cccorigen>1</cccorigen>
+    <cccdestino>2</cccdestino>
+    <importe>20</importe>
+    <fecha>27/11/2019 0:00:00</fecha>
+  </transferencia>
+  <transferencia>
+    <id>2</id>
+    <tipo>periodica</tipo>
+    <cccorigen>2</cccorigen>
+    <cccdestino>1</cccdestino>
+    <importe>1256</importe>
+    <fecha>27/11/2019 0:00:00</fecha>
+  </transferencia>
+</transferencias>
