@@ -105,15 +105,22 @@ namespace Proyectos.Ui
         private void accionDeleteCliente(object sender, System.EventArgs e)
         {
             DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TablaClientes.SelectedRows;
-            int indiceTabla = filasSeleccionadas[0].Index;
-
-            Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
-
-            if (this.View.BuiltDeleteCliente("¿Seguro que desea eliminar el cliente con DNI " + clienteSeleccionado.Dni
-                + " ?"))
+            if (filasSeleccionadas != null)
             {
-                this.Gestor.Eliminar(clienteSeleccionado.Dni);
+                int indiceTabla = filasSeleccionadas[0].Index;
+
+                if (indiceTabla < this.Gestor.ContenedorClientes.Count)
+                {
+                    Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
+
+                    if (this.View.BuiltDeleteCliente("¿Seguro que desea eliminar el cliente con DNI " + clienteSeleccionado.Dni
+                        + " ?"))
+                    {
+                        this.Gestor.Eliminar(clienteSeleccionado.Dni);
+                    }
+                }
             }
+            
             this.View.ClienteViewMethod(this.Gestor);
             this.IniciarBotones();
         }

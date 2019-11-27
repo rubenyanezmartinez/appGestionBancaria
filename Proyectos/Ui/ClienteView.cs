@@ -14,13 +14,20 @@ namespace Proyectos.Ui
     public class ClienteView : WFrms.Form
     {
         private TableLayoutPanel mainPanel;
-        public DataGridView TablaClientes;
 
+        public DataGridView TablaClientes;
         public Button botonAddCliente { get; private set; }
         public Button botonDeleteCliente { get; private set; }
         public Button botonEditCliente { get; private set; }
-
         public Button botonCloseCliente { get; private set; }
+        public TextBox Dni { get; private set; }
+        public TextBox Nombre { get; private set; }
+        public TextBox Telefono { get; private set; }
+        public TextBox Email { get; private set; }
+        public TextBox DireccionPostal { get; private set; }
+        public Button BotonVolver { get; private set; }
+        public Button BotonAdd { get; private set; }
+        public Button BotonEdit { get; private set; }
 
         public ClienteView(GestorClientes gestor)
         {
@@ -43,15 +50,28 @@ namespace Proyectos.Ui
         {
             this.mainPanel.Controls.Clear();
 
-            this.mainPanel.Controls.Add(this.BuildDni());
-            this.mainPanel.Controls.Add(this.BuildNombre());
-            this.mainPanel.Controls.Add(this.BuildTelefono());
-            this.mainPanel.Controls.Add(this.BuildEmail());
-            this.mainPanel.Controls.Add(this.BuildDireccionPostal());
+            Panel pnl = new Panel() { Dock = DockStyle.Fill };
+            Panel pnl1 = new Panel() { Dock = DockStyle.Fill};
+            pnl1.Controls.Add(this.BuildDireccionPostal());
+            pnl1.Controls.Add(this.BuildEmail());
+            pnl1.Controls.Add(this.BuildTelefono());
+            pnl1.Controls.Add(this.BuildNombre());
+            pnl1.Controls.Add(this.BuildDni());
+            
+            Panel pnl2 = new Panel() { Dock = DockStyle.Bottom };
+            Panel pnl3 = new Panel() { Dock = DockStyle.Top };
 
-            this.mainPanel.Controls.Add(this.builtBotonAddCliente());
-            this.mainPanel.Controls.Add(this.builtBotonVolver());
+            Label lb1 = new Label() { Text = "GESTIÓN DE CLIENTES", Size = new System.Drawing.Size(1000, 1000), Font = new Font("Arial", 35, FontStyle.Regular) };
+            pnl3.Controls.Add(lb1);
 
+            pnl2.Controls.Add(builtBotonAddCliente());
+            pnl2.Controls.Add(builtBotonVolver());
+
+            pnl.Controls.Add(pnl1);
+            pnl.Controls.Add(pnl2);
+            pnl.Controls.Add(pnl3);
+
+            this.mainPanel.Controls.Add(pnl);
         }
 
         public void BuiltError(string mensaje, GestorClientes gestor)
@@ -86,17 +106,7 @@ namespace Proyectos.Ui
 
         }
 
-
-        public TextBox Dni { get; set; }
-        public TextBox Nombre { get; set; }
-        public TextBox Telefono { get; set; }
-        public TextBox Email { get; set; }
-        public TextBox DireccionPostal { get; set; }
-        public WFrms.Button BotonVolver {get; set;}
-        public WFrms.Button BotonAdd { get; set; }
-        public WFrms.Button BotonEdit { get; set; }
-
-        public WFrms.Panel BuildDni()
+        public Panel BuildDni()
         {
             var panel = new WFrms.Panel
             {
@@ -122,7 +132,7 @@ namespace Proyectos.Ui
             return panel;
         }
 
-        public WFrms.Panel BuildNombre()
+        public Panel BuildNombre()
         {
             var panel = new WFrms.Panel
             {
@@ -147,7 +157,7 @@ namespace Proyectos.Ui
 
             return panel;
         }
-        public WFrms.Panel BuildTelefono()
+        public Panel BuildTelefono()
         {
             var panel = new WFrms.Panel
             {
@@ -172,7 +182,7 @@ namespace Proyectos.Ui
 
             return panel;
         }
-        public WFrms.Panel BuildEmail()
+        public Panel BuildEmail()
         {
             var panel = new WFrms.Panel
             {
@@ -197,7 +207,7 @@ namespace Proyectos.Ui
 
             return panel;
         }
-        public WFrms.Panel BuildDireccionPostal()
+        public Panel BuildDireccionPostal()
         {
             var panel = new WFrms.Panel
             {
@@ -222,31 +232,37 @@ namespace Proyectos.Ui
 
             return panel;
         }
-        public WFrms.Button builtBotonAddCliente()
+        public Button builtBotonAddCliente()
         {
             WFrms.Button toret = new WFrms.Button();
             toret.Text = "Añadir";
             toret.Width = 200;
+            toret.FlatStyle = FlatStyle.Flat;
+            toret.Location = new Point(25, 16);
 
             this.BotonAdd = toret;
 
             return toret;
         }
-        public WFrms.Button builtBotonEditCliente()
+        public Button builtBotonEditCliente()
         {
             WFrms.Button toret = new WFrms.Button();
             toret.Text = "Modificar";
             toret.Width = 200;
+            toret.FlatStyle = FlatStyle.Flat;
+            toret.Location = new Point(25, 16);
 
             this.BotonEdit = toret;
 
             return toret;
         }
-        public WFrms.Button builtBotonVolver()
+        public Button builtBotonVolver()
         {
             WFrms.Button toret = new WFrms.Button();
             toret.Text = "Volver";
             toret.Width = 200;
+            toret.FlatStyle = FlatStyle.Flat;
+            toret.Location = new Point(240, 16);
 
             this.BotonVolver = toret;
 
@@ -258,19 +274,36 @@ namespace Proyectos.Ui
         {
             this.mainPanel.Controls.Clear();
 
-            this.mainPanel.Controls.Add(this.BuildDni(c.Dni));
-            this.mainPanel.Controls.Add(this.BuildNombre(c.Nombre));
-            this.mainPanel.Controls.Add(this.BuildTelefono(c.Telefono));
-            this.mainPanel.Controls.Add(this.BuildEmail(c.Email));
-            this.mainPanel.Controls.Add(this.BuildDireccionPostal(c.DireccionPostal));
-            Label lb1 = new Label() { Text = "* Deben ser unicos"};
-            this.mainPanel.Controls.Add(lb1);
-            this.mainPanel.Controls.Add(this.builtBotonEditCliente());
-            this.mainPanel.Controls.Add(this.builtBotonVolver());
+            Panel pnl = new Panel() { Dock = DockStyle.Fill };
+            Panel pnl1 = new Panel() { Dock = DockStyle.Fill };
+            
+            pnl1.Controls.Add(this.BuildDireccionPostal(c.DireccionPostal));
+            pnl1.Controls.Add(this.BuildEmail(c.Email));
+            pnl1.Controls.Add(this.BuildTelefono(c.Telefono));
+            pnl1.Controls.Add(this.BuildNombre(c.Nombre));
+            pnl1.Controls.Add(this.BuildDni(c.Dni));
+
+            Label lb2 = new Label() { Text = "* Deben ser unicos" };
+
+            Panel pnl2 = new Panel() { Dock = DockStyle.Bottom };
+            Panel pnl3 = new Panel() { Dock = DockStyle.Top };
+
+            Label lb1 = new Label() { Text = "GESTIÓN DE CLIENTES", Size = new System.Drawing.Size(1000, 1000), Font = new Font("Arial", 35, FontStyle.Regular) };
+            pnl3.Controls.Add(lb1);
+
+            pnl2.Controls.Add(builtBotonEditCliente());
+            pnl2.Controls.Add(builtBotonVolver());
+            pnl2.Controls.Add(lb2);
+
+            pnl.Controls.Add(pnl1);
+            pnl.Controls.Add(pnl2);
+            pnl.Controls.Add(pnl3);
+
+            this.mainPanel.Controls.Add(pnl);
 
         }
 
-        public WFrms.Panel BuildDni(string dni)
+        public Panel BuildDni(string dni)
         {
             var panel = new WFrms.Panel
             {
@@ -298,7 +331,7 @@ namespace Proyectos.Ui
             return panel;
         }
 
-        public WFrms.Panel BuildNombre(string nombre)
+        public Panel BuildNombre(string nombre)
         {
             var panel = new WFrms.Panel
             {
@@ -324,7 +357,7 @@ namespace Proyectos.Ui
 
             return panel;
         }
-        public WFrms.Panel BuildTelefono(string telefono)
+        public Panel BuildTelefono(string telefono)
         {
             var panel = new WFrms.Panel
             {
@@ -350,7 +383,7 @@ namespace Proyectos.Ui
 
             return panel;
         }
-        public WFrms.Panel BuildEmail(string email)
+        public Panel BuildEmail(string email)
         {
             var panel = new WFrms.Panel
             {
@@ -376,7 +409,7 @@ namespace Proyectos.Ui
 
             return panel;
         }
-        public WFrms.Panel BuildDireccionPostal(string direccionPostal)
+        public Panel BuildDireccionPostal(string direccionPostal)
         {
             var panel = new WFrms.Panel
             {
@@ -411,9 +444,10 @@ namespace Proyectos.Ui
             botonAddCliente = new Button();
 
             botonAddCliente.Location = new Point(25, 16);
-            botonAddCliente.AutoSize = true;
+            botonAddCliente.Width = 200;
             botonAddCliente.Text = "Añadir cliente";
-            
+            botonAddCliente.FlatStyle = FlatStyle.Flat;
+
 
             pnl.Controls.Add(botonAddCliente);
 
@@ -421,25 +455,28 @@ namespace Proyectos.Ui
             botonDeleteCliente = new Button();
 
             botonDeleteCliente.Location = new Point(25, 50);
-            botonDeleteCliente.AutoSize = true;
+            botonDeleteCliente.Width = 200;
             botonDeleteCliente.Text = "Eliminar cliente";
+            botonDeleteCliente.FlatStyle = FlatStyle.Flat;
 
             pnl.Controls.Add(botonDeleteCliente);
             
 
             botonEditCliente = new Button();
 
-            botonEditCliente.Location = new Point(140, 16);
-            botonEditCliente.AutoSize = true;
+            botonEditCliente.Location = new Point(240, 16);
+            botonEditCliente.Width = 200;
             botonEditCliente.Text = "Modificar cliente";
+            botonEditCliente.FlatStyle = FlatStyle.Flat;
 
             pnl.Controls.Add(botonEditCliente);
 
             botonCloseCliente = new Button();
 
-            botonCloseCliente.Location = new Point(140, 50);
-            botonCloseCliente.AutoSize = true;
+            botonCloseCliente.Location = new Point(240, 50);
+            botonCloseCliente.Width = 200;
             botonCloseCliente.Text = "Cerrar y guardar";
+            botonCloseCliente.FlatStyle = FlatStyle.Flat;
 
             pnl.Controls.Add(botonCloseCliente);
 
@@ -459,18 +496,28 @@ namespace Proyectos.Ui
                 ReadOnly = true,
                 ScrollBars = ScrollBars.Vertical,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-                Location = new Point(25, 16)
-            };
+                Location = new Point(25, 16),
+                MultiSelect = false
+        };
             this.TablaClientes.Columns[0].Name = "DNI";
             this.TablaClientes.Columns[0].Width = 70;
+            this.TablaClientes.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
+
             this.TablaClientes.Columns[1].Name = "NOMBRE";
             this.TablaClientes.Columns[1].Width = 170;
+            this.TablaClientes.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+
             this.TablaClientes.Columns[2].Name = "TELEFONO";
             this.TablaClientes.Columns[2].Width = 80;
+            this.TablaClientes.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+
             this.TablaClientes.Columns[3].Name = "EMAIL";
             this.TablaClientes.Columns[3].Width = 170;
+            this.TablaClientes.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
+
             this.TablaClientes.Columns[4].Name = "DIRECCION POSTAL";
             this.TablaClientes.Columns[4].Width = 270;
+            this.TablaClientes.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             foreach (var cliente in gestor.ContenedorClientes)
             {
