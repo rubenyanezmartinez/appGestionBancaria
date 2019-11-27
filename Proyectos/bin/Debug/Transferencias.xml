@@ -32,4 +32,12 @@
     <importe>1256</importe>
     <fecha>27/11/2019 11:15:45</fecha>
   </transferencia>
+  <transferencia>
+    <id>3</id>
+    <tipo>puntual</tipo>
+    <cccorigen>3</cccorigen>
+    <cccdestino>4</cccdestino>
+    <importe>20</importe>
+    <fecha>27/11/2019 11:31:10</fecha>
+  </transferencia>
 </transferencias>

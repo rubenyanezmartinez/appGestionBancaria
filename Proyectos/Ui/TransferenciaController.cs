@@ -46,6 +46,11 @@ namespace Proyectos.Ui
             double Importe;
             Double.TryParse(this.View.Importe.Text, out Importe);
 
+            if (Tipo == "")
+            {
+                Tipo = "puntual";
+            }
+
             if (CCCOrigen == null)
             {
                 this.View.AlertError("La cuenta de origen no existe ", this.GestorTransferencias);
@@ -107,6 +112,10 @@ namespace Proyectos.Ui
             Cuenta CCCDestino = GestorCuentas.GetCuentaByCCC(this.View.CCCDestino.Text);
             double Importe;
             Double.TryParse(this.View.Importe.Text, out Importe);
+            if (Tipo == "")
+            {
+                Tipo = "puntual";
+            }
 
             if (CCCOrigen == null)
             {
@@ -124,10 +133,12 @@ namespace Proyectos.Ui
             {
                 Transferencia transferenciaModificada = new Transferencia(
                     transferenciaSeleccionada.Id,
-                    Tipo, CCCOrigen,
+                    Tipo, 
+                    CCCOrigen,
                     CCCDestino,
                     Importe,
-                    DateTime.Now
+                    /*DateTime.Now*/
+                    transferenciaSeleccionada.Fecha
                 );
 
                 this.GestorTransferencias.Modificar(transferenciaModificada);
