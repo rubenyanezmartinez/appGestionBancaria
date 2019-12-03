@@ -16,11 +16,11 @@ namespace Proyectos.Ui
         public ClienteView View { get; private set; }
         public GestorClientes Gestor { get; private set; }
 
-        public ClienteController()
+        public ClienteController(GestorClientes gestor)
         {
-            this.Gestor = new GestorClientes();
+            this.Gestor = gestor;
             this.Gestor.RecuperarClientes();
-            this.View = new ClienteView(this.Gestor);
+            this.View = new ClienteView(this.Gestor.ContenedorClientes);
             this.IniciarBotones();
         }
 
@@ -50,7 +50,7 @@ namespace Proyectos.Ui
 
             if (dniRecuperado.Equals("") || telefonoRecuperado.Equals("") || emailRecuperado.Equals("") || nombreRecuperado.Equals("") || direccionPostalRecuperada.Equals(""))
             {
-                this.View.BuiltError("Ningún campo puede estar vacío", this.Gestor);
+                this.View.BuiltError("Ningún campo puede estar vacío", this.Gestor.ContenedorClientes);
                 this.IniciarBotones();
             }
             else
@@ -59,12 +59,12 @@ namespace Proyectos.Ui
 
                 if (!noExiste)
                 {
-                    this.View.BuiltError("Los campos DNI, telefono y email deben ser únicos", this.Gestor);
+                    this.View.BuiltError("Los campos DNI, telefono y email deben ser únicos", this.Gestor.ContenedorClientes);
                     this.IniciarBotones();
                 }
                 else
                 {
-                    this.View.ClienteViewMethod(this.Gestor);
+                    this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
                     this.IniciarBotones();
                 }
             }
@@ -81,7 +81,7 @@ namespace Proyectos.Ui
 
             if (dniRecuperado.Equals("") || telefonoRecuperado.Equals("") || emailRecuperado.Equals("") || nombreRecuperado.Equals("") || direccionPostalRecuperada.Equals(""))
             {
-                this.View.BuiltError("Ningún campo puede estar vacío", this.Gestor);
+                this.View.BuiltError("Ningún campo puede estar vacío", this.Gestor.ContenedorClientes);
                 this.IniciarBotones();
             }
             else
@@ -89,7 +89,7 @@ namespace Proyectos.Ui
                 
                 this.Gestor.Editar(dniRecuperado, nombreRecuperado, telefonoRecuperado, emailRecuperado, direccionPostalRecuperada);
 
-                this.View.ClienteViewMethod(this.Gestor);
+                this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
                 this.IniciarBotones();
             }
 
@@ -97,7 +97,7 @@ namespace Proyectos.Ui
 
         private void accionVolver(object sender, System.EventArgs e)
         {
-            this.View.ClienteViewMethod(this.Gestor);
+            this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
             this.IniciarBotones();
         }
 
@@ -121,7 +121,7 @@ namespace Proyectos.Ui
                 }
             }
             
-            this.View.ClienteViewMethod(this.Gestor);
+            this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
             this.IniciarBotones();
         }
 

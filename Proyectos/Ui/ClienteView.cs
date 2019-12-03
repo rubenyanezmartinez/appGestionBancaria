@@ -29,20 +29,20 @@ namespace Proyectos.Ui
         public Button BotonAdd { get; private set; }
         public Button BotonEdit { get; private set; }
 
-        public ClienteView(GestorClientes gestor)
+        public ClienteView(List<Cliente> contenedor)
         {
             mainPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
             };
-            mainPanel.Controls.Add(PanelClientes(gestor));
+            mainPanel.Controls.Add(PanelClientes(contenedor));
             this.Controls.Add(mainPanel);
         }
 
-        public void ClienteViewMethod (GestorClientes gestor)
+        public void ClienteViewMethod (List<Cliente> contenedor)
         {
             this.mainPanel.Controls.Clear();
-            mainPanel.Controls.Add(PanelClientes(gestor));
+            mainPanel.Controls.Add(PanelClientes(contenedor));
             this.Controls.Add(mainPanel);
         }
 
@@ -74,7 +74,7 @@ namespace Proyectos.Ui
             this.mainPanel.Controls.Add(pnl);
         }
 
-        public void BuiltError(string mensaje, GestorClientes gestor)
+        public void BuiltError(string mensaje, List<Cliente> contenedor)
         {
 
             MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -83,7 +83,7 @@ namespace Proyectos.Ui
             result = MessageBox.Show(mensaje, "ERROR", buttons);
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                this.ClienteViewMethod(gestor);
+                this.ClienteViewMethod(contenedor);
             }
 
         }
@@ -484,7 +484,7 @@ namespace Proyectos.Ui
 
         }
 
-        DataGridView ClientesTabla(GestorClientes gestor)
+        DataGridView ClientesTabla(List<Cliente> contenedor)
         {
             this.TablaClientes = new DataGridView()
             {
@@ -519,7 +519,7 @@ namespace Proyectos.Ui
             this.TablaClientes.Columns[4].Width = 270;
             this.TablaClientes.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
 
-            foreach (var cliente in gestor.ContenedorClientes)
+            foreach (var cliente in contenedor)
             {
                 bool aux = false;
                 foreach (DataGridViewRow row in this.TablaClientes.Rows)
@@ -537,11 +537,11 @@ namespace Proyectos.Ui
         }
 
 
-        Panel PanelClientes(GestorClientes gestor)
+        Panel PanelClientes(List<Cliente> contenedor)
         {
             Panel pnl = new Panel() { Dock = DockStyle.Fill };
             Panel pnl1 = new Panel() { Dock = DockStyle.Fill };
-            pnl1.Controls.Add(ClientesTabla(gestor));
+            pnl1.Controls.Add(ClientesTabla(contenedor));
             Panel pnl2 = new Panel() { Dock = DockStyle.Bottom};
             Panel pnl3 = new Panel() { Dock = DockStyle.Top };
 

@@ -18,7 +18,8 @@ namespace Proyectos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new ClienteController().View);
+            GestorClientes gestorClientes= new GestorClientes();
+            //Application.Run(new ClienteController(gestorClientes).View);
             //Application.Run(new ProductosPersonaController().View);
             //GestorTransferencias gestorTransferencias = new GestorTransferencias();
             //GestorCuentas gestorCuentas = new GestorCuentas();
