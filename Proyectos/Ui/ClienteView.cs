@@ -454,7 +454,7 @@ namespace Proyectos.Ui
             
             botonDeleteCliente = new Button();
 
-            botonDeleteCliente.Location = new Point(25, 50);
+            botonDeleteCliente.Location = new Point(240, 16);
             botonDeleteCliente.Width = 200;
             botonDeleteCliente.Text = "Eliminar cliente";
             botonDeleteCliente.FlatStyle = FlatStyle.Flat;
@@ -464,7 +464,7 @@ namespace Proyectos.Ui
 
             botonEditCliente = new Button();
 
-            botonEditCliente.Location = new Point(240, 16);
+            botonEditCliente.Location = new Point(455, 16);
             botonEditCliente.Width = 200;
             botonEditCliente.Text = "Modificar cliente";
             botonEditCliente.FlatStyle = FlatStyle.Flat;
@@ -473,7 +473,7 @@ namespace Proyectos.Ui
 
             botonCloseCliente = new Button();
 
-            botonCloseCliente.Location = new Point(240, 50);
+            botonCloseCliente.Location = new Point(670, 16);
             botonCloseCliente.Width = 200;
             botonCloseCliente.Text = "Cerrar y guardar";
             botonCloseCliente.FlatStyle = FlatStyle.Flat;
@@ -488,9 +488,8 @@ namespace Proyectos.Ui
         {
             this.TablaClientes = new DataGridView()
             {
-                Dock = DockStyle.Left,
+                Dock = DockStyle.Fill,
                 ColumnCount = 5,
-                MinimumSize = new Size(802, 1000),
                 AllowUserToAddRows = false,
                 AllowUserToDeleteRows = false,
                 ReadOnly = true,
@@ -500,23 +499,23 @@ namespace Proyectos.Ui
                 MultiSelect = false
         };
             this.TablaClientes.Columns[0].Name = "DNI";
-            this.TablaClientes.Columns[0].Width = 70;
+            this.TablaClientes.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; 
             this.TablaClientes.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             this.TablaClientes.Columns[1].Name = "NOMBRE";
-            this.TablaClientes.Columns[1].Width = 170;
+            this.TablaClientes.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             this.TablaClientes.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             this.TablaClientes.Columns[2].Name = "TELEFONO";
-            this.TablaClientes.Columns[2].Width = 80;
+            this.TablaClientes.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             this.TablaClientes.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             this.TablaClientes.Columns[3].Name = "EMAIL";
-            this.TablaClientes.Columns[3].Width = 170;
+            this.TablaClientes.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             this.TablaClientes.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             this.TablaClientes.Columns[4].Name = "DIRECCION POSTAL";
-            this.TablaClientes.Columns[4].Width = 270;
+            this.TablaClientes.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             this.TablaClientes.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             foreach (var cliente in contenedor)
