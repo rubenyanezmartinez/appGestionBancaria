@@ -107,18 +107,26 @@ namespace Proyectos.Ui
             DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TablaClientes.SelectedRows;
             if (filasSeleccionadas != null)
             {
-                int indiceTabla = filasSeleccionadas[0].Index;
-
-                if (indiceTabla < this.Gestor.ContenedorClientes.Count)
+                try
                 {
-                    Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
-
-                    if (this.View.BuiltDeleteCliente("¿Seguro que desea eliminar el cliente con DNI " + clienteSeleccionado.Dni
-                        + " ?"))
+                    int indiceTabla = filasSeleccionadas[0].Index;
+                    if (indiceTabla < this.Gestor.ContenedorClientes.Count)
                     {
-                        this.Gestor.Eliminar(clienteSeleccionado.Dni);
+                        Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
+
+                        if (this.View.BuiltDeleteCliente("¿Seguro que desea eliminar el cliente con DNI " + clienteSeleccionado.Dni
+                            + " ?"))
+                        {
+                            this.Gestor.Eliminar(clienteSeleccionado.Dni);
+                        }
                     }
+                }catch(Exception)
+                {
+                    this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+                    this.IniciarBotones();
                 }
+
+                
             }
             
             this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
@@ -128,13 +136,22 @@ namespace Proyectos.Ui
         private void accionEditCliente(object sender, System.EventArgs e)
         {
             DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TablaClientes.SelectedRows;
-            int indiceTabla = filasSeleccionadas[0].Index;
+            
+            try
+            {
+                int indiceTabla = filasSeleccionadas[0].Index;
+                Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
 
-            Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
+                this.View.BuiltEditCliente(clienteSeleccionado);
+                this.View.BotonEdit.Click += new System.EventHandler(accionEdit);
+                this.View.BotonVolver.Click += new System.EventHandler(accionVolver);
+            }
+            catch (Exception)
+            {
+                this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+                this.IniciarBotones();
+            }
 
-            this.View.BuiltEditCliente(clienteSeleccionado);
-            this.View.BotonEdit.Click += new System.EventHandler(accionEdit);
-            this.View.BotonVolver.Click += new System.EventHandler(accionVolver);
         }
 
         private void accionCloseSave(object sender, System.EventArgs e)
