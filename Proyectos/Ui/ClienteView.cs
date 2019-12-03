@@ -535,9 +535,20 @@ namespace Proyectos.Ui
             return this.TablaClientes;
         }
 
+        private MainMenu mainMenu;
 
         Panel PanelClientes(List<Cliente> contenedor)
         {
+            /*MENU*/
+            mainMenu = new MainMenu();
+            MenuItem File = mainMenu.MenuItems.Add("&Cerrar y guardar");
+            //File.MenuItems.Add(new MenuItem("&Añadir"));
+            //File.MenuItems.Add(new MenuItem("&"));
+            //File.MenuItems.Add(new MenuItem("&Exit"));
+            this.Menu = mainMenu;
+
+            /*MENU*/
+
             Panel pnl = new Panel() { Dock = DockStyle.Fill };
             Panel pnl1 = new Panel() { Dock = DockStyle.Fill };
             pnl1.Controls.Add(ClientesTabla(contenedor));
