@@ -16,6 +16,9 @@ namespace Proyectos.Ui
         private TableLayoutPanel mainPanel;
 
         public DataGridView TablaClientes;
+
+        public Button botonVerDetalles { get; private set; }
+        public Button botonVerProductos { get; private set; }
         public Button botonAddCliente { get; private set; }
         public Button botonDeleteCliente { get; private set; }
         public Button botonEditCliente { get; private set; }
@@ -451,7 +454,28 @@ namespace Proyectos.Ui
 
             pnl.Controls.Add(botonAddCliente);
 
-            
+            botonVerDetalles = new Button();
+
+            botonVerDetalles.Location = new Point(25, 46);
+            botonVerDetalles.Width = 200;
+            botonVerDetalles.Text = "Ver detalles";
+            botonVerDetalles.FlatStyle = FlatStyle.Flat;
+
+
+            pnl.Controls.Add(botonVerDetalles);
+
+
+            botonVerProductos = new Button();
+
+            botonVerProductos.Location = new Point(240, 46);
+            botonVerProductos.Width = 200;
+            botonVerProductos.Text = "Ver productos";
+            botonVerProductos.FlatStyle = FlatStyle.Flat;
+
+
+            pnl.Controls.Add(botonVerProductos);
+
+
             botonDeleteCliente = new Button();
 
             botonDeleteCliente.Location = new Point(240, 16);
@@ -535,19 +559,8 @@ namespace Proyectos.Ui
             return this.TablaClientes;
         }
 
-        private MainMenu mainMenu;
-
         Panel PanelClientes(List<Cliente> contenedor)
         {
-            /*MENU*/
-            mainMenu = new MainMenu();
-            MenuItem File = mainMenu.MenuItems.Add("&Cerrar y guardar");
-            //File.MenuItems.Add(new MenuItem("&Añadir"));
-            //File.MenuItems.Add(new MenuItem("&"));
-            //File.MenuItems.Add(new MenuItem("&Exit"));
-            this.Menu = mainMenu;
-
-            /*MENU*/
 
             Panel pnl = new Panel() { Dock = DockStyle.Fill };
             Panel pnl1 = new Panel() { Dock = DockStyle.Fill };

@@ -29,6 +29,37 @@ namespace Proyectos.Ui
             this.View.botonDeleteCliente.Click += new System.EventHandler(accionDeleteCliente);
             this.View.botonEditCliente.Click += new System.EventHandler(accionEditCliente);
             this.View.botonCloseCliente.Click += new System.EventHandler(accionCloseSave);
+            this.View.botonVerDetalles.Click += new System.EventHandler(accionVerDetalles);
+            //this.View.botonVerProductos.Click += new System.EventHandler(accionVerProductos);
+        }
+
+        private void accionVerDetalles(object sender, System.EventArgs e)
+        {
+            DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TablaClientes.SelectedRows;
+            if (filasSeleccionadas != null)
+            {
+                try
+                {
+                    int indiceTabla = filasSeleccionadas[0].Index;
+                    if (indiceTabla < this.Gestor.ContenedorClientes.Count)
+                    {
+                        Cliente clienteRecuperado = this.Gestor.ContenedorClientes[indiceTabla];
+
+                        Application.Run(new GraficoResumenSaldosClienteController(clienteRecuperado).View);
+
+                    }
+                }
+                catch (Exception)
+                {
+                    this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+                    this.IniciarBotones();
+                }
+
+
+            }
+
+            this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+            this.IniciarBotones();
         }
 
 
