@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using App_Gestion_Bancaria.Core.Gestores;
 using App_Gestion_Bancaria.Core.Clases;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proyectos.Ui

@@ -19,7 +19,6 @@ namespace Proyectos.Ui
         public ClienteController(GestorClientes gestor)
         {
             this.Gestor = gestor;
-            this.Gestor.RecuperarClientes();
             this.View = new ClienteView(this.Gestor.ContenedorClientes);
             this.IniciarBotones();
         }

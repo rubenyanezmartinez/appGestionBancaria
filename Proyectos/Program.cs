@@ -23,8 +23,8 @@ namespace Proyectos
             GestorCuentas gestorCuentas = new GestorCuentas();
             //Application.Run(new ClienteController(gestorClientes).View);
             //Application.Run(new ProductosPersonaController().View);
-            //Application.Run(new busquedaTransferenciaController(gestorTransferencias, gestorCuentas, gestorClientes).View);
-            //Application.Run(new TransferenciaController(gestorTransferencias, gestorCuentas).View);
+            Application.Run(new busquedaTransferenciaController(gestorTransferencias, gestorCuentas, gestorClientes).View);
+            //Application.Run(new TransferenciaController(gestorTransferencias, gestorCuentas, gestorClientes).View);
             //Application.Run(new CuentaController().View);
 
         }
