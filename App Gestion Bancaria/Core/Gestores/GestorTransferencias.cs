@@ -54,7 +54,7 @@ namespace App_Gestion_Bancaria.Core.Gestores
         {
             foreach (Transferencia transferencia in this.Transferencias)
             {
-                if (transferencia.Tipo.Equals("periodica") && DateTime.Compare(transferencia.Fecha, DateTime.Now) < 0)
+                if (transferencia.Tipo.Equals("periodica") && DateTime.Compare(transferencia.Fecha, DateTime.Now) > 0)
                 {
                     transferencia.Fecha = transferencia.Fecha.AddMonths(1);
                 }
