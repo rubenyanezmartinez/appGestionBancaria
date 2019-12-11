@@ -6,6 +6,7 @@ using App_Gestion_Bancaria.Core.Gestores;
 using App_Gestion_Bancaria.Core.Clases;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Graficos.UI;
 
 namespace Proyectos.Ui
 {
@@ -19,7 +20,6 @@ namespace Proyectos.Ui
         public ClienteController(GestorClientes gestor)
         {
             this.Gestor = gestor;
-            this.Gestor.RecuperarClientes();
             this.View = new ClienteView(this.Gestor.ContenedorClientes);
             this.IniciarBotones();
         }
@@ -30,6 +30,37 @@ namespace Proyectos.Ui
             this.View.botonDeleteCliente.Click += new System.EventHandler(accionDeleteCliente);
             this.View.botonEditCliente.Click += new System.EventHandler(accionEditCliente);
             this.View.botonCloseCliente.Click += new System.EventHandler(accionCloseSave);
+            this.View.botonVerDetalles.Click += new System.EventHandler(accionVerDetalles);
+            //this.View.botonVerProductos.Click += new System.EventHandler(accionVerProductos);
+        }
+
+        private void accionVerDetalles(object sender, System.EventArgs e)
+        {
+            DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TablaClientes.SelectedRows;
+            if (filasSeleccionadas != null)
+            {
+                try
+                {
+                    int indiceTabla = filasSeleccionadas[0].Index;
+                    if (indiceTabla < this.Gestor.ContenedorClientes.Count)
+                    {
+                        Cliente clienteRecuperado = this.Gestor.ContenedorClientes[indiceTabla];
+
+                        new GraficoResumenSaldosClienteController(clienteRecuperado).View.Show();
+
+                    }
+                }
+                catch (Exception)
+                {
+                    this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+                    this.IniciarBotones();
+                }
+
+
+            }
+
+            this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+            this.IniciarBotones();
         }
 
 

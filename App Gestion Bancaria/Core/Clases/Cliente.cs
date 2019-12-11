@@ -28,6 +28,9 @@ namespace App_Gestion_Bancaria.Core.Clases
             this.DireccionPostal = direccionPostal;
         }
 
+        public Cliente() { 
+        }
+
         public XElement ToXml()
         {
             XElement toret = new XElement("cliente", 

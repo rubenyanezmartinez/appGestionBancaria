@@ -15,10 +15,12 @@ namespace Proyectos.Ui
         public TransferenciaView View { get; private set; }
         public GestorTransferencias GestorTransferencias { get; private set; }
         public GestorCuentas GestorCuentas { get; private set; }
-        public TransferenciaController(GestorTransferencias gestorTransferencias, GestorCuentas gestorCuentas)
+        public GestorClientes gestorClientes { get; private set; }
+        public TransferenciaController(GestorTransferencias gestorTransferencias, GestorCuentas gestorCuentas, GestorClientes gestorClientes)
         {
             this.GestorTransferencias = gestorTransferencias;
             this.GestorCuentas = gestorCuentas;
+            this.gestorClientes = gestorClientes;
             this.View = new TransferenciaView(this.GestorTransferencias.Transferencias);
             this.IniciarBotones();
         }
