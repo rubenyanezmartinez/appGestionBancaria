@@ -1,0 +1,12 @@
+E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\bin\Debug\Proyectos.exe.config
+E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\bin\Debug\Proyectos.exe
+E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\bin\Debug\Proyectos.pdb
+E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\bin\Debug\App Gestion Bancaria.exe
+E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\bin\Debug\App Gestion Bancaria.pdb
+E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\bin\Debug\App Gestion Bancaria.exe.config
+E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\obj\Debug\Proyectos.csprojAssemblyReference.cache
+E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\obj\Debug\Proyectos.Properties.Resources.resources
+E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\obj\Debug\Proyectos.csproj.GenerateResource.cache
+E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\obj\Debug\Proyectos.csproj.CopyComplete
+E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\obj\Debug\Proyectos.exe
+E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\obj\Debug\Proyectos.pdb
