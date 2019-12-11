@@ -1,1 +1,37 @@
-﻿<clientes><cliente><dni>00000000A</dni><nombre>Maria</nombre><telefono>666666666</telefono><email>maria@gmail.com</email><direccionPostal>C/ Maria, 66, Ourense</direccionPostal></cliente><cliente><dni>11111111B</dni><nombre>Antonio</nombre><telefono>777777777</telefono><email>antonio@gmail.com</email><direccionPostal>C/ Antonio, 77, Ourense</direccionPostal></cliente><cliente><dni>22222222C</dni><nombre>Carlos</nombre><telefono>888888888</telefono><email>carlos@gmail.com</email><direccionPostal>C/ Carlos, 88, Ourense</direccionPostal></cliente><cliente><dni>33333333D</dni><nombre>Alba</nombre><telefono>999999999</telefono><email>alba@gmail.com</email><direccionPostal>C/ Alba, 99, Ourense</direccionPostal></cliente><cliente><dni>44444444E</dni><nombre>Luis</nombre><telefono>555555555</telefono><email>luis@gmail.com</email><direccionPostal>C/ Luis, 55, Ourense</direccionPostal></cliente></clientes>
+﻿<clientes>
+	<cliente>
+		<dni>00000000A</dni>
+		<nombre>Maria</nombre>
+		<telefono>666666666</telefono>
+		<email>maria@gmail.com</email>
+		<direccionPostal>C/ Maria, 66, Ourense</direccionPostal>
+	</cliente>
+	<cliente>
+		<dni>11111111B</dni>
+		<nombre>Antonio</nombre>
+		<telefono>777777777</telefono>
+		<email>antonio@gmail.com</email>
+		<direccionPostal>C/ Antonio, 77, Ourense</direccionPostal>
+	</cliente>
+	<cliente>
+		<dni>22222222C</dni>
+		<nombre>Carlos</nombre>
+		<telefono>888888888</telefono>
+		<email>carlos@gmail.com</email>
+		<direccionPostal>C/ Carlos, 88, Ourense</direccionPostal>
+	</cliente>
+	<cliente>
+		<dni>12345678K</dni>
+		<nombre>Paco</nombre>
+		<telefono>111111111</telefono>
+		<email>paco@gmail.com</email>
+		<direccionPostal>Mi calle nº 2</direccionPostal>
+	</cliente>
+<cliente>
+	<dni>11223344H</dni>
+	<nombre>Paca</nombre>
+	<telefono>988334455</telefono>
+	<email>paca@gmail.com</email>
+	<direccionPostal>Mi calle nº 2</direccionPostal>
+</cliente>
+</clientes>
