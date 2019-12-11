@@ -6,6 +6,7 @@ using App_Gestion_Bancaria.Core.Gestores;
 using App_Gestion_Bancaria.Core.Clases;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Graficos.UI;
 
 namespace Proyectos.Ui
 {
@@ -45,7 +46,7 @@ namespace Proyectos.Ui
                     {
                         Cliente clienteRecuperado = this.Gestor.ContenedorClientes[indiceTabla];
 
-                        Application.Run(new GraficoResumenSaldosClienteController(clienteRecuperado).View);
+                        new GraficoResumenSaldosClienteController(clienteRecuperado).View.Show();
 
                     }
                 }

@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
-using Graficos.Core;
 
 namespace Graficos.UI
 {
     class GraficoResumenCuentaController : Form
-    {
+    {/*
 
         public GraficoResumenCuentaController(Cuenta cuenta, List<Transferencia> transferencias)
         {
@@ -52,7 +51,7 @@ namespace Graficos.UI
         public GraficoResumenCuentaView View
         {
             get; set;
-        }
+        }*/
     }
 
 }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Graficos.Core;
 using App_Gestion_Bancaria.Core.Clases;
 using App_Gestion_Bancaria.Core.Gestores;
+using Proyectos.Ui;
 
 namespace Graficos.UI
 {
@@ -16,7 +17,7 @@ namespace Graficos.UI
             this.Cliente = c;
             var cuentas = new GestorCuentas().Cuentas;
             var transferencias = new GestorTransferencias().Transferencias;
-            this.View = new GraficoResumenSaldosClienteView(clientes, cuentas, transferencias);
+            this.View = new GraficoResumenSaldosClienteView(c, cuentas, transferencias);
             this.View.SelectYear.SelectedIndex = 0;
             this.View.SelectVisualization.SelectedIndexChanged += SelectVisualization_SelectedIndexChanged;
             this.View.SelectYear.SelectedIndexChanged += SelectYear_SelectedIndexChanged;
@@ -30,7 +31,7 @@ namespace Graficos.UI
         {
             
             //Actualizamos el segundo grafico
-            var graphic2 = new GraficoResumenSaldosCliente(MainView.graphicsSize, Cliente, this.View.Cuentas, this.View.Transferencias, (int)this.View.SelectYear.Items[this.View.SelectYear.SelectedIndex]);
+            var graphic2 = new GraficoResumenSaldosCliente(new Size(400,400), Cliente, this.View.Cuentas, this.View.Transferencias, (int)this.View.SelectYear.Items[this.View.SelectYear.SelectedIndex]);
             this.View.PanelGraficoResumenSaldos.Controls.Remove(this.View.Grsc);
             this.View.Grsc = graphic2;
             this.View.PanelGraficoResumenSaldos.Controls.Add(this.View.Grsc);
@@ -43,7 +44,7 @@ namespace Graficos.UI
                 case 0:
                     //Actualizamos el segundo grafico
                     this.View.PanelGraficoResumenSaldos.Controls.Remove(this.View.Grsc);
-                    this.View.Grsc = new GraficoResumenSaldosCliente(MainView.graphicsSize, this.Cliente, this.View.Cuentas, this.View.Transferencias);
+                    this.View.Grsc = new GraficoResumenSaldosCliente(new Size(400,400), this.Cliente, this.View.Cuentas, this.View.Transferencias);
                     this.View.PanelGraficoResumenSaldos.Controls.Add(this.View.Grsc);
 
                     break;

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using App_Gestion_Bancaria.Core.Clases;
+using Proyectos.Ui;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Graficos.Core;
 
 namespace Graficos.UI
 {
@@ -13,8 +14,8 @@ namespace Graficos.UI
         public GraficoResumenSaldosClienteView(Cliente cliente, List<Cuenta> cuentas, List<Transferencia> transferencias)
         {
             this.Size = new System.Drawing.Size(600*2, 600);
-            
-            
+
+            this.Cliente = cliente;
             Cuentas = cuentas;
             Transferencias = transferencias;
             this.Build();
@@ -29,7 +30,7 @@ namespace Graficos.UI
         public List<Transferencia> Transferencias { get; }
         public GraficoResumenSaldosCliente Grsc { get; set; }
 
-        public Cliente ClienteSeleccionado { get; set; }
+        public Cliente Cliente { get; set; }
 
         private void Build()
         {
@@ -64,14 +65,13 @@ namespace Graficos.UI
 
            
 
-            this.Grsc = new GraficoResumenSaldosCliente(new System.Drawing.Size(500, 500), this.SelectCliente.Items[0] as Cliente, this.Cuentas , this.Transferencias, 2016);
+            this.Grsc = new GraficoResumenSaldosCliente(new System.Drawing.Size(500, 500), this.Cliente, this.Cuentas , this.Transferencias, 2016);
 
 
             PanelGraficoResumenSaldos.Controls.Add(label);
             PanelGraficoResumenSaldos.Controls.Add(this.SelectVisualization);
             PanelGraficoResumenSaldos.Controls.Add(label2);
             PanelGraficoResumenSaldos.Controls.Add(this.SelectYear);
-            PanelGraficoResumenSaldos.Controls.Add(this.SelectCliente);
             PanelGraficoResumenSaldos.Controls.Add(this.Grsc);
 
             this.Controls.Add(PanelGraficoResumenSaldos);
