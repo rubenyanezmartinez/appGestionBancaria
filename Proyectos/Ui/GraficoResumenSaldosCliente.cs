@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
-using Graficos.Core;
 using System.Windows.Forms;
 using System.Linq;
+using App_Gestion_Bancaria.Core.Clases;
 
 namespace Graficos.UI
 {

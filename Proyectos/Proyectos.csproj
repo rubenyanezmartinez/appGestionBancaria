@@ -60,6 +60,9 @@
     <Compile Include="Ui\busquedaTransferenciasView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Ui\Chart.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Ui\ClienteController.cs" />
     <Compile Include="Ui\ClienteView.cs">
       <SubType>Form</SubType>
@@ -67,6 +70,18 @@
     <Compile Include="Ui\CuentaController.cs" />
     <Compile Include="Ui\CuentaView.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ui\GraficoResumenCuenta.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ui\GraficoResumenSaldosCliente.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ui\Ingresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ui\Ingresos.Designer.cs">
+      <DependentUpon>Ingresos.cs</DependentUpon>
     </Compile>
     <Compile Include="Ui\ProductosPersonaController.cs" />
     <Compile Include="Ui\ProductosPersonaView.cs">
@@ -85,6 +100,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Ui\Ingresos.resx">
+      <DependentUpon>Ingresos.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

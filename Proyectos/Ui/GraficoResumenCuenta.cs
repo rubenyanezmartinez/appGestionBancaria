@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Graficos.Core;
+using App_Gestion_Bancaria.Core.Clases;
 
 
 namespace Graficos.UI
@@ -91,7 +91,7 @@ namespace Graficos.UI
 
             c.Depositos.ForEach((dep) => depositosByYear[dep.Fecha.Year - c.FechaApertura.Year]++);
             c.Retiradas.ForEach((ret) => retiradasByYear[ret.Fecha.Year - c.FechaApertura.Year]++);
-            t.ForEach((t) => transferenciasByYear[t.Fecha.Year - c.FechaApertura.Year]++);
+            t.ForEach((x) => transferenciasByYear[x.Fecha.Year - c.FechaApertura.Year]++);
 
             toret.Add("DEPOSITOS", depositosByYear);
             toret.Add("RETIRADAS", retiradasByYear);
