@@ -1,6 +1,6 @@
 ﻿// Charts for WinForms (c) 2017 MIT License <baltasarq@gmail.com>
 
-namespace Graficos.UI {
+namespace Proyectos.Ui {
     using System.Linq;
     using System.Drawing;
     using System.Windows.Forms;
