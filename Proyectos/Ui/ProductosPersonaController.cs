@@ -55,7 +55,7 @@ namespace Proyectos.Ui
 
                 foreach (var cuenta in cuentasCliente)
                 {
-                    var listaTransferencias = gestorTransferencias.Transferencias.FindAll(x => x.CCCOrigen == cuenta.CCC);
+                    var listaTransferencias = gestorTransferencias.Transferencias.FindAll(x => x.CCCOrigen == cuenta);
 
                     if (listaTransferencias != null)
                     {
