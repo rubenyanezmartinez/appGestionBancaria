@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.Linq;
 using App_Gestion_Bancaria.Core.Clases;
 
-namespace Graficos.UI
+namespace Proyectos.Ui
 {
     public enum SHOW
     {

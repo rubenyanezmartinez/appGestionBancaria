@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using App_Gestion_Bancaria.Core.Clases;
 
 
-namespace Graficos.UI
+namespace Proyectos.Ui
 {
     public class GraficoResumenCuenta : Chart
     {
