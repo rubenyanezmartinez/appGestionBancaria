@@ -32,6 +32,37 @@ namespace Proyectos.Ui
             this.View.botonCloseCliente.Click += new System.EventHandler(accionCloseSave);
             this.View.botonVerDetalles.Click += new System.EventHandler(accionVerDetalles);
             this.View.botonVerProductos.Click += new System.EventHandler(accionVerProductos);
+            this.View.botonBuscar.Click += new System.EventHandler(accionBuscar);
+        }
+
+        private void accionBuscar(object sender, System.EventArgs e)
+        {
+            string dni = this.View.Buscar.Text;
+
+            if (dni.Equals(""))
+            {
+                this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+                this.IniciarBotones();
+            }
+
+            else
+            {
+                List<Cliente> clientesFiltrados = new List<Cliente>();
+                Cliente clienteRecuperador = this.Gestor.ConsultarPorDni(dni);
+                clientesFiltrados.Add(clienteRecuperador);
+
+                if (clienteRecuperador != null)
+                {
+                    this.View.ClienteViewMethod(clientesFiltrados);
+                    this.IniciarBotones();
+                }
+                else
+                {
+                    this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+                    this.IniciarBotones();
+                }
+            }
+
         }
 
         private void accionVerDetalles(object sender, System.EventArgs e)
@@ -74,6 +105,7 @@ namespace Proyectos.Ui
                     if (indiceTabla < this.Gestor.ContenedorClientes.Count)
                     {
                         Cliente clienteRecuperado = this.Gestor.ContenedorClientes[indiceTabla];
+
 
                         new ProductosPersonaController(clienteRecuperado).View.Show();
 

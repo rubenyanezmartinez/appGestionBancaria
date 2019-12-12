@@ -23,6 +23,8 @@ namespace Proyectos.Ui
         public Button botonDeleteCliente { get; private set; }
         public Button botonEditCliente { get; private set; }
         public Button botonCloseCliente { get; private set; }
+        public Button botonBuscar { get; private set; }
+        public TextBox Buscar { get; private set; }
         public TextBox Dni { get; private set; }
         public TextBox Nombre { get; private set; }
         public TextBox Telefono { get; private set; }
@@ -335,6 +337,33 @@ namespace Proyectos.Ui
             return panel;
         }
 
+        public Panel BuildBucar()
+        {
+            var panel = new WFrms.Panel
+            {
+                Dock = WFrms.DockStyle.Right
+            };
+
+            this.Buscar = new WFrms.TextBox
+            {
+                Dock = WFrms.DockStyle.Bottom,
+                Width = 9,
+                MaxLength = 9
+            };
+
+            this.botonBuscar = new Button();
+
+            botonBuscar.Location = new Point(150, 80);
+            botonBuscar.Width = 50;
+            botonBuscar.Text = "Buscar";
+            botonBuscar.FlatStyle = FlatStyle.Flat;
+
+            panel.Controls.Add(this.botonBuscar);
+            panel.Controls.Add(this.Buscar);
+
+            return panel;
+        }
+
         public Panel BuildNombre(string nombre)
         {
             var panel = new WFrms.Panel
@@ -522,7 +551,7 @@ namespace Proyectos.Ui
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
                 Location = new Point(25, 16),
                 MultiSelect = false
-        };
+            };
             this.TablaClientes.Columns[0].Name = "DNI";
             this.TablaClientes.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; 
             this.TablaClientes.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -565,12 +594,14 @@ namespace Proyectos.Ui
 
             Panel pnl = new Panel() { Dock = DockStyle.Fill };
             Panel pnl1 = new Panel() { Dock = DockStyle.Fill };
+            
             pnl1.Controls.Add(ClientesTabla(contenedor));
             Panel pnl2 = new Panel() { Dock = DockStyle.Bottom};
             Panel pnl3 = new Panel() { Dock = DockStyle.Top };
 
             Label lb1 = new Label() { Text = "GESTIÓN DE CLIENTES", Size = new System.Drawing.Size(1000, 1000), Font = new Font("Arial", 35, FontStyle.Regular) };
             pnl3.Controls.Add(lb1);
+            pnl3.Controls.Add(this.BuildBucar());
 
             pnl2.Controls.Add(BotonesPanel());
 
