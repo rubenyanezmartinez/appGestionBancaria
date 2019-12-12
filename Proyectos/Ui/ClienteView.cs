@@ -527,9 +527,9 @@ namespace Proyectos.Ui
 
             botonCloseCliente = new Button();
 
-            botonCloseCliente.Location = new Point(670, 16);
+            botonCloseCliente.Location = new Point(455, 46);
             botonCloseCliente.Width = 200;
-            botonCloseCliente.Text = "Cerrar y guardar";
+            botonCloseCliente.Text = "Volver";
             botonCloseCliente.FlatStyle = FlatStyle.Flat;
 
             pnl.Controls.Add(botonCloseCliente);
