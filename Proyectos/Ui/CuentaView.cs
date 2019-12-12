@@ -15,24 +15,37 @@ namespace Proyectos.Ui
     {
         public CuentaView(GestorCuentas gestor)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.Size = new Size(650, 700);
             this.ShowIndex(gestor);            
         }
 
         public void ShowIndex(GestorCuentas gestor)
         {
             this.Controls.Clear();
+            this.Text = "Gestión de Cuentas";
             this.MainPanel = new Panel { Dock = DockStyle.Fill };
             this.MainPanel.Controls.Add(this.BuildTablaCuentas(gestor.Cuentas));
-            this.MainPanel.Controls.Add(this.BuildButtonDetalle());
-            this.Controls.Add(MainPanel);
-            this.MainPanel.AutoScroll = true;
 
+            var buttonPanel = new Panel { Dock = DockStyle.Bottom };
+
+            buttonPanel.Controls.Add(this.BuildButtonDetalle());
+            buttonPanel.Controls.Add(this.BuildAddCuentaButton());
+
+            this.MainPanel.Controls.Add(buttonPanel);
+
+            this.MainPanel.Controls.Add(this.BuildBorrarCuentaButton());
+
+
+            this.Controls.Add(MainPanel);
         }
 
         public void ShowDetalles(Cuenta cuenta)
         {
             this.Controls.Clear();
             this.MainPanel = new TableLayoutPanel { Dock = DockStyle.Fill };
+            this.Text = "Detalles de la cuenta: " + cuenta.CCC;
             this.MainPanel.Controls.Add(BuildCCCTextBox(cuenta.CCC));
             this.MainPanel.Controls.Add(BuildSaldoTextBox(cuenta.Saldo));
             this.MainPanel.Controls.Add(BuildTipoCb(cuenta.Tipo));
@@ -45,39 +58,83 @@ namespace Proyectos.Ui
             movimientosPanel.Controls.Add(BuildRetiradasTable(cuenta.Retiradas));
             movimientosPanel.Controls.Add(BuildDepositosTable(cuenta.Depositos));
 
+            movimientosPanel.Height = 150;
+
             this.MainPanel.Controls.Add(movimientosPanel);
-            this.MainPanel.Controls.Add(BuildButtonVolver());
-            this.MainPanel.Controls.Add(BuildGuardarButton());
+
+            var buttonPanel = new Panel { Dock = DockStyle.Bottom };
+            buttonPanel.Controls.Add(BuildButtonVolver());
+            buttonPanel.Controls.Add(BuildGuardarButton());
+
+            this.MainPanel.Controls.Add(buttonPanel);
 
             this.Controls.Add(this.MainPanel);
-            this.MainPanel.AutoScroll = true;
 
         }
 
         public void ShowAddMovimiento(Boolean isRetirada)
         {
             this.Controls.Clear();
+            this.Text = "Nuevo Movimiento: ";
+            _ = isRetirada ? this.Text += "RETIRADA" : this.Text += "DEPÓSITO";
             this.MainPanel = new TableLayoutPanel { Dock = DockStyle.Fill };
             this.MainPanel.Controls.Add(BuildClienteTextBox());
             this.MainPanel.Controls.Add(BuildCantidadNumeric());
             this.MainPanel.Controls.Add(BuildFechaMovimientoDate());
 
+            var buttonPanel = new Panel { Dock = DockStyle.Bottom };
+            var pnl = new Panel { Dock = DockStyle.Right };
+
+
             if (isRetirada)
             {
-                this.MainPanel.Controls.Add(this.AddRetiradaButton);
+                this.AddRetiradaButton.Dock = DockStyle.Fill;
+                pnl.Controls.Add(this.AddRetiradaButton);
             } else
             {
-                this.MainPanel.Controls.Add(this.AddDepositoButton);
+                this.AddDepositoButton.Dock = DockStyle.Fill;
+                pnl.Controls.Add(this.AddDepositoButton);
             }
 
-            this.MainPanel.Controls.Add(BuildButtonVolver());
+            buttonPanel.Controls.Add(pnl);
+            buttonPanel.Controls.Add(BuildButtonVolver());
+
+            this.MainPanel.Controls.Add(buttonPanel);
 
             this.Controls.Add(this.MainPanel);
         }
 
+        private Panel BuildBorrarCuentaButton()
+        {
+            var pnl = new Panel { Dock = DockStyle.Bottom };
+            this.BorrarCuentaButton = new Button
+            {
+                Dock = DockStyle.Fill,
+                Text = "Borrar cuenta"
+            };
+
+            pnl.Controls.Add(this.BorrarCuentaButton);
+
+            return pnl;
+        }
+
+        private Panel BuildAddCuentaButton()
+        {
+            var pnl = new Panel { Dock = DockStyle.Left };
+            this.AddCuentaButton = new Button
+            {
+                Dock = DockStyle.Fill,
+                Text = "Nueva Cuenta"
+            };
+
+            pnl.Controls.Add(this.AddCuentaButton);
+
+            return pnl;
+        }
+
         private Panel BuildGuardarButton()
         {
-            var pnl = new Panel { Dock = DockStyle.Top };
+            var pnl = new Panel { Dock = DockStyle.Right };
             this.GuardarButton = new Button
             {
                 Dock = DockStyle.Fill,
@@ -103,6 +160,7 @@ namespace Proyectos.Ui
 
             pnl.Controls.Add(lable);
             pnl.Controls.Add(this.ClienteTextBox);
+            pnl.MaximumSize = new Size(int.MaxValue, this.ClienteTextBox.Height * 2);
 
             return pnl;
         }
@@ -118,11 +176,13 @@ namespace Proyectos.Ui
 
             this.CantidadNumeric = new NumericUpDown
             {
-                Dock = DockStyle.Right
+                Dock = DockStyle.Right,
+                Maximum = int.MaxValue
             };
 
             pnl.Controls.Add(labelLeft);
             pnl.Controls.Add(this.CantidadNumeric);
+            pnl.MaximumSize = new Size(int.MaxValue, this.CantidadNumeric.Height * 2);
 
             return pnl;
         }
@@ -139,16 +199,17 @@ namespace Proyectos.Ui
 
             pnl.Controls.Add(label);
             pnl.Controls.Add(this.FechaMovimientoDate);
+            pnl.MaximumSize = new Size(int.MaxValue, this.FechaMovimientoDate.Height * 2);
 
             return pnl;
         }
 
         private Panel BuildButtonVolver()
         {
-            var pnl = new Panel { Dock = DockStyle.Bottom };
+            var pnl = new Panel { Dock = DockStyle.Left };
             this.ButtonVolver = new Button
             {
-                Dock = DockStyle.Top,
+                Dock = DockStyle.Fill,
                 Text = "Volver"
             };
 
@@ -171,9 +232,10 @@ namespace Proyectos.Ui
         private Panel BuildCCCTextBox(string CCC)
         {
             var pnl = new Panel { Dock = DockStyle.Top };
-            var label = new Label { Dock = DockStyle.Left, Text = "CCC", Enabled = false };
+            var label = new Label { Dock = DockStyle.Left, Text = "CCC"};
 
             this.CCCTextBox = BuildTextBox(CCC);
+            this.CCCTextBox.ReadOnly = true;
 
             pnl.Controls.Add(label);
             pnl.Controls.Add(this.CCCTextBox);
@@ -189,13 +251,13 @@ namespace Proyectos.Ui
             this.SaldoNumeric = new NumericUpDown
             {
                 Dock = DockStyle.Right,
-                Minimum = 0,
                 Maximum = int.MaxValue,
                 Value = saldo
             };
 
             pnl.Controls.Add(this.SaldoNumeric);
             pnl.Controls.Add(label);
+            pnl.MaximumSize = new Size(int.MaxValue, this.SaldoNumeric.Height * 2);
 
             return pnl;
         }
@@ -216,6 +278,8 @@ namespace Proyectos.Ui
 
             pnl.Controls.Add(label);
             pnl.Controls.Add(this.TipoCb);
+            pnl.MaximumSize = new Size(int.MaxValue, this.TipoCb.Height * 2);
+
 
             return pnl;
         }
@@ -232,6 +296,8 @@ namespace Proyectos.Ui
 
             pnl.Controls.Add(label);
             pnl.Controls.Add(this.FechaAperturaDatePicker);
+            pnl.MaximumSize = new Size(int.MaxValue, this.FechaAperturaDatePicker.Height * 2);
+
 
             return pnl;
         }
@@ -253,6 +319,8 @@ namespace Proyectos.Ui
 
             pnl.Controls.Add(labelLeft);
             pnl.Controls.Add(this.InteresMensualNumeric);
+            pnl.MaximumSize = new Size(int.MaxValue, this.InteresMensualNumeric.Height * 2);
+
 
             return pnl;
         }
@@ -260,21 +328,21 @@ namespace Proyectos.Ui
         private Panel BuildRetiradasTable(List<Movimiento> retiradas)
         {
             var label = new Label { Dock = DockStyle.Top, Text = "Retiradas" };
-            var pnl = new Panel { Dock = DockStyle.Left, MaximumSize = new Size (Screen.PrimaryScreen.WorkingArea.Size.Width / 2, int.MaxValue) };
+            var pnl = new Panel { Dock = DockStyle.Left, MaximumSize = new Size (this.ClientSize.Width / 2, int.MaxValue) };
             this.RetiradasTable = new DataGridView
-            { 
+            {
                 Dock = DockStyle.Fill,
                 ColumnCount = 3,
-                MinimumSize = new Size(400, 1000),
                 AllowUserToAddRows = false,
                 AllowUserToDeleteRows = false,
                 ReadOnly = true,
                 ScrollBars = ScrollBars.Vertical,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-                Location = new Point(25, 16)
+                Location = new Point(25, 16),
+                Height = 100
             };
 
-            pnl.MinimumSize = new Size(Screen.PrimaryScreen.WorkingArea.Size.Width / 2, this.RetiradasTable.Height);
+            pnl.MinimumSize = new Size(this.Size.Width / 2, this.RetiradasTable.Height);
             this.RetiradasTable.Columns[0].Name = "Cliente";
             this.RetiradasTable.Columns[1].Name = "Fecha";
             this.RetiradasTable.Columns[2].Name = "Cantidad";
@@ -282,8 +350,8 @@ namespace Proyectos.Ui
             foreach(Movimiento retirada in retiradas)
             {
                 this.RetiradasTable.Rows.Add(
-                    retirada.Cliente.Dni,
-                    retirada.Fecha.Date,
+                    retirada.Cliente.Nombre,
+                    retirada.Fecha.Day + "/" + retirada.Fecha.Month + "/" + retirada.Fecha.Year,
                     string.Format("{0:#.00}", (double)retirada.Cantidad / 100) + "€"
                     ) ;
             }
@@ -293,6 +361,8 @@ namespace Proyectos.Ui
                 Dock = DockStyle.Top,
                 Text = "Nueva Retirada"
             };
+
+            pnl.MinimumSize = new Size(this.RetiradasTable.Height, 0);
 
             pnl.Controls.Add(label);
             pnl.Controls.Add(this.RetiradasTable);
@@ -304,18 +374,18 @@ namespace Proyectos.Ui
         private Panel BuildDepositosTable(List<Movimiento> depositos)
         {
             var label = new Label { Dock = DockStyle.Top, Text = "Depósitos" };
-            var pnl = new Panel { Dock = DockStyle.Right, MaximumSize = new Size (Screen.PrimaryScreen.WorkingArea.Size.Width / 2, int.MaxValue), MinimumSize = new Size(Screen.PrimaryScreen.WorkingArea.Size.Width / 2, 0) };
+            var pnl = new Panel { Dock = DockStyle.Right, MaximumSize = new Size (this.ClientSize.Width / 2, int.MaxValue), MinimumSize = new Size(Screen.PrimaryScreen.WorkingArea.Size.Width / 2, 0) };
             this.DepositosTable = new DataGridView
             {
                 Dock = DockStyle.Fill,
                 ColumnCount = 3,
-                MinimumSize = new Size(400, 1000),
                 AllowUserToAddRows = false,
                 AllowUserToDeleteRows = false,
                 ReadOnly = true,
                 ScrollBars = ScrollBars.Vertical,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
                 Location = new Point(25, 16),
+                Height = 100
             };
 
             this.DepositosTable.Columns[0].Name = "Cliente";
@@ -326,8 +396,8 @@ namespace Proyectos.Ui
             foreach (Movimiento deposito in depositos)
             {
                 this.DepositosTable.Rows.Add(
-                    deposito.Cliente.Dni,
-                    deposito.Fecha.Date,
+                    deposito.Cliente.Nombre,
+                    deposito.Fecha.Day + "/" + deposito.Fecha.Month + "/" + deposito.Fecha.Year,
                     string.Format("{0:#.00}", (double)deposito.Cantidad / 100) + "€"
                     );
             }
@@ -338,6 +408,7 @@ namespace Proyectos.Ui
                 Text = "Nuevo Depósito"
             };
 
+            pnl.MinimumSize = new Size(this.Size.Width / 2, this.DepositosTable.Height);
             pnl.Controls.Add(label);
             pnl.Controls.Add(this.DepositosTable);
             pnl.Controls.Add(this.AddDepositoButton);
@@ -393,10 +464,10 @@ namespace Proyectos.Ui
 
         public Panel BuildButtonDetalle()
         {
-            var pnl = new Panel { Dock = DockStyle.Bottom };
+            var pnl = new Panel { Dock = DockStyle.Right };
             this.ButtonDetalle = new Button
             {
-                Dock = DockStyle.Bottom,
+                Dock = DockStyle.Fill,
                 Text = "Ver seleccionada"
             };
 
@@ -405,9 +476,11 @@ namespace Proyectos.Ui
             return pnl;
         }
 
-        public void ShowAddCuenta(GestorCuentas gestor)
+        public void ShowAddCuenta(Cuenta cuenta)
         {
-            //this.ShowDetalles(new Cuenta(gestor.Cuentas.Count));   
+            this.ShowDetalles(cuenta);
+            this.Text = "Nueva Cuenta";
+            this.GuardarButton.Text = "Guardar";
         }
 
         private Panel MainPanel;
@@ -447,5 +520,7 @@ namespace Proyectos.Ui
         public Button AddCuentaButton;
 
         public Button SaveCuentaButton;
+
+        public Button BorrarCuentaButton;
     }
 }

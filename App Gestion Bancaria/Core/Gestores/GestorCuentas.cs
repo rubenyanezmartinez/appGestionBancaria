@@ -27,6 +27,25 @@ namespace App_Gestion_Bancaria.Core.Gestores
             CuentasRepositorio.Guardar(Cuentas);
         }
 
+        public String GetNextCCC()
+        {
+            int i = 0;
+
+            while (this.GetCuentaByCCC(i.ToString()) != null && i < this.Cuentas.Count)
+            {
+                i++;
+            }
+
+            return i.ToString();
+        }
+
+
+        public void Actualizar(Cuenta cuenta)
+        {
+            Cuentas.Remove(this.GetCuentaByCCC(cuenta.CCC));
+            Cuentas.Add(cuenta);
+        }
+
         public Cuenta GetCuentaByCCC(String ccc)
         {
             return Cuentas.Where(x => x.CCC == ccc).FirstOrDefault();

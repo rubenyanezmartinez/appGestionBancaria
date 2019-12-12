@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cuentas>
+  <cuenta>
+    <tipo>CORRIENTE</tipo>
+    <titulares />
+    <ccc>2</ccc>
+    <saldo>8878</saldo>
+    <fechaApertura>2019-11-26T00:00:00+01:00</fechaApertura>
+    <interesMensual>0</interesMensual>
+    <depositos />
+    <retiradas />
+  </cuenta>
+  <cuenta>
+    <tipo>CORRIENTE</tipo>
+    <titulares />
+    <ccc>1</ccc>
+    <saldo>0</saldo>
+    <fechaApertura>2019-11-26T00:00:00+01:00</fechaApertura>
+    <interesMensual>0</interesMensual>
+    <depositos>
+      <movimiento>
+        <cantidad>3423</cantidad>
+        <fecha>27/11/2019 12:25:14</fecha>
+        <cliente>
+          <dni></dni>
+          <nombre>pepe</nombre>
+          <telefono></telefono>
+          <email></email>
+          <direccionPostal></direccionPostal>
+        </cliente>
+      </movimiento>
+    </depositos>
+    <retiradas>
+      <movimiento>
+        <cantidad>23232</cantidad>
+        <fecha>27/11/2019 12:25:25</fecha>
+        <cliente>
+          <dni></dni>
+          <nombre>Maria</nombre>
+          <telefono></telefono>
+          <email></email>
+          <direccionPostal></direccionPostal>
+        </cliente>
+      </movimiento>
+    </retiradas>
+  </cuenta>
+  <cuenta>
+    <tipo>CORRIENTE</tipo>
+    <titulares />
+    <ccc>0</ccc>
+    <saldo>23423</saldo>
+    <fechaApertura>2019-11-27T00:00:00+01:00</fechaApertura>
+    <interesMensual>0</interesMensual>
+    <depositos />
+    <retiradas />
+  </cuenta>
+</cuentas>

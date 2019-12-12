@@ -24,6 +24,16 @@ namespace App_Gestion_Bancaria.Core.Clases
 
         public Cuenta() { }
 
+        public Cuenta(string CCC)
+        {
+            this.CCC = CCC;
+            this.FechaApertura = DateTime.Today;
+            this.Depositos = new List<Movimiento>();
+            this.Retiradas = new List<Movimiento>();
+            this.Titulares = new List<Cliente>();
+
+        }
+
         public XElement ToXML()
         {
             XElement titulares = new XElement("titulares");
