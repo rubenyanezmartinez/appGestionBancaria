@@ -15,10 +15,12 @@ namespace Proyectos.Ui
         public TransferenciaView View { get; private set; }
         public GestorTransferencias GestorTransferencias { get; private set; }
         public GestorCuentas GestorCuentas { get; private set; }
-        public TransferenciaController(GestorTransferencias gestorTransferencias, GestorCuentas gestorCuentas)
+        public GestorClientes gestorClientes { get; private set; }
+        public TransferenciaController(GestorTransferencias gestorTransferencias, GestorCuentas gestorCuentas, GestorClientes gestorClientes)
         {
             this.GestorTransferencias = gestorTransferencias;
             this.GestorCuentas = gestorCuentas;
+            this.gestorClientes = gestorClientes;
             this.View = new TransferenciaView(this.GestorTransferencias.Transferencias);
             this.IniciarBotones();
         }
@@ -42,9 +44,14 @@ namespace Proyectos.Ui
         {
             string Tipo = this.View.Tipo.Text;
             Cuenta CCCOrigen = GestorCuentas.GetCuentaByCCC(this.View.CCCOrigen.Text);
-            Cuenta CCCDestino = GestorCuentas.GetCuentaByCCC(this.View.CCCOrigen.Text);
+            Cuenta CCCDestino = GestorCuentas.GetCuentaByCCC(this.View.CCCDestino.Text);
             double Importe;
             Double.TryParse(this.View.Importe.Text, out Importe);
+
+            if (Tipo == "")
+            {
+                Tipo = "puntual";
+            }
 
             if (CCCOrigen == null)
             {
@@ -67,7 +74,7 @@ namespace Proyectos.Ui
                     Id = (GestorTransferencias.Transferencias.Last().Id) + 1;
                 }
 
-                this.GestorTransferencias.AddTransferencia(new Transferencia(Id, Tipo, CCCOrigen, CCCDestino, Importe, DateTime.Today));
+                this.GestorTransferencias.AddTransferencia(new Transferencia(Id, Tipo, CCCOrigen, CCCDestino, Importe, DateTime.Now));
 
                 this.View.GetTransferenciasMainPanel(this.GestorTransferencias);
             }
@@ -104,9 +111,13 @@ namespace Proyectos.Ui
 
             string Tipo = this.View.Tipo.Text;
             Cuenta CCCOrigen = GestorCuentas.GetCuentaByCCC(this.View.CCCOrigen.Text);
-            Cuenta CCCDestino = GestorCuentas.GetCuentaByCCC(this.View.CCCOrigen.Text);
+            Cuenta CCCDestino = GestorCuentas.GetCuentaByCCC(this.View.CCCDestino.Text);
             double Importe;
             Double.TryParse(this.View.Importe.Text, out Importe);
+            if (Tipo == "")
+            {
+                Tipo = "puntual";
+            }
 
             if (CCCOrigen == null)
             {
@@ -124,10 +135,12 @@ namespace Proyectos.Ui
             {
                 Transferencia transferenciaModificada = new Transferencia(
                     transferenciaSeleccionada.Id,
-                    Tipo, CCCOrigen,
+                    Tipo, 
+                    CCCOrigen,
                     CCCDestino,
                     Importe,
-                    DateTime.Today
+                    /*DateTime.Now*/
+                    transferenciaSeleccionada.Fecha
                 );
 
                 this.GestorTransferencias.Modificar(transferenciaModificada);

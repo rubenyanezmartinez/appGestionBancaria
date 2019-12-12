@@ -6,6 +6,7 @@ using App_Gestion_Bancaria.Core.Gestores;
 using App_Gestion_Bancaria.Core.Clases;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Graficos.UI;
 
 namespace Proyectos.Ui
 {
@@ -16,11 +17,10 @@ namespace Proyectos.Ui
         public ClienteView View { get; private set; }
         public GestorClientes Gestor { get; private set; }
 
-        public ClienteController()
+        public ClienteController(GestorClientes gestor)
         {
-            this.Gestor = new GestorClientes();
-            this.Gestor.RecuperarClientes();
-            this.View = new ClienteView(this.Gestor);
+            this.Gestor = gestor;
+            this.View = new ClienteView(this.Gestor.ContenedorClientes);
             this.IniciarBotones();
         }
 
@@ -30,8 +30,99 @@ namespace Proyectos.Ui
             this.View.botonDeleteCliente.Click += new System.EventHandler(accionDeleteCliente);
             this.View.botonEditCliente.Click += new System.EventHandler(accionEditCliente);
             this.View.botonCloseCliente.Click += new System.EventHandler(accionCloseSave);
+            this.View.botonVerDetalles.Click += new System.EventHandler(accionVerDetalles);
+            this.View.botonVerProductos.Click += new System.EventHandler(accionVerProductos);
+            this.View.botonBuscar.Click += new System.EventHandler(accionBuscar);
         }
 
+        private void accionBuscar(object sender, System.EventArgs e)
+        {
+            string dni = this.View.Buscar.Text;
+
+            if (dni.Equals(""))
+            {
+                this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+                this.IniciarBotones();
+            }
+
+            else
+            {
+                List<Cliente> clientesFiltrados = new List<Cliente>();
+                Cliente clienteRecuperador = this.Gestor.ConsultarPorDni(dni);
+                clientesFiltrados.Add(clienteRecuperador);
+
+                if (clienteRecuperador != null)
+                {
+                    this.View.ClienteViewMethod(clientesFiltrados);
+                    this.IniciarBotones();
+                }
+                else
+                {
+                    this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+                    this.IniciarBotones();
+                }
+            }
+
+        }
+
+        private void accionVerDetalles(object sender, System.EventArgs e)
+        {
+            DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TablaClientes.SelectedRows;
+            if (filasSeleccionadas != null)
+            {
+                try
+                {
+                    int indiceTabla = filasSeleccionadas[0].Index;
+                    if (indiceTabla < this.Gestor.ContenedorClientes.Count)
+                    {
+                        Cliente clienteRecuperado = this.Gestor.ContenedorClientes[indiceTabla];
+
+                        new GraficoResumenSaldosClienteController(clienteRecuperado).View.Show();
+
+                    }
+                }
+                catch (Exception)
+                {
+                    this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+                    this.IniciarBotones();
+                }
+
+
+            }
+
+            this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+            this.IniciarBotones();
+        }
+
+        private void accionVerProductos(object sender, System.EventArgs e)
+        {
+            DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TablaClientes.SelectedRows;
+            if (filasSeleccionadas != null)
+            {
+                try
+                {
+                    int indiceTabla = filasSeleccionadas[0].Index;
+                    if (indiceTabla < this.Gestor.ContenedorClientes.Count)
+                    {
+                        Cliente clienteRecuperado = this.Gestor.ContenedorClientes[indiceTabla];
+
+
+                        new ProductosPersonaController(clienteRecuperado).View.Show();
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+                    this.IniciarBotones();
+                }
+
+
+            }
+
+            this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+            this.IniciarBotones();
+        }
 
         private void accionAddCliente(object sender, System.EventArgs e)
         {
@@ -50,7 +141,7 @@ namespace Proyectos.Ui
 
             if (dniRecuperado.Equals("") || telefonoRecuperado.Equals("") || emailRecuperado.Equals("") || nombreRecuperado.Equals("") || direccionPostalRecuperada.Equals(""))
             {
-                this.View.BuiltError("Ningún campo puede estar vacío", this.Gestor);
+                this.View.BuiltError("Ningún campo puede estar vacío", this.Gestor.ContenedorClientes);
                 this.IniciarBotones();
             }
             else
@@ -59,12 +150,12 @@ namespace Proyectos.Ui
 
                 if (!noExiste)
                 {
-                    this.View.BuiltError("Los campos DNI, telefono y email deben ser únicos", this.Gestor);
+                    this.View.BuiltError("Los campos DNI, telefono y email deben ser únicos", this.Gestor.ContenedorClientes);
                     this.IniciarBotones();
                 }
                 else
                 {
-                    this.View.ClienteViewMethod(this.Gestor);
+                    this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
                     this.IniciarBotones();
                 }
             }
@@ -81,7 +172,7 @@ namespace Proyectos.Ui
 
             if (dniRecuperado.Equals("") || telefonoRecuperado.Equals("") || emailRecuperado.Equals("") || nombreRecuperado.Equals("") || direccionPostalRecuperada.Equals(""))
             {
-                this.View.BuiltError("Ningún campo puede estar vacío", this.Gestor);
+                this.View.BuiltError("Ningún campo puede estar vacío", this.Gestor.ContenedorClientes);
                 this.IniciarBotones();
             }
             else
@@ -89,7 +180,7 @@ namespace Proyectos.Ui
                 
                 this.Gestor.Editar(dniRecuperado, nombreRecuperado, telefonoRecuperado, emailRecuperado, direccionPostalRecuperada);
 
-                this.View.ClienteViewMethod(this.Gestor);
+                this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
                 this.IniciarBotones();
             }
 
@@ -97,7 +188,7 @@ namespace Proyectos.Ui
 
         private void accionVolver(object sender, System.EventArgs e)
         {
-            this.View.ClienteViewMethod(this.Gestor);
+            this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
             this.IniciarBotones();
         }
 
@@ -105,29 +196,53 @@ namespace Proyectos.Ui
         private void accionDeleteCliente(object sender, System.EventArgs e)
         {
             DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TablaClientes.SelectedRows;
-            int indiceTabla = filasSeleccionadas[0].Index;
-
-            Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
-
-            if (this.View.BuiltDeleteCliente("¿Seguro que desea eliminar el cliente con DNI " + clienteSeleccionado.Dni
-                + " ?"))
+            if (filasSeleccionadas != null)
             {
-                this.Gestor.Eliminar(clienteSeleccionado.Dni);
+                try
+                {
+                    int indiceTabla = filasSeleccionadas[0].Index;
+                    if (indiceTabla < this.Gestor.ContenedorClientes.Count)
+                    {
+                        Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
+
+                        if (this.View.BuiltDeleteCliente("¿Seguro que desea eliminar el cliente con DNI " + clienteSeleccionado.Dni
+                            + " ?"))
+                        {
+                            this.Gestor.Eliminar(clienteSeleccionado.Dni);
+                        }
+                    }
+                }catch(Exception)
+                {
+                    this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+                    this.IniciarBotones();
+                }
+
+                
             }
-            this.View.ClienteViewMethod(this.Gestor);
+            
+            this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
             this.IniciarBotones();
         }
 
         private void accionEditCliente(object sender, System.EventArgs e)
         {
             DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TablaClientes.SelectedRows;
-            int indiceTabla = filasSeleccionadas[0].Index;
+            
+            try
+            {
+                int indiceTabla = filasSeleccionadas[0].Index;
+                Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
 
-            Cliente clienteSeleccionado = this.Gestor.ContenedorClientes[indiceTabla];
+                this.View.BuiltEditCliente(clienteSeleccionado);
+                this.View.BotonEdit.Click += new System.EventHandler(accionEdit);
+                this.View.BotonVolver.Click += new System.EventHandler(accionVolver);
+            }
+            catch (Exception)
+            {
+                this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
+                this.IniciarBotones();
+            }
 
-            this.View.BuiltEditCliente(clienteSeleccionado);
-            this.View.BotonEdit.Click += new System.EventHandler(accionEdit);
-            this.View.BotonVolver.Click += new System.EventHandler(accionVolver);
         }
 
         private void accionCloseSave(object sender, System.EventArgs e)

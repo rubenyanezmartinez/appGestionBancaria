@@ -35,6 +35,26 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Chart.Controls.4.7.2046\lib\net35\System.Web.DataVisualization.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DataVisualization.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Chart.Controls.4.7.2046\lib\net35\System.Web.DataVisualization.Design.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Chart.Controls.4.7.2046\lib\net35\System.Windows.Forms.DataVisualization.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Chart.Controls.4.7.2046\lib\net35\System.Windows.Forms.DataVisualization.Design.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +74,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ui\busquedaTransferenciaController.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ui\busquedaTransferenciasView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ui\Chart.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Ui\ClienteController.cs" />
     <Compile Include="Ui\ClienteView.cs">
       <SubType>Form</SubType>
@@ -61,6 +90,30 @@
     <Compile Include="Ui\CuentaController.cs" />
     <Compile Include="Ui\CuentaView.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ui\GraficoResumenCuenta.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ui\GraficoResumenCuentaController.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ui\GraficoResumenCuentaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ui\GraficoResumenSaldosCliente.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ui\GraficoResumenSaldosClienteController.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ui\GraficoResumenSaldosClienteView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ui\Ingresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ui\Ingresos.Designer.cs">
+      <DependentUpon>Ingresos.cs</DependentUpon>
     </Compile>
     <Compile Include="Ui\ProductosPersonaController.cs" />
     <Compile Include="Ui\ProductosPersonaView.cs">
@@ -79,6 +132,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Ui\Ingresos.resx">
+      <DependentUpon>Ingresos.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

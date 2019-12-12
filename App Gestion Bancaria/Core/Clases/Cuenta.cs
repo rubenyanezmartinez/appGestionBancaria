@@ -75,25 +75,29 @@ namespace App_Gestion_Bancaria.Core.Clases
         {
             String titularesString = "";
 
-            foreach (Cliente titular in this.Titulares)
+            if (this.Titulares != null)
             {
-                titularesString += titular.Nombre + ", ";
+                foreach (Cliente titular in this.Titulares)
+                {
+                    titularesString += titular.Nombre + ", ";
+                }
             }
-
             String depositosString = "";
-
-            foreach (Movimiento deposito in this.Depositos)
+            if (this.Titulares != null)
             {
-                depositosString += deposito.Cantidad + ", ";
+                foreach (Movimiento deposito in this.Depositos)
+                {
+                    depositosString += deposito.Cantidad + ", ";
+                }
             }
-
             String retiradasString = "";
-
-            foreach (Movimiento retirada in this.Retiradas)
+            if (this.Retiradas != null)
             {
-                retiradasString += retirada.Cantidad + ", ";
+                foreach (Movimiento retirada in this.Retiradas)
+                {
+                    retiradasString += retirada.Cantidad + ", ";
+                }
             }
-
             return "CUENTA " + this.Tipo.ToString() + ": " +
                 "\n\tCCC: " + this.CCC +
                 "\n\tSaldo: " + this.Saldo +

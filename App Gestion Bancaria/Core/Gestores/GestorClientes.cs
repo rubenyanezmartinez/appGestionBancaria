@@ -13,6 +13,12 @@ namespace App_Gestion_Bancaria.Core.Gestores
         public const string EtiquetaFichero = "clientes.xml";
         public List<Cliente> ContenedorClientes { get; private set; }
 
+        public GestorClientes ()
+        {
+            this.ContenedorClientes = new List<Cliente>();
+            RecuperarClientes();
+        }
+
         //Recupera los datos del fichero XML en caso de existir. Devuelve T en caso de existir clientes almacenados.
         public void RecuperarClientes()
         {

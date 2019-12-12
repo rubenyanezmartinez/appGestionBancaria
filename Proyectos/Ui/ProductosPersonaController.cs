@@ -2,55 +2,100 @@
 using App_Gestion_Bancaria.Core.Gestores;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Proyectos.Ui
 {
     class ProductosPersonaController
     {
         public ProductosPersonaView View {get;set;}
-
-        public ProductosPersonaController() {
+        public ProductosPersonaController(Cliente cliente) {
             View = new ProductosPersonaView();
-            this.View.BotonBusqueda.Click += (sender, e) => this.BuscarCliente();
+            this.BuscarCliente(cliente);
         }
-        private void BuscarCliente() {
-            var buscaPor = View.selectBusqueda.SelectedIndex;
-            GestorClientes gestorClientes=new GestorClientes();
-            gestorClientes.RecuperarClientes();
-            var cliente = new Cliente(null,null,null,null,null);
-            switch (buscaPor) {
-                case 0: 
-                     cliente= gestorClientes.ConsultarPorDni(this.View.Input.Text);
-                    break;
-                case 1:
-                     cliente = gestorClientes.ConsultarPorTelefono(this.View.Input.Text);
-                    break;
-                case 2:
-                     cliente = gestorClientes.ConsultarPorEmail(this.View.Input.Text);
-                    break;
-            }
-            GestorCuentas gestorCuentas = new GestorCuentas();
-            GestorTransferencias gestorTransferencias = new GestorTransferencias();
+        private void BuscarCliente(Cliente cliente)
+        {     
+            if (cliente != null)
+            {
+                GestorTransferencias gestorTransferencias = new GestorTransferencias();
 
-            List<Cuenta> cuentasCliente = gestorCuentas.Cuentas.FindAll(x=>x.Titulares.Contains(cliente));
-            List<Transferencia> transferenciasCliente = new List<Transferencia>();
-            List<List<Movimiento>> depositosCliente = new List<List<Movimiento>>();
-            List<List<Movimiento>> retiradasCliente = new List<List<Movimiento>>();
-            foreach (var cuenta in cuentasCliente){
-                var transferencia = gestorTransferencias.Transferencias.Find(x => x.CCCOrigen == cuenta);
-                if (transferencia != null) {
-                    transferenciasCliente.Add(transferencia);
+                List<Cuenta> cuentasCliente = getCuentasByCliente(cliente);
+                List<Transferencia> transferenciasClienteEmitidas = new List<Transferencia>();
+                List<Transferencia> transferenciasClienteRecibidas = new List<Transferencia>();
+                foreach (var cuenta in cuentasCliente)
+                {
+                    var listaTransferenciasEmitidas = gestorTransferencias.Transferencias.FindAll(x => x.CCCOrigen.CCC == cuenta.CCC);
+
+                    if (listaTransferenciasEmitidas != null)
+                    {
+                        foreach (var transferencia in listaTransferenciasEmitidas) {
+
+                            transferenciasClienteEmitidas.Add(transferencia);
+                            }
+                    }
+
+                    var listaTransferenciasRecibidas = gestorTransferencias.Transferencias.FindAll(x => x.CCCDestino.CCC == cuenta.CCC);
+
+                    if (listaTransferenciasRecibidas != null)
+                    {
+                        foreach (var transferencia in listaTransferenciasRecibidas)
+                        {
+
+                            transferenciasClienteRecibidas.Add(transferencia);
+                        }
+                    }
+
                 }
-                depositosCliente.Add(cuenta.Depositos);
-                retiradasCliente.Add(cuenta.Retiradas);
-             }
 
-            this.View.TablaTransferencias.DataSource = transferenciasCliente;
-            this.View.TablaCuentas.DataSource = transferenciasCliente;
+                this.View.TablaTransferenciasEmitidas.DataSource = transferenciasClienteEmitidas;
+                this.View.TablaTransferenciasRecibidas.DataSource = transferenciasClienteRecibidas;
+                this.View.TablaCuentas.DataSource = cuentasCliente;
+                this.View.search(cliente.Nombre,cuentasCliente);
+                
+            }
+            else {
+               
+                MessageBox.Show("No se ha encontrado ningun cliente con ese ",
+                    "Error en la busqueda", 
+                    MessageBoxButtons.OK);
+            }
+        }
 
+        private void refreshForm()
+        {
+            FormCollection fc = Application.OpenForms;
+            foreach (var form in fc)
+            {
+                if (form == FormMovimientos)
+                {
+                    FormMovimientos.Dispose();
+                    break;
+                }
+            }
+            FormMovimientos = new Form()
+            {
+                Size = new Size(1000, 1000)
+            };
+        }
+
+        private Form FormMovimientos{ get;set;} = new Form()
+        {
+            Size = new Size(1000, 1000)
+        };
+
+        private List<Cuenta> getCuentasByCliente(Cliente cliente) {
+            List<Cuenta> toret = new List<Cuenta>();
+            GestorCuentas gestorCuentas = new GestorCuentas();
+            foreach (var cuenta in gestorCuentas.Cuentas) {
+                if (cuenta.Titulares.FindAll(x => x.Dni.Equals(cliente.Dni)).Count>0) {
+                    toret.Add(cuenta);
+                }
+            }
+            return toret;
         }
     }
 }
