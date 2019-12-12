@@ -245,6 +245,8 @@ namespace Proyectos.Ui
             toret.Width = 200;
             toret.FlatStyle = FlatStyle.Flat;
             toret.Location = new Point(25, 16);
+            toret.Height = 30;
+            toret.Font = new Font("Arial", 12, FontStyle.Regular);
 
             this.BotonAdd = toret;
 
@@ -257,6 +259,8 @@ namespace Proyectos.Ui
             toret.Width = 200;
             toret.FlatStyle = FlatStyle.Flat;
             toret.Location = new Point(25, 16);
+            toret.Height = 30;
+            toret.Font = new Font("Arial", 12, FontStyle.Regular);
 
             this.BotonEdit = toret;
 
@@ -269,6 +273,8 @@ namespace Proyectos.Ui
             toret.Width = 200;
             toret.FlatStyle = FlatStyle.Flat;
             toret.Location = new Point(240, 16);
+            toret.Height = 30;
+            toret.Font = new Font("Arial", 12, FontStyle.Regular);
 
             this.BotonVolver = toret;
 
@@ -348,15 +354,19 @@ namespace Proyectos.Ui
             {
                 Dock = WFrms.DockStyle.Bottom,
                 Width = 9,
+                Height = 30,
+                Font = new Font("Arial", 12, FontStyle.Regular),
                 MaxLength = 9
             };
 
             this.botonBuscar = new Button();
 
-            botonBuscar.Location = new Point(150, 80);
-            botonBuscar.Width = 50;
+            botonBuscar.Location = new Point(100, 74);
+            botonBuscar.Width = 100;
             botonBuscar.Text = "Buscar";
             botonBuscar.FlatStyle = FlatStyle.Flat;
+            botonBuscar.Height = 27;
+            botonBuscar.Font = new Font("Arial", 12, FontStyle.Regular);
 
             panel.Controls.Add(this.botonBuscar);
             panel.Controls.Add(this.Buscar);
@@ -478,6 +488,8 @@ namespace Proyectos.Ui
 
             botonAddCliente.Location = new Point(25, 16);
             botonAddCliente.Width = 200;
+            botonAddCliente.Height = 30;
+            botonAddCliente.Font = new Font("Arial", 12, FontStyle.Regular);
             botonAddCliente.Text = "Añadir cliente";
             botonAddCliente.FlatStyle = FlatStyle.Flat;
 
@@ -486,8 +498,10 @@ namespace Proyectos.Ui
 
             botonVerDetalles = new Button();
 
-            botonVerDetalles.Location = new Point(25, 46);
+            botonVerDetalles.Location = new Point(25, 49);
             botonVerDetalles.Width = 200;
+            botonVerDetalles.Height = 30;
+            botonVerDetalles.Font = new Font("Arial", 12, FontStyle.Regular);
             botonVerDetalles.Text = "Ver detalles";
             botonVerDetalles.FlatStyle = FlatStyle.Flat;
 
@@ -497,8 +511,10 @@ namespace Proyectos.Ui
 
             botonVerProductos = new Button();
 
-            botonVerProductos.Location = new Point(240, 46);
+            botonVerProductos.Location = new Point(240, 49);
             botonVerProductos.Width = 200;
+            botonVerProductos.Height = 30;
+            botonVerProductos.Font = new Font("Arial", 12, FontStyle.Regular);
             botonVerProductos.Text = "Ver productos";
             botonVerProductos.FlatStyle = FlatStyle.Flat;
 
@@ -510,6 +526,8 @@ namespace Proyectos.Ui
 
             botonDeleteCliente.Location = new Point(240, 16);
             botonDeleteCliente.Width = 200;
+            botonDeleteCliente.Height = 30;
+            botonDeleteCliente.Font = new Font("Arial", 12, FontStyle.Regular);
             botonDeleteCliente.Text = "Eliminar cliente";
             botonDeleteCliente.FlatStyle = FlatStyle.Flat;
 
@@ -520,6 +538,8 @@ namespace Proyectos.Ui
 
             botonEditCliente.Location = new Point(455, 16);
             botonEditCliente.Width = 200;
+            botonEditCliente.Height = 30;
+            botonEditCliente.Font = new Font("Arial", 12, FontStyle.Regular);
             botonEditCliente.Text = "Modificar cliente";
             botonEditCliente.FlatStyle = FlatStyle.Flat;
 
@@ -527,8 +547,10 @@ namespace Proyectos.Ui
 
             botonCloseCliente = new Button();
 
-            botonCloseCliente.Location = new Point(455, 46);
+            botonCloseCliente.Location = new Point(455, 49);
             botonCloseCliente.Width = 200;
+            botonCloseCliente.Height = 30;
+            botonCloseCliente.Font = new Font("Arial", 12, FontStyle.Regular);
             botonCloseCliente.Text = "Volver";
             botonCloseCliente.FlatStyle = FlatStyle.Flat;
 
@@ -555,22 +577,27 @@ namespace Proyectos.Ui
             this.TablaClientes.Columns[0].Name = "DNI";
             this.TablaClientes.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; 
             this.TablaClientes.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
+            this.TablaClientes.Columns[0].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
 
             this.TablaClientes.Columns[1].Name = "NOMBRE";
             this.TablaClientes.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             this.TablaClientes.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+            this.TablaClientes.Columns[1].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
 
             this.TablaClientes.Columns[2].Name = "TELEFONO";
             this.TablaClientes.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             this.TablaClientes.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+            this.TablaClientes.Columns[2].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
 
             this.TablaClientes.Columns[3].Name = "EMAIL";
             this.TablaClientes.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             this.TablaClientes.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
+            this.TablaClientes.Columns[3].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
 
             this.TablaClientes.Columns[4].Name = "DIRECCION POSTAL";
             this.TablaClientes.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             this.TablaClientes.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
+            this.TablaClientes.Columns[4].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
 
             foreach (var cliente in contenedor)
             {
@@ -581,6 +608,8 @@ namespace Proyectos.Ui
                     {
                         aux = true;
                     }
+
+                    row.Height = 30;
                 }
                 if (!aux)
                     this.TablaClientes.Rows.Add(cliente.Dni, cliente.Nombre, cliente.Telefono, cliente.Email, cliente.DireccionPostal);
