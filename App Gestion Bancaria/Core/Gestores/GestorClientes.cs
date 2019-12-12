@@ -15,6 +15,7 @@ namespace App_Gestion_Bancaria.Core.Gestores
 
         public GestorClientes ()
         {
+            this.ContenedorClientes = new List<Cliente>();
             RecuperarClientes();
         }
 
