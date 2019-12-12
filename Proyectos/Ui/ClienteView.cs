@@ -34,6 +34,7 @@ namespace Proyectos.Ui
 
         public ClienteView(List<Cliente> contenedor)
         {
+            this.WindowState = FormWindowState.Maximized;
             mainPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
