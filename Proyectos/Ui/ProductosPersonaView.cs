@@ -42,12 +42,35 @@ namespace Proyectos.Ui
 
             pnl.Controls.Add(TablaCuentas);
             pnl.Controls.Add(PanelMovimientos);
+
+            Panel pnlAux = new Panel
+            {
+                AutoSize = true,
+                Dock = DockStyle.Bottom,
+            };
+
+            this.botonCloseProductos.Location = new Point((pnlAux.Width - botonCloseProductos.Width) / 2, (pnlAux.Height - botonCloseProductos.Height) / 2);
+
+
+
+            pnlAux.Controls.Add(botonCloseProductos);
+
             mainPanel.Controls.Add(pnl);
-            
+            pnl.Controls.Add(pnlAux);
+
+
 
             this.Controls.Add(mainPanel);
         }
         Label lbTitulo = new Label() { Text = "Productos por Persona", Size = new System.Drawing.Size(1000, 1000), Font = new Font("Arial", 25, FontStyle.Regular) };
+        public Button botonCloseProductos = new Button()
+        {
+            Size = new Size(100, 25),
+            Text = "Volver",
+            Anchor = AnchorStyles.None,
+            FlatStyle = FlatStyle.Flat,
+            Font = new Font("Arial", 10, FontStyle.Regular),
+        };
 
         public void search(string nombreCliente,List<Cuenta> cuentasCliente) {
             lbTitulo.Text += (": " + nombreCliente);

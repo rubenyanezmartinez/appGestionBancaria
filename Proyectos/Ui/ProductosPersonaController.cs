@@ -12,11 +12,25 @@ namespace Proyectos.Ui
 {
     class ProductosPersonaController
     {
+        private bool clickVolver = false;
         public ProductosPersonaView View {get;set;}
         public ProductosPersonaController(Cliente cliente) {
             View = new ProductosPersonaView();
             this.BuscarCliente(cliente);
+            this.View.FormClosing += new FormClosingEventHandler(evitarCerrar);
+            this.View.botonCloseProductos.Click += new System.EventHandler(cerrar);
         }
+        private void cerrar(object sender, EventArgs e)
+        {
+            clickVolver = true;
+            this.View.Close();
+        }
+
+        private void evitarCerrar(object sender, FormClosingEventArgs e) {
+            if (!clickVolver) { e.Cancel = true; }
+            
+        }
+
         private void BuscarCliente(Cliente cliente)
         {     
             if (cliente != null)
