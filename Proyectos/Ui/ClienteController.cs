@@ -105,10 +105,7 @@ namespace Proyectos.Ui
                     if (indiceTabla < this.Gestor.ContenedorClientes.Count)
                     {
                         Cliente clienteRecuperado = this.Gestor.ContenedorClientes[indiceTabla];
-
-
                         new ProductosPersonaController(clienteRecuperado).View.Show();
-
                     }
                 }
                 catch (Exception ex)
