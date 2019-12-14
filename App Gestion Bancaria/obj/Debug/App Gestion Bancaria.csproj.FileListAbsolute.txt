@@ -1,6 +1,5 @@
 E:\proyectos_C#\PracitcasDIA\Trabajo\App Gestion Bancaria\bin\Debug\App Gestion Bancaria.exe.config
 E:\proyectos_C#\PracitcasDIA\Trabajo\App Gestion Bancaria\bin\Debug\App Gestion Bancaria.exe
 E:\proyectos_C#\PracitcasDIA\Trabajo\App Gestion Bancaria\bin\Debug\App Gestion Bancaria.pdb
-E:\proyectos_C#\PracitcasDIA\Trabajo\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.csprojAssemblyReference.cache
 E:\proyectos_C#\PracitcasDIA\Trabajo\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.exe
 E:\proyectos_C#\PracitcasDIA\Trabajo\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.pdb
