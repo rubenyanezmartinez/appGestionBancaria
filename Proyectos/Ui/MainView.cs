@@ -10,11 +10,10 @@ using App_Gestion_Bancaria.Core.Clases;
 
 namespace Proyectos.Ui
 {
-    using wf = System.Windows.Forms;
-    class MainView : wf.Form
+    class MainView : Form
     {
         private TableLayoutPanel mainPanel;
-        public wf.Button gClientes, gCuentas, gTransferencias;
+        public Button gClientes, gCuentas, gTransferencias;
 
         public MainView()
         {
@@ -28,36 +27,70 @@ namespace Proyectos.Ui
             this.mainPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
-                Width = 200,
-                Height = 30,
-                Font = new Font("Arial", 12, FontStyle.Regular)
+            };
+            Label title = new Label
+            {
+                Text = "APP GESTION BANCARIA",
+                Width = 400,
+                Height = 60,
+                Font = new Font("Arial", 24, FontStyle.Regular)
             };
 
             this.gClientes = new Button
             {
                 Text = "Gestionar Clientes",
-                Width = 200,
-                Height = 30,
-                Font = new Font("Arial", 12, FontStyle.Regular)
+                Width = 400,
+                Height = 60,
+                Font = new Font("Arial", 24, FontStyle.Regular)
             };
             this.gCuentas = new Button
             {
                 Text = "Gestionar Cuentas",
-                Width = 200,
-                Height = 30,
-                Font = new Font("Arial", 12, FontStyle.Regular)
+                Width = 400,
+                Height = 60,
+                Font = new Font("Arial", 24, FontStyle.Regular)
             };
             this.gTransferencias = new Button
             {
                 Text = "Gestionar Transferencias",
-                Width = 200,
-                Height = 30,
-                Font = new Font("Arial", 12, FontStyle.Regular)
+                Width = 400,
+                Height = 60,
+                Font = new Font("Arial", 24, FontStyle.Regular)
             };
 
-            this.mainPanel.Controls.Add(this.gClientes);
-            this.mainPanel.Controls.Add(this.gCuentas);
-            this.mainPanel.Controls.Add(this.gTransferencias);
+            FlowLayoutPanel flp = new FlowLayoutPanel()
+            {
+                Anchor = AnchorStyles.None,
+                AutoSize = true
+            };
+
+            FlowLayoutPanel flp1 = new FlowLayoutPanel()
+            {
+                Anchor = AnchorStyles.None,
+                AutoSize = true
+            };
+
+            FlowLayoutPanel flp2 = new FlowLayoutPanel()
+            {
+                Anchor = AnchorStyles.None,
+                AutoSize = true
+            };
+
+            FlowLayoutPanel flp3 = new FlowLayoutPanel()
+            {
+                Anchor = AnchorStyles.None,
+                AutoSize = true
+            };
+
+            flp.Controls.Add(title);
+            flp1.Controls.Add(this.gClientes);
+            flp2.Controls.Add(this.gCuentas);
+            flp3.Controls.Add(this.gTransferencias);
+
+            this.mainPanel.Controls.Add(flp);
+            this.mainPanel.Controls.Add(flp1);
+            this.mainPanel.Controls.Add(flp2);
+            this.mainPanel.Controls.Add(flp3);
 
             this.Controls.Add(mainPanel);
         }
