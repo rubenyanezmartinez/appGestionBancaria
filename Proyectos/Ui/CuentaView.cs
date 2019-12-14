@@ -62,6 +62,8 @@ namespace Proyectos.Ui
 
             this.MainPanel.Controls.Add(movimientosPanel);
 
+            this.MainPanel.Controls.Add(BuildTitularesTable(cuenta.Titulares));
+
             var buttonPanel = new Panel { Dock = DockStyle.Bottom };
             buttonPanel.Controls.Add(BuildButtonVolver());
             buttonPanel.Controls.Add(BuildGuardarButton());
@@ -78,7 +80,7 @@ namespace Proyectos.Ui
             this.Text = "Nuevo Movimiento: ";
             _ = isRetirada ? this.Text += "RETIRADA" : this.Text += "DEPÓSITO";
             this.MainPanel = new TableLayoutPanel { Dock = DockStyle.Fill };
-            this.MainPanel.Controls.Add(BuildClienteTextBox());
+            this.MainPanel.Controls.Add(BuildDniTextBox());
             this.MainPanel.Controls.Add(BuildCantidadNumeric());
             this.MainPanel.Controls.Add(BuildFechaMovimientoDate());
 
@@ -102,6 +104,49 @@ namespace Proyectos.Ui
             this.MainPanel.Controls.Add(buttonPanel);
 
             this.Controls.Add(this.MainPanel);
+        }
+
+        public void ShowAddTitular()
+        {
+            this.Controls.Clear();
+            this.Text = "Añadir titular";
+            this.MainPanel = new TableLayoutPanel { Dock = DockStyle.Fill };
+            this.MainPanel.Controls.Add(this.BuildDniTextBox());
+
+            Panel buttonPanel = new Panel { Dock = DockStyle.Bottom };
+            buttonPanel.Controls.Add(this.BuildConfirmarTitularButton());
+            buttonPanel.Controls.Add(this.BuildButtonVolver());
+
+            this.MainPanel.Controls.Add(buttonPanel);
+
+            this.Controls.Add(this.MainPanel);
+        }
+
+        private Panel BuildDniTextBox()
+        {
+            var pnl = new Panel { Dock = DockStyle.Top };
+            var label = new Label { Dock = DockStyle.Left, Text = "DNI del titular" };
+            this.DniTextBox = this.BuildTextBox("");
+
+            pnl.Controls.Add(label);
+            pnl.Controls.Add(this.DniTextBox);
+            pnl.MaximumSize = new Size(int.MaxValue, this.DniTextBox.Height * 2);
+
+            return pnl;
+        }
+
+        private Panel BuildConfirmarTitularButton()
+        {
+            var pnl = new Panel { Dock = DockStyle.Right };
+            this.ConfirmarTitularButton = new Button
+            {
+                Dock = DockStyle.Fill,
+                Text = "Añadir Titular"
+            };
+
+            pnl.Controls.Add(this.ConfirmarTitularButton);
+
+            return pnl;
         }
 
         private Panel BuildBorrarCuentaButton()
@@ -142,25 +187,6 @@ namespace Proyectos.Ui
             };
 
             pnl.Controls.Add(this.GuardarButton);
-
-            return pnl;
-        }
-
-        private Panel BuildClienteTextBox()
-        {
-            var lable = new Label
-            {
-                Dock = DockStyle.Left,
-                Text = "Cliente"
-            };
-
-            var pnl = new Panel { Dock = DockStyle.Top };
-
-            this.ClienteTextBox = BuildTextBox("");
-
-            pnl.Controls.Add(lable);
-            pnl.Controls.Add(this.ClienteTextBox);
-            pnl.MaximumSize = new Size(int.MaxValue, this.ClienteTextBox.Height * 2);
 
             return pnl;
         }
@@ -416,6 +442,51 @@ namespace Proyectos.Ui
             return pnl;
         }
 
+        private Panel BuildTitularesTable(List<Cliente> titulares)
+        {
+            var pnl = new WFrms.Panel { Dock = DockStyle.Top, Height = 150 };
+
+            this.TitularesTable = new DataGridView
+            {
+                Dock = DockStyle.Fill,
+                ColumnCount = 3,
+                AllowUserToAddRows = false,
+                AllowUserToDeleteRows = false,
+                ReadOnly = true,
+                ScrollBars = ScrollBars.Vertical,
+                SelectionMode = DataGridViewSelectionMode.FullRowSelect,
+                Location = new Point(25, 16),
+                Height = 100
+            };
+
+            this.TitularesTable.Columns[0].Name = "DNI";
+            this.TitularesTable.Columns[1].Name = "Nombre";
+            this.TitularesTable.Columns[2].Name = "Email";
+
+            foreach(Cliente titular in titulares)
+            {
+                this.TitularesTable.Rows.Add(titular.Dni, titular.Nombre, titular.Email);
+            }
+
+            this.AddTitularButton = new Button
+            {
+                Dock = DockStyle.Top,
+                Text = "Añadir titular"
+            };
+
+            this.RemoveTitularButton = new Button
+            {
+                Dock = DockStyle.Bottom,
+                Text = "Eliminar titular"
+            };
+
+            pnl.Controls.Add(this.AddTitularButton);
+            pnl.Controls.Add(this.TitularesTable);
+            pnl.Controls.Add(this.RemoveTitularButton);
+
+            return pnl;
+        }
+
         private Panel BuildTablaCuentas(List<Cuenta> cuentas)
         {
             var pnl = new Panel { Dock = DockStyle.Fill };
@@ -509,8 +580,6 @@ namespace Proyectos.Ui
 
         public Button AddDepositoButton;
 
-        public TextBox ClienteTextBox;
-
         public NumericUpDown CantidadNumeric;
 
         public DateTimePicker FechaMovimientoDate;
@@ -522,5 +591,15 @@ namespace Proyectos.Ui
         public Button SaveCuentaButton;
 
         public Button BorrarCuentaButton;
+
+        public DataGridView TitularesTable;
+
+        public Button AddTitularButton;
+
+        public Button RemoveTitularButton;
+
+        public TextBox DniTextBox;
+
+        public Button ConfirmarTitularButton;
     }
 }

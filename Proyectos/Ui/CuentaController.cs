@@ -2,6 +2,7 @@
 using App_Gestion_Bancaria.Core.Gestores;
 using App_Gestion_Bancaria.Core.Clases;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Proyectos.Ui
 {
@@ -27,6 +28,8 @@ namespace Proyectos.Ui
             this.View.ButtonVolver.Click += new System.EventHandler(AccionButtonVolver);
             this.View.AddRetiradaButton.Click += new System.EventHandler(AddRetirada);
             this.View.AddDepositoButton.Click += new System.EventHandler(AddDeposito);
+            this.View.AddTitularButton.Click += new System.EventHandler(AddTitular);
+            this.View.RemoveTitularButton.Click += new System.EventHandler(RemoveTitular);
             this.View.GuardarButton.Click += new System.EventHandler(CambiarCuenta);
         }
 
@@ -36,7 +39,55 @@ namespace Proyectos.Ui
             this.View.ButtonVolver.Click += new System.EventHandler(AccionButtonVolver);
             this.View.AddRetiradaButton.Click += new System.EventHandler(AddRetirada);
             this.View.AddDepositoButton.Click += new System.EventHandler(AddDeposito);
+            this.View.AddTitularButton.Click += new System.EventHandler(AddTitular);
+            this.View.RemoveTitularButton.Click += new System.EventHandler(RemoveTitular);
         }
+
+        private void IniciarBotonesAddTitular()
+        {
+            this.View.ButtonVolver.Click += new System.EventHandler(AccionButtonVolverMovimiento);
+            this.View.ConfirmarTitularButton.Click += new System.EventHandler(ConfirmarTitular);
+        }
+
+        private void ConfirmarTitular(object sender, System.EventArgs e)
+        {
+            GestorClientes gestorClientes = new GestorClientes();
+
+            Cliente clienteSeleccionado = gestorClientes.ConsultarPorDni(this.View.DniTextBox.Text);
+
+            if(clienteSeleccionado == null)
+            {
+                MessageBox.Show("El cliente no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else if( this.CuentaSeleccionada.Titulares.Where(x => x.Dni == clienteSeleccionado.Dni).Any())
+            {
+                MessageBox.Show("El cliente ya es titular de la cuenta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else
+            {
+                this.CuentaSeleccionada.Titulares.Add(clienteSeleccionado);
+                this.View.ShowDetalles(this.CuentaSeleccionada);
+                this.IniciarBotonesDetalles();
+            }
+        }
+
+        private void AddTitular(object sender, System.EventArgs e)
+        {
+            this.View.ShowAddTitular();
+            this.IniciarBotonesAddTitular();
+        }
+
+        private void RemoveTitular(object sender, System.EventArgs e)
+        {
+            DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TitularesTable.SelectedRows;
+
+            foreach(DataGridViewRow row in filasSeleccionadas)
+            {
+                this.Gestor.RemoveTitularByDni(this.CuentaSeleccionada.CCC, row.Cells[0].Value.ToString());
+            }
+
+            this.View.ShowDetalles(this.CuentaSeleccionada);
+            this.IniciarBotonesDetalles();
+        }
+
 
         private void AddCuenta(object sender, System.EventArgs e)
         {
@@ -64,9 +115,9 @@ namespace Proyectos.Ui
             this.CuentaSeleccionada.Tipo = (Cuenta.TipoCuenta)Enum.Parse(typeof(Cuenta.TipoCuenta), this.View.TipoCb.SelectedItem.ToString());
             this.CuentaSeleccionada.FechaApertura = this.View.FechaAperturaDatePicker.Value;
 
-            this.Gestor.Guardar();
             this.Gestor.Actualizar(this.CuentaSeleccionada);
-
+            this.Gestor.Guardar();
+            
             this.View.ShowIndex(this.Gestor);
             this.IniciarBotonesIndex();
         }
@@ -87,10 +138,21 @@ namespace Proyectos.Ui
 
         private void NewRetirada(object sender, System.EventArgs e)
         {
-            this.CuentaSeleccionada.Retiradas.Add(new Movimiento(Decimal.ToInt32(this.View.CantidadNumeric.Value), new Cliente("", this.View.ClienteTextBox.Text, "", "", ""), this.View.FechaMovimientoDate.Value));
-            this.View.ShowDetalles(this.CuentaSeleccionada);
-            this.View.AddRetiradaButton.Click -= new System.EventHandler(NewRetirada);
-            this.IniciarBotonesDetalles();
+            GestorClientes gestorClientes = new GestorClientes();
+            Cliente clienteRetirada = gestorClientes.ConsultarPorDni(this.View.DniTextBox.Text);
+
+            if(clienteRetirada == null)
+            {
+                MessageBox.Show("El cliente no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else
+            {
+                this.CuentaSeleccionada.Retiradas.Add(new Movimiento(Decimal.ToInt32(this.View.CantidadNumeric.Value), clienteRetirada, this.View.FechaMovimientoDate.Value));
+                this.View.ShowDetalles(this.CuentaSeleccionada);
+                this.View.AddRetiradaButton.Click -= new System.EventHandler(NewRetirada);
+                this.IniciarBotonesDetalles();
+            }
+
+            
         }
 
         private void AddDeposito(object sender, System.EventArgs e)
@@ -103,10 +165,21 @@ namespace Proyectos.Ui
 
         private void NewDeposito(object sender, EventArgs e)
         {
-            this.CuentaSeleccionada.Depositos.Add(new Movimiento(Decimal.ToInt32(View.CantidadNumeric.Value), new Cliente("", this.View.ClienteTextBox.Text, "", "", ""), this.View.FechaMovimientoDate.Value));
-            this.View.ShowDetalles(this.CuentaSeleccionada);
-            this.View.AddDepositoButton.Click -= new System.EventHandler(NewDeposito);
-            this.IniciarBotonesDetalles();
+            GestorClientes gestorClientes = new GestorClientes();
+            Cliente clienteDeposito = gestorClientes.ConsultarPorDni(this.View.DniTextBox.Text);
+
+            if (clienteDeposito == null)
+            {
+                MessageBox.Show("El cliente no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+
+                this.CuentaSeleccionada.Depositos.Add(new Movimiento(Decimal.ToInt32(View.CantidadNumeric.Value), clienteDeposito, this.View.FechaMovimientoDate.Value));
+                this.View.ShowDetalles(this.CuentaSeleccionada);
+                this.View.AddDepositoButton.Click -= new System.EventHandler(NewDeposito);
+                this.IniciarBotonesDetalles();
+            }
         }
 
         private void AccionButtonVolverMovimiento(object sender, EventArgs e)
