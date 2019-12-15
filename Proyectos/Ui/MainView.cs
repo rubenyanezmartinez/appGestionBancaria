@@ -18,8 +18,7 @@ namespace Proyectos.Ui
         public MainView()
         {
             this.WindowState = FormWindowState.Maximized;
-            this.Build();
-            
+            this.Build();      
         }
 
         public void Build()
@@ -27,6 +26,8 @@ namespace Proyectos.Ui
             this.mainPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
+                ColumnCount = 1,
+                RowCount = 5
             };
             Label title = new Label
             {

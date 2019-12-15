@@ -3,3 +3,4 @@ E:\proyectos_C#\PracitcasDIA\Trabajo\App Gestion Bancaria\bin\Debug\App Gestion 
 E:\proyectos_C#\PracitcasDIA\Trabajo\App Gestion Bancaria\bin\Debug\App Gestion Bancaria.pdb
 E:\proyectos_C#\PracitcasDIA\Trabajo\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.exe
 E:\proyectos_C#\PracitcasDIA\Trabajo\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.pdb
+E:\proyectos_C#\PracitcasDIA\Trabajo\App Gestion Bancaria\obj\Debug\App Gestion Bancaria.csprojAssemblyReference.cache
