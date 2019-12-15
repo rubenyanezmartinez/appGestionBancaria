@@ -50,6 +50,13 @@ namespace App_Gestion_Bancaria.Core.Gestores
         {
             return Cuentas.Where(x => x.CCC == ccc).FirstOrDefault();
         }
+
+        public void RemoveTitularByDni(String CCC, String dni)
+        {
+            Cuenta cuenta = this.GetCuentaByCCC(CCC);
+
+            cuenta.Titulares.Remove(cuenta.Titulares.Where(x => x.Dni == dni).FirstOrDefault());
+        }
     }
 
 
