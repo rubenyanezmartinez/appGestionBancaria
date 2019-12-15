@@ -67,16 +67,16 @@ namespace Proyectos.Ui
 
 
             movimientosGenerales(movimientos,cuentas,transferencias);
-            
-         
+            movimientosPorCliente(cliente1, movimientos, cuentas, transferencias);
+
         }
-        void operar()
+        /*void operar()
         {
             var array = clientes.ToArray();
             var selected = combo.SelectedIndex;
            
-            movimientosPorCliente(array[selected], movimientos, cuentas, transferencias);
-        }
+            
+        }*/
 
       
 
@@ -84,9 +84,9 @@ namespace Proyectos.Ui
         void movimientosGenerales(List<Movimiento> movimientos, List<Cuenta> cuentas, List<Transferencia> transferencias)
         {
 
-            chart3.Titles.Add("Ingresos Generales");
-            chart3.Series["Series1"].LegendText = "Depositos";
-            chart3.Series["Series2"].LegendText = "Transferencias";
+            chart1.Titles.Add("Ingresos Generales");
+            chart1.Series["Series1"].LegendText = "Depositos";
+            chart1.Series["Series2"].LegendText = "Transferencias";
             foreach (Cuenta cuenta in cuentas)
             {
 
@@ -94,7 +94,7 @@ namespace Proyectos.Ui
                 {
 
                     
-                        chart3.Series["Series1"].Points.AddXY(mov.Fecha, mov.Cantidad);
+                        chart1.Series["Series1"].Points.AddXY(mov.Fecha, mov.Cantidad);
                    
                        // var importeTrans = mov.Tipo.GetType().GetProperty("Importe");
                         //var fechaTrans = mov.Tipo.GetType().GetProperty("Fecha");
@@ -106,7 +106,7 @@ namespace Proyectos.Ui
             }
             foreach(Transferencia transferencia in transferencias)
             {
-                chart3.Series["Series2"].Points.AddXY(transferencia.Fecha, transferencia.Importe );
+                chart1.Series["Series2"].Points.AddXY(transferencia.Fecha, transferencia.Importe );
             }
         }
 
@@ -114,9 +114,9 @@ namespace Proyectos.Ui
         void movimientosPorCliente(Cliente cliente, List<Movimiento> movimientos, List<Cuenta> cuentas, List<Transferencia> transferencias)
         {
 
-            chart4.Titles.Add("Ingresos Generales");
-            chart4.Series["Series1"].LegendText = "Depositos";
-            chart4.Series["Series2"].LegendText = "Transferencias";
+            chart2.Titles.Add("Ingresos Generales");
+            chart2.Series["Series1"].LegendText = "Depositos";
+            chart2.Series["Series2"].LegendText = "Transferencias";
             foreach (Cuenta cuenta in cuentas)
             {
 
@@ -124,7 +124,7 @@ namespace Proyectos.Ui
                 {
                     if (mov.Cliente.Equals(cliente))
                     {
-                        chart4.Series["Series1"].Points.AddXY(mov.Fecha, mov.Cantidad);
+                        chart2.Series["Series1"].Points.AddXY(mov.Fecha, mov.Cantidad);
                     }
 
                     
@@ -136,12 +136,12 @@ namespace Proyectos.Ui
                 if (transferencia.CCCOrigen.Titulares.Contains(cliente))
                 {
                     Console.WriteLine("entrrooooo-----------------");
-                    chart4.Series["Series2"].Points.AddXY(transferencia.Fecha, transferencia.Importe);
+                    chart2.Series["Series2"].Points.AddXY(transferencia.Fecha, transferencia.Importe);
                 }
                 else if (transferencia.CCCDestino.Titulares.Contains(cliente))
                 {
                     Console.WriteLine("entrrooooo-----------------");
-                    chart4.Series["Series2"].Points.AddXY(transferencia.Fecha, transferencia.Importe);
+                    chart2.Series["Series2"].Points.AddXY(transferencia.Fecha, transferencia.Importe);
 
                 }
 
@@ -153,6 +153,7 @@ namespace Proyectos.Ui
         {
 
         }
+      
 
     }
 }

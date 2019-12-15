@@ -77,8 +77,11 @@ namespace Proyectos.Ui
                     {
                         Cliente clienteRecuperado = this.Gestor.ContenedorClientes[indiceTabla];
 
-                        new GraficoResumenSaldosClienteController(clienteRecuperado).View.Show();
+                        this.View.Hide();
 
+                        new GraficoResumenSaldosClienteController(clienteRecuperado).View.ShowDialog();
+
+                        this.View.Show();
                     }
                 }
                 catch (Exception)
@@ -106,9 +109,11 @@ namespace Proyectos.Ui
                     {
                         Cliente clienteRecuperado = this.Gestor.ContenedorClientes[indiceTabla];
 
+                        this.View.Hide();
 
-                        new ProductosPersonaController(clienteRecuperado).View.Show();
+                        new ProductosPersonaController(clienteRecuperado).View.ShowDialog();
 
+                        this.View.Show();
                     }
                 }
                 catch (Exception ex)

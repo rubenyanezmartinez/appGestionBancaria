@@ -122,14 +122,17 @@ namespace Proyectos.Ui
             var etiquetaFila = new WFrms.Label
             {
                 Dock = WFrms.DockStyle.Left,
-                Text = "DNI"
+                Text = "DNI",
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             this.Dni = new WFrms.TextBox
             {
                 Dock = WFrms.DockStyle.Left,
                 Width = 70,
-                MaxLength = 9
+                MaxLength = 9,
+                Height = 30,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             panel.Controls.Add(this.Dni);
@@ -148,14 +151,16 @@ namespace Proyectos.Ui
             var etiquetaFila = new WFrms.Label
             {
                 Dock = WFrms.DockStyle.Left,
-                Text = "Nombre"
+                Text = "Nombre",
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             this.Nombre = new WFrms.TextBox
             {
                 Dock = WFrms.DockStyle.Left,
                 Width = 170,
-                MaxLength = 160
+                MaxLength = 160,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             panel.Controls.Add(this.Nombre);
@@ -173,14 +178,16 @@ namespace Proyectos.Ui
             var etiquetaFila = new WFrms.Label
             {
                 Dock = WFrms.DockStyle.Left,
-                Text = "Telefono"
+                Text = "Telefono",
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             this.Telefono = new WFrms.TextBox
             {
                 Dock = WFrms.DockStyle.Left,
-                Width = 80,
-                MaxLength = 12
+                Width = 90,
+                MaxLength = 12,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             panel.Controls.Add(this.Telefono);
@@ -198,14 +205,16 @@ namespace Proyectos.Ui
             var etiquetaFila = new WFrms.Label
             {
                 Dock = WFrms.DockStyle.Left,
-                Text = "Email"
+                Text = "Email",
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             this.Email = new WFrms.TextBox
             {
                 Dock = WFrms.DockStyle.Left,
                 Width = 170,
-                MaxLength = 160
+                MaxLength = 160,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             panel.Controls.Add(this.Email);
@@ -223,14 +232,16 @@ namespace Proyectos.Ui
             var etiquetaFila = new WFrms.Label
             {
                 Dock = WFrms.DockStyle.Left,
-                Text = "Direccion Postal"
+                Text = "Direccion Postal",
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             this.DireccionPostal = new WFrms.TextBox
             {
                 Dock = WFrms.DockStyle.Left,
                 Width = 270,
-                MaxLength = 260
+                MaxLength = 260,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             panel.Controls.Add(this.DireccionPostal);
@@ -326,7 +337,8 @@ namespace Proyectos.Ui
             var etiquetaFila = new WFrms.Label
             {
                 Dock = WFrms.DockStyle.Left,
-                Text = "DNI"
+                Text = "DNI",
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             this.Dni = new WFrms.TextBox
@@ -334,7 +346,8 @@ namespace Proyectos.Ui
                 Dock = WFrms.DockStyle.Left,
                 Width = 70,
                 Text = dni,
-                MaxLength = 9
+                MaxLength = 9,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             panel.Controls.Add(this.Dni);
@@ -384,7 +397,8 @@ namespace Proyectos.Ui
             var etiquetaFila = new WFrms.Label
             {
                 Dock = WFrms.DockStyle.Left,
-                Text = "Nombre"
+                Text = "Nombre",
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             this.Nombre = new WFrms.TextBox
@@ -392,7 +406,8 @@ namespace Proyectos.Ui
                 Dock = WFrms.DockStyle.Left,
                 Width = 170,
                 Text = nombre,
-                MaxLength = 160
+                MaxLength = 160,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             panel.Controls.Add(this.Nombre);
@@ -410,15 +425,17 @@ namespace Proyectos.Ui
             var etiquetaFila = new WFrms.Label
             {
                 Dock = WFrms.DockStyle.Left,
-                Text = "Telefono *"
+                Text = "Telefono *",
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             this.Telefono = new WFrms.TextBox
             {
                 Dock = WFrms.DockStyle.Left,
-                Width = 80,
+                Width = 90,
                 Text = telefono,
-                MaxLength = 12
+                MaxLength = 12,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             panel.Controls.Add(this.Telefono);
@@ -436,7 +453,8 @@ namespace Proyectos.Ui
             var etiquetaFila = new WFrms.Label
             {
                 Dock = WFrms.DockStyle.Left,
-                Text = "Email *"
+                Text = "Email *",
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             this.Email = new WFrms.TextBox
@@ -444,7 +462,8 @@ namespace Proyectos.Ui
                 Dock = WFrms.DockStyle.Left,
                 Width = 170,
                 Text = email,
-                MaxLength = 160
+                MaxLength = 160,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             panel.Controls.Add(this.Email);
@@ -462,7 +481,8 @@ namespace Proyectos.Ui
             var etiquetaFila = new WFrms.Label
             {
                 Dock = WFrms.DockStyle.Left,
-                Text = "Direccion Postal"
+                Text = "Direccion Postal",
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             this.DireccionPostal = new WFrms.TextBox
@@ -470,7 +490,8 @@ namespace Proyectos.Ui
                 Dock = WFrms.DockStyle.Left,
                 Width = 270,
                 Text = direccionPostal,
-                MaxLength = 260
+                MaxLength = 260,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             panel.Controls.Add(this.DireccionPostal);
