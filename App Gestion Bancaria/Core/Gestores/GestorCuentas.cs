@@ -57,6 +57,19 @@ namespace App_Gestion_Bancaria.Core.Gestores
 
             cuenta.Titulares.Remove(cuenta.Titulares.Where(x => x.Dni == dni).FirstOrDefault());
         }
+
+        public List<Cuenta> GetCuentasByCliente(Cliente cliente)
+        {
+            List<Cuenta> toret = new List<Cuenta>();
+            foreach (var cuenta in this.Cuentas)
+            {
+                if (cuenta.Titulares.FindAll(x => x.Dni.Equals(cliente.Dni)).Count > 0)
+                {
+                    toret.Add(cuenta);
+                }
+            }
+            return toret;
+        }
     }
 
 

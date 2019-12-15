@@ -61,32 +61,6 @@ namespace App_Gestion_Bancaria.Core.Gestores
             }
         }
 
-        public List<Transferencia> GetTransferenciaClienteEmisor(Cliente cliente)
-        {
-            var toret = new List<Transferencia>();
-            foreach (var transferencia in this.Transferencias)
-            {
-                if (transferencia.CCCOrigen.Titulares.Contains(cliente))
-                {
-                    toret.Add(transferencia);
-                }
-            }
-            return toret;
-        }
-
-        public List<Transferencia> GetTransferenciaClienteReceptor(Cliente cliente)
-        {
-            var toret = new List<Transferencia>();
-            foreach (var transferencia in this.Transferencias)
-            {
-                if (transferencia.CCCDestino.Titulares.Contains(cliente))
-                {
-                    toret.Add(transferencia);
-                }
-            }
-            return toret;
-        }
-
         public List<Transferencia> GetTransferenciaCuentaEmisor(Cuenta c)
         {
             var toret = new List<Transferencia>();
