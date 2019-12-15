@@ -20,6 +20,7 @@ namespace Proyectos.Ui
 
         public TransferenciaView(List<Transferencia> transferencias)
         {
+            this.WindowState = FormWindowState.Maximized;
             mainPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -157,11 +158,29 @@ namespace Proyectos.Ui
                 MultiSelect = false
             };
             this.TablaTransferencias.Columns[0].Name = "Id";
+            this.TablaTransferencias.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.TablaTransferencias.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
+            this.TablaTransferencias.Columns[0].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
             this.TablaTransferencias.Columns[1].Name = "Tipo";
+            this.TablaTransferencias.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.TablaTransferencias.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+            this.TablaTransferencias.Columns[1].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
             this.TablaTransferencias.Columns[2].Name = "Cuenta origen";
+            this.TablaTransferencias.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.TablaTransferencias.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+            this.TablaTransferencias.Columns[2].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
             this.TablaTransferencias.Columns[3].Name = "Cuenta destino";
+            this.TablaTransferencias.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.TablaTransferencias.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
+            this.TablaTransferencias.Columns[3].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
             this.TablaTransferencias.Columns[4].Name = "Importe";
+            this.TablaTransferencias.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.TablaTransferencias.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
+            this.TablaTransferencias.Columns[4].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
             this.TablaTransferencias.Columns[5].Name = "Fecha";
+            this.TablaTransferencias.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.TablaTransferencias.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
+            this.TablaTransferencias.Columns[5].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
 
             foreach (var t in transferencias)
             {
