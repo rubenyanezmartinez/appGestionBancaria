@@ -12,7 +12,7 @@ namespace Graficos.UI
 
         public GraficoResumenCuentaView(Cuenta cuenta, List<Transferencia> transferencias)
         {
-            this.Size = new System.Drawing.Size(600 *2, 600);
+            this.Size = new System.Drawing.Size(600, 600);
             this.Cuenta = cuenta;
             Transferencias = transferencias;
             this.Build();
@@ -31,7 +31,7 @@ namespace Graficos.UI
             PanelGraficoResumenCuenta = new TableLayoutPanel()
             {
                 Dock = DockStyle.Left,
-                Width = this.Width / 2
+                Width = this.Width
             };
 
             var label = new Label()

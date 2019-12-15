@@ -3,6 +3,7 @@ using App_Gestion_Bancaria.Core.Gestores;
 using App_Gestion_Bancaria.Core.Clases;
 using System.Windows.Forms;
 using System.Linq;
+using Graficos.UI;
 
 namespace Proyectos.Ui
 {
@@ -31,6 +32,8 @@ namespace Proyectos.Ui
             this.View.AddTitularButton.Click += new System.EventHandler(AddTitular);
             this.View.RemoveTitularButton.Click += new System.EventHandler(RemoveTitular);
             this.View.GuardarButton.Click += new System.EventHandler(CambiarCuenta);
+            //Boton de grafico
+            this.View.MostrarGraficoButton.Click += new System.EventHandler(MostrarGrafico);
         }
 
         private void IniciarBotonesAddCuenta()
@@ -217,6 +220,11 @@ namespace Proyectos.Ui
                 this.Gestor.Guardar();
                 this.IniciarBotonesIndex();
             }
+        }
+
+        private void MostrarGrafico(object sender, System.EventArgs e)
+        {
+            new GraficoResumenCuentaController(this.CuentaSeleccionada).View.Show();
         }
 
         public CuentaView View { get; set; }

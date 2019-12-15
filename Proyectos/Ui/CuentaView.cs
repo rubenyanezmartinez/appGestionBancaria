@@ -64,6 +64,14 @@ namespace Proyectos.Ui
 
             this.MainPanel.Controls.Add(BuildTitularesTable(cuenta.Titulares));
 
+            //Boton para mostrar el grafico
+            this.MostrarGraficoButton = new Button
+            {
+                Text = "Ver estadisticas de cuenta",
+                Dock = DockStyle.Fill
+            };
+            this.MainPanel.Controls.Add(this.MostrarGraficoButton);
+
             var buttonPanel = new Panel { Dock = DockStyle.Bottom };
             buttonPanel.Controls.Add(BuildButtonVolver());
             buttonPanel.Controls.Add(BuildGuardarButton());
@@ -601,5 +609,7 @@ namespace Proyectos.Ui
         public TextBox DniTextBox;
 
         public Button ConfirmarTitularButton;
+
+        public Button MostrarGraficoButton { get; set; }
     }
 }
