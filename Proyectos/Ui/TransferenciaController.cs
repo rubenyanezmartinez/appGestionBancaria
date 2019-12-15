@@ -188,7 +188,7 @@ namespace Proyectos.Ui
             this.View.Close();
         }
 
-        private void AccionVerPanelBusquedas(object sender, System.EventArgs e)
+        private void AccionVerPanelBusquedas(object sender, EventArgs e)
         {
             this.View.Hide();
 

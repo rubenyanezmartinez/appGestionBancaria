@@ -16,37 +16,13 @@
     <importe>30</importe>
     <fecha>20/11/2019 18:47:19</fecha>
   </transferencia>
-    <transferencia>
+  <transferencia>
     <id>3</id>
     <tipo>periodica</tipo>
     <cccorigen>1</cccorigen>
     <cccdestino>4</cccdestino>
     <importe>110</importe>
-    <fecha>3/10/2019 22:33:11</fecha>
-  </transferencia>
-    <transferencia>
-    <id>4</id>
-    <tipo>puntual</tipo>
-    <cccorigen>1</cccorigen>
-    <cccdestino>3</cccdestino>
-    <importe>50</importe>
-    <fecha>5/7/2019 8:25:57</fecha>
-  </transferencia>
-      <transferencia>
-    <id>5</id>
-    <tipo>puntual</tipo>
-    <cccorigen>1</cccorigen>
-    <cccdestino>3</cccdestino>
-    <importe>15</importe>
-    <fecha>2/7/2019 0:00:00</fecha>
-  </transferencia>
-    <transferencia>
-    <id>6</id>
-    <tipo>puntual</tipo>
-    <cccorigen>1</cccorigen>
-    <cccdestino>3</cccdestino>
-    <importe>40</importe>
-    <fecha>25/6/2019 06:36:40</fecha>
+    <fecha>03/10/2019 22:33:11</fecha>
   </transferencia>
   <transferencia>
     <id>6</id>
@@ -54,6 +30,6 @@
     <cccorigen>1</cccorigen>
     <cccdestino>2</cccdestino>
     <importe>15</importe>
-    <fecha>1/6/2019 16:16:24</fecha>
+    <fecha>01/06/2019 16:16:24</fecha>
   </transferencia>
 </transferencias>

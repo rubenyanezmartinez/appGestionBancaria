@@ -18,9 +18,9 @@ namespace Proyectos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            GestorClientes gestorClientes= new GestorClientes();
-            GestorTransferencias gestorTransferencias = new GestorTransferencias();
+            GestorClientes gestorClientes= new GestorClientes();            
             GestorCuentas gestorCuentas = new GestorCuentas();
+            GestorTransferencias gestorTransferencias = new GestorTransferencias();
 
             //Application.Run(new ClienteController(gestorClientes).View);
 

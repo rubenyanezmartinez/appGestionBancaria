@@ -2,281 +2,230 @@
 <cuentas>
   <cuenta>
     <tipo>CORRIENTE</tipo>
-    <titulares />
-    <ccc>2</ccc>
-    <saldo>8878</saldo>
-    <fechaApertura>2019-11-26T00:00:00+01:00</fechaApertura>
-    <interesMensual>0</interesMensual>
-    <depositos />
-    <retiradas />
-  </cuenta>
-  <cuenta>
-    <tipo>CORRIENTE</tipo>
-    <titulares />
+    <titulares>
+      <cliente>
+        <dni>00000000A</dni>
+        <nombre>Maria</nombre>
+        <telefono>666666666</telefono>
+        <email>maria@gmail.com</email>
+        <direccionPostal>C/ Maria, 66, Ourense</direccionPostal>
+      </cliente>
+      <cliente>
+        <dni>11111111B</dni>
+        <nombre>Antonio</nombre>
+        <telefono>777777777</telefono>
+        <email>antonio@gmail.com</email>
+        <direccionPostal>C/ Antonio, 77, Ourense</direccionPostal>
+      </cliente>
+    </titulares>
     <ccc>1</ccc>
-    <saldo>0</saldo>
-    <fechaApertura>2019-11-26T00:00:00+01:00</fechaApertura>
-    <interesMensual>0</interesMensual>
+    <saldo>67327</saldo>
+    <fechaApertura>2002-07-05T17:30:20</fechaApertura>
+    <interesMensual>4</interesMensual>
     <depositos>
       <movimiento>
-        <cantidad>3423</cantidad>
-        <fecha>27/11/2019 12:25:14</fecha>
+        <cantidad>300</cantidad>
+        <fecha>07/11/2019 11:11:54</fecha>
         <cliente>
-          <dni></dni>
-          <nombre>pepe</nombre>
-          <telefono></telefono>
-          <email></email>
-          <direccionPostal></direccionPostal>
+          <dni>12345678K</dni>
+          <nombre>Paco</nombre>
+          <telefono>111111111</telefono>
+          <email>paco@gmail.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>300</cantidad>
+        <fecha>07/11/2019 11:11:54</fecha>
+        <cliente>
+          <dni>12345678K</dni>
+          <nombre>Paco</nombre>
+          <telefono>111111111</telefono>
+          <email>paco@gmail.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>300</cantidad>
+        <fecha>07/11/2019 11:11:54</fecha>
+        <cliente>
+          <dni>12345678K</dni>
+          <nombre>Paco</nombre>
+          <telefono>111111111</telefono>
+          <email>paco@gmail.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>300</cantidad>
+        <fecha>07/11/2019 11:11:54</fecha>
+        <cliente>
+          <dni>12345678K</dni>
+          <nombre>Paco</nombre>
+          <telefono>111111111</telefono>
+          <email>paco@gmail.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>300</cantidad>
+        <fecha>07/11/2019 11:11:54</fecha>
+        <cliente>
+          <dni>12345678K</dni>
+          <nombre>Paco</nombre>
+          <telefono>111111111</telefono>
+          <email>paco@gmail.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>167</cantidad>
+        <fecha>20/11/2019 3:55:51</fecha>
+        <cliente>
+          <dni>00000000T</dni>
+          <nombre>Ruben</nombre>
+          <telefono>988332211</telefono>
+          <email>ruben@gmail.com</email>
+          <direccionPostal>Mi calle nº 5</direccionPostal>
         </cliente>
       </movimiento>
     </depositos>
     <retiradas>
       <movimiento>
-        <cantidad>23232</cantidad>
-        <fecha>27/11/2019 12:25:25</fecha>
+        <cantidad>100</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
         <cliente>
-          <dni></dni>
-          <nombre>Maria</nombre>
-          <telefono></telefono>
-          <email></email>
-          <direccionPostal></direccionPostal>
+          <dni>00000000T</dni>
+          <nombre>Ruben</nombre>
+          <telefono>988332211</telefono>
+          <email>rubermalo@gmail.com</email>
+          <direccionPostal>Mi calle nº 5</direccionPostal>
         </cliente>
       </movimiento>
     </retiradas>
   </cuenta>
   <cuenta>
-    <tipo>CORRIENTE</tipo>
-    <titulares />
-    <ccc>0</ccc>
-    <saldo>23423</saldo>
-    <fechaApertura>2019-11-27T00:00:00+01:00</fechaApertura>
-    <interesMensual>0</interesMensual>
-    <depositos />
-    <retiradas />
+    <tipo>VIVIENDA</tipo>
+    <titulares>
+      <cliente>
+        <dni>22222222C</dni>
+        <nombre>Carlos</nombre>
+        <telefono>888888888</telefono>
+        <email>carlos@gmail.com</email>
+        <direccionPostal>C/ Carlos, 88, Ourense</direccionPostal>
+      </cliente>
+      <cliente>
+        <dni>12345678K</dni>
+        <nombre>Paco</nombre>
+        <telefono>111111111</telefono>
+        <email>paco@gmail.com</email>
+        <direccionPostal>Mi calle nº 2</direccionPostal>
+      </cliente>
+    </titulares>
+    <ccc>4</ccc>
+    <saldo>100803</saldo>
+    <fechaApertura>2014-11-03T14:45:40</fechaApertura>
+    <interesMensual>1</interesMensual>
+    <depositos>
+      <movimiento>
+        <cantidad>507</cantidad>
+        <fecha>06/07/2018 10:08:47</fecha>
+        <cliente>
+          <dni>12345678K</dni>
+          <nombre>Paco</nombre>
+          <telefono>111111111</telefono>
+          <email>paco@gmail.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+    </depositos>
+    <retiradas>
+      <movimiento>
+        <cantidad>100</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>00000000T</dni>
+          <nombre>Ruben</nombre>
+          <telefono>988332211</telefono>
+          <email>ruben@gmail.com</email>
+          <direccionPostal>Mi calle nº 5</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>100</cantidad>
+        <fecha>13/11/2019 0:00:00</fecha>
+        <cliente>
+          <dni>00000000T</dni>
+          <nombre>Ruben</nombre>
+          <telefono>988332211</telefono>
+          <email>ruben@gmail.com</email>
+          <direccionPostal>Mi calle nº 5</direccionPostal>
+        </cliente>
+      </movimiento>
+    </retiradas>
   </cuenta>
-	<cuenta>
-		<tipo>AHORRO</tipo>
-		<titulares>
-			<cliente>
-				<dni>00000000A</dni>
-				<nombre>Maria</nombre>
-				<telefono>666666666</telefono>
-				<email>maria@gmail.com</email>
-				<direccionPostal>C/ Maria, 66, Ourense</direccionPostal>
-			</cliente>
-		</titulares>
-		<ccc>2</ccc>
-		<saldo>25780</saldo>
-		<fechaApertura>2004-12-02T00:00:00</fechaApertura>
-		<interesMensual>1</interesMensual>
-		<depositos>
-			<movimiento>
-				<cantidad>55</cantidad>
-				<fecha>1/10/2019 19:30:50</fecha>
-<cliente>
-		<dni>12345678K</dni>
-		<nombre>Paco</nombre>
-		<telefono>111111111</telefono>
-		<email>paco@gmail.com</email>
-		<direccionPostal>Mi calle nº 2</direccionPostal>
-	</cliente>
-			</movimiento>
-			<movimiento>
-				<cantidad>135</cantidad>
-				<fecha>13/11/2019 8:45:03</fecha>
-				<cliente>
-					<dni>11223344H</dni>
-					<nombre>Paca</nombre>
-					<telefono>988334455</telefono>
-					<email>paca@gmail.com</email>
-					<direccionPostal>Mi calle nº 2</direccionPostal>
-				</cliente>
-			</movimiento>
-		</depositos>
-		<retiradas>
-			<movimiento>
-				<cantidad>30</cantidad>
-				<fecha>20/11/2019 16:30:05</fecha>
-				<cliente>
-					<dni>00000000T</dni>
-					<nombre>Ruben</nombre>
-					<telefono>988332211</telefono>
-					<email>ruben@gmail.com</email>
-					<direccionPostal>Mi calle nº 5</direccionPostal>
-				</cliente>
-			</movimiento>
-			<movimiento>
-				<cantidad>20</cantidad>
-				<fecha>25/11/2019 18:22:37</fecha>
-				<cliente>
-					<dni>00000000T</dni>
-					<nombre>Ruben</nombre>
-					<telefono>988332211</telefono>
-					<email>ruben@gmail.com</email>
-					<direccionPostal>Mi calle nº 5</direccionPostal>
-				</cliente>
-			</movimiento>
-		</retiradas>
-	</cuenta>
-	<cuenta>
-		<tipo>CORRIENTE</tipo>
-		<titulares>
-			<cliente>
-				<dni>00000000A</dni>
-				<nombre>Maria</nombre>
-				<telefono>666666666</telefono>
-				<email>maria@gmail.com</email>
-				<direccionPostal>C/ Maria, 66, Ourense</direccionPostal>
-			</cliente>
-			<cliente>
-				<dni>11111111B</dni>
-				<nombre>Antonio</nombre>
-				<telefono>777777777</telefono>
-				<email>antonio@gmail.com</email>
-				<direccionPostal>C/ Antonio, 77, Ourense</direccionPostal>
-			</cliente>
-		</titulares>
-		<ccc>1</ccc>
-		<saldo>67327</saldo>
-		<fechaApertura>2002-07-05T17:30:20</fechaApertura>
-		<interesMensual>4</interesMensual>
-		<depositos>
-			<movimiento>
-				<cantidad>300</cantidad>
-				<fecha>7/11/2019 11:11:54</fecha>
-				<cliente>
-					<dni>12345678K</dni>
-					<nombre>Paco</nombre>
-					<telefono>111111111</telefono>
-					<email>paco@gmail.com</email>
-					<direccionPostal>Mi calle nº 2</direccionPostal>
-				</cliente>
-			</movimiento>
-			<movimiento>
-				<cantidad>300</cantidad>
-				<fecha>7/11/2019 11:11:54</fecha>
-				<cliente>
-					<dni>12345678K</dni>
-					<nombre>Paco</nombre>
-					<telefono>111111111</telefono>
-					<email>paco@gmail.com</email>
-					<direccionPostal>Mi calle nº 2</direccionPostal>
-				</cliente>
-			</movimiento><movimiento>
-				<cantidad>300</cantidad>
-				<fecha>7/11/2019 11:11:54</fecha>
-				<cliente>
-					<dni>12345678K</dni>
-					<nombre>Paco</nombre>
-					<telefono>111111111</telefono>
-					<email>paco@gmail.com</email>
-					<direccionPostal>Mi calle nº 2</direccionPostal>
-				</cliente>
-			</movimiento><movimiento>
-				<cantidad>300</cantidad>
-				<fecha>7/11/2019 11:11:54</fecha>
-				<cliente>
-					<dni>12345678K</dni>
-					<nombre>Paco</nombre>
-					<telefono>111111111</telefono>
-					<email>paco@gmail.com</email>
-					<direccionPostal>Mi calle nº 2</direccionPostal>
-				</cliente>
-			</movimiento><movimiento>
-				<cantidad>300</cantidad>
-				<fecha>7/11/2019 11:11:54</fecha>
-				<cliente>
-					<dni>12345678K</dni>
-					<nombre>Paco</nombre>
-					<telefono>111111111</telefono>
-					<email>paco@gmail.com</email>
-					<direccionPostal>Mi calle nº 2</direccionPostal>
-				</cliente>
-			</movimiento>
-			<movimiento>
-				<cantidad>167</cantidad>
-				<fecha>20/11/2019 3:55:51</fecha>
-				<cliente>
-					<dni>00000000T</dni>
-					<nombre>Ruben</nombre>
-					<telefono>988332211</telefono>
-					<email>ruben@gmail.com</email>
-					<direccionPostal>Mi calle nº 5</direccionPostal>
-				</cliente>
-			</movimiento>
-		</depositos>
-		<retiradas>
-			<movimiento>
-				<cantidad>100</cantidad>
-				<fecha>13/11/2019 0:00:00</fecha>
-				<cliente>
-					<dni>00000000T</dni>
-					<nombre>Ruben</nombre>
-					<telefono>988332211</telefono>
-					<email>rubermalo@gmail.com</email>
-					<direccionPostal>Mi calle nº 5</direccionPostal>
-				</cliente>
-			</movimiento>
-		</retiradas>
-	</cuenta>
-	<cuenta>
-		<tipo>VIVIENDA</tipo>
-		<titulares>
-			<cliente>
-				<dni>22222222C</dni>
-				<nombre>Carlos</nombre>
-				<telefono>888888888</telefono>
-				<email>carlos@gmail.com</email>
-				<direccionPostal>C/ Carlos, 88, Ourense</direccionPostal>
-			</cliente>
-			<cliente>
-		<dni>12345678K</dni>
-		<nombre>Paco</nombre>
-		<telefono>111111111</telefono>
-		<email>paco@gmail.com</email>
-		<direccionPostal>Mi calle nº 2</direccionPostal>
-	</cliente>
-		</titulares>
-		<ccc>4</ccc>
-		<saldo>100803</saldo>
-		<fechaApertura>2014-11-03T14:45:40</fechaApertura>
-		<interesMensual>1</interesMensual>
-		<depositos>
-			<movimiento>
-				<cantidad>507</cantidad>
-				<fecha>6/07/2018 10:08:47</fecha>
-				<cliente>
-					<dni>12345678K</dni>
-					<nombre>Paco</nombre>
-					<telefono>111111111</telefono>
-					<email>paco@gmail.com</email>
-					<direccionPostal>Mi calle nº 2</direccionPostal>
-				</cliente>
-			</movimiento>
-		</depositos>
-		<retiradas>
-			<movimiento>
-				<cantidad>100</cantidad>
-				<fecha>13/11/2019 0:00:00</fecha>
-				<cliente>
-					<dni>00000000T</dni>
-					<nombre>Ruben</nombre>
-					<telefono>988332211</telefono>
-					<email>ruben@gmail.com</email>
-					<direccionPostal>Mi calle nº 5</direccionPostal>
-				</cliente>
-			</movimiento>
-			<movimiento>
-				<cantidad>100</cantidad>
-				<fecha>13/11/2019 0:00:00</fecha>
-				<cliente>
-					<dni>00000000T</dni>
-					<nombre>Ruben</nombre>
-					<telefono>988332211</telefono>
-					<email>ruben@gmail.com</email>
-					<direccionPostal>Mi calle nº 5</direccionPostal>
-				</cliente>
-			</movimiento>
-		</retiradas>
-	</cuenta>
+  <cuenta>
+    <tipo>AHORRO</tipo>
+    <titulares>
+      <cliente>
+        <dni>00000000A</dni>
+        <nombre>Maria</nombre>
+        <telefono>666666666</telefono>
+        <email>maria@gmail.com</email>
+        <direccionPostal>C/ Maria, 66, Ourense</direccionPostal>
+      </cliente>
+    </titulares>
+    <ccc>2</ccc>
+    <saldo>25780</saldo>
+    <fechaApertura>2004-12-02T00:00:00</fechaApertura>
+    <interesMensual>1</interesMensual>
+    <depositos>
+      <movimiento>
+        <cantidad>55</cantidad>
+        <fecha>01/10/2019 19:30:50</fecha>
+        <cliente>
+          <dni>12345678K</dni>
+          <nombre>Paco</nombre>
+          <telefono>111111111</telefono>
+          <email>paco@gmail.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>135</cantidad>
+        <fecha>13/11/2019 8:45:03</fecha>
+        <cliente>
+          <dni>11223344H</dni>
+          <nombre>Paca</nombre>
+          <telefono>988334455</telefono>
+          <email>paca@gmail.com</email>
+          <direccionPostal>Mi calle nº 2</direccionPostal>
+        </cliente>
+      </movimiento>
+    </depositos>
+    <retiradas>
+      <movimiento>
+        <cantidad>30</cantidad>
+        <fecha>20/11/2019 16:30:05</fecha>
+        <cliente>
+          <dni>00000000T</dni>
+          <nombre>Ruben</nombre>
+          <telefono>988332211</telefono>
+          <email>ruben@gmail.com</email>
+          <direccionPostal>Mi calle nº 5</direccionPostal>
+        </cliente>
+      </movimiento>
+      <movimiento>
+        <cantidad>20</cantidad>
+        <fecha>25/11/2019 18:22:37</fecha>
+        <cliente>
+          <dni>00000000T</dni>
+          <nombre>Ruben</nombre>
+          <telefono>988332211</telefono>
+          <email>ruben@gmail.com</email>
+          <direccionPostal>Mi calle nº 5</direccionPostal>
+        </cliente>
+      </movimiento>
+    </retiradas>
+  </cuenta>
 </cuentas>
