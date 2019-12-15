@@ -15,12 +15,12 @@ namespace Proyectos.Ui
         public TransferenciaView View { get; private set; }
         public GestorTransferencias GestorTransferencias { get; private set; }
         public GestorCuentas GestorCuentas { get; private set; }
-        public GestorClientes gestorClientes { get; private set; }
+        public GestorClientes GestorClientes { get; private set; }
         public TransferenciaController(GestorTransferencias gestorTransferencias, GestorCuentas gestorCuentas, GestorClientes gestorClientes)
         {
             this.GestorTransferencias = gestorTransferencias;
             this.GestorCuentas = gestorCuentas;
-            this.gestorClientes = gestorClientes;
+            this.GestorClientes = gestorClientes;
             this.View = new TransferenciaView(this.GestorTransferencias.Transferencias);
             this.IniciarBotones();
         }
@@ -29,6 +29,7 @@ namespace Proyectos.Ui
         {
             this.View.BotonAddPanel.Click += new EventHandler(AccionInsertarTransferencia);
             this.View.BotonDeleteTransferencia.Click += new EventHandler(AccionEliminarTransferencia);
+            this.View.BotonSearchTransferencia.Click += new EventHandler(AccionVerPanelBusquedas);
             this.View.BotonModifyPanel.Click += new EventHandler(AccionModificarTransferencia);
             this.View.BotonCerraryGuardar.Click += new EventHandler(AccionGuardarYSalir);
         }
@@ -139,7 +140,6 @@ namespace Proyectos.Ui
                     CCCOrigen,
                     CCCDestino,
                     Importe,
-                    /*DateTime.Now*/
                     transferenciaSeleccionada.Fecha
                 );
 
@@ -186,6 +186,15 @@ namespace Proyectos.Ui
         {
             this.GestorTransferencias.GuardarTransferencias(this.GestorTransferencias.Transferencias);
             this.View.Close();
+        }
+
+        private void AccionVerPanelBusquedas(object sender, System.EventArgs e)
+        {
+            this.View.Hide();
+
+            new busquedaTransferenciaController(this.GestorTransferencias, this.GestorCuentas, this.GestorClientes).View.ShowDialog();
+
+            this.View.Show();
         }
     }
 }
