@@ -35,7 +35,8 @@ namespace Graficos.UI
             PanelGraficoResumenCuenta = new TableLayoutPanel()
             {
                 Dock = DockStyle.Left,
-                Width = this.Width
+                Width = this.Width,
+                Padding = new Padding(10)
             };
 
             var label = new Label()

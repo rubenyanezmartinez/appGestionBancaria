@@ -14,6 +14,7 @@ namespace Graficos.UI
 
         public GraficoResumenSaldosClienteView(Cliente cliente, List<Cuenta> cuentas, List<Transferencia> transferencias)
         {
+           
             this.MaximizeBox = false;
             this.WindowState = FormWindowState.Maximized;
             this.Size = new System.Drawing.Size(600*2, 600);
@@ -40,7 +41,8 @@ namespace Graficos.UI
             PanelGraficoResumenSaldos = new TableLayoutPanel()
             {
                 Dock = DockStyle.Left,
-                Width = this.Width / 2
+                Width = this.Width / 2,
+                Padding = new Padding(10)
             };
 
             var label = new Label()
