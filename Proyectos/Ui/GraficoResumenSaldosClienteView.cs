@@ -2,6 +2,7 @@
 using Proyectos.Ui;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -30,7 +31,7 @@ namespace Graficos.UI
         public List<Cuenta> Cuentas { get; }
         public List<Transferencia> Transferencias { get; }
         public GraficoResumenSaldosCliente Grsc { get; set; }
-
+        public Button VolverButton { get; private set; }
         public Cliente Cliente { get; set; }
 
         private void Build()
@@ -68,12 +69,22 @@ namespace Graficos.UI
 
             this.Grsc = new GraficoResumenSaldosCliente(new System.Drawing.Size(500, 500), this.Cliente, this.Cuentas , this.Transferencias, 2016);
 
+            this.VolverButton = new Button
+            {
+                Width = 200,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
+                Text = "Volver",
+                Font = new Font("Arial", 12, FontStyle.Regular)
+            };
 
             PanelGraficoResumenSaldos.Controls.Add(label);
             PanelGraficoResumenSaldos.Controls.Add(this.SelectVisualization);
             PanelGraficoResumenSaldos.Controls.Add(label2);
             PanelGraficoResumenSaldos.Controls.Add(this.SelectYear);
             PanelGraficoResumenSaldos.Controls.Add(this.Grsc);
+
+            PanelGraficoResumenSaldos.Controls.Add(this.VolverButton);
 
             this.Controls.Add(PanelGraficoResumenSaldos);
         }
