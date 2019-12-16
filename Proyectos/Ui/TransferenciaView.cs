@@ -58,7 +58,7 @@ namespace Proyectos.Ui
             Panel panel3 = new Panel() { Dock = DockStyle.Top };
 
             Label etiqueta1 = new Label() {
-                Text = "TRANSFERENCIAS",
+                Text = "GESTIÓN DE TRANSFERENCIAS",
                 Location = new Point(25, 16),
                 Size = new Size(1000, 1000),
                 Font = new Font("Arial", 35, FontStyle.Regular)

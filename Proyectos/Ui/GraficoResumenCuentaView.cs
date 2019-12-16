@@ -12,6 +12,8 @@ namespace Graficos.UI
 
         public GraficoResumenCuentaView(Cuenta cuenta, List<Transferencia> transferencias)
         {
+            this.MaximizeBox = false;
+            this.WindowState = FormWindowState.Maximized;
             this.Size = new System.Drawing.Size(600, 600);
             this.Cuenta = cuenta;
             Transferencias = transferencias;

@@ -13,6 +13,8 @@ namespace Graficos.UI
 
         public GraficoResumenCuentaController(Cuenta cuenta)
         {
+            this.MaximizeBox = false;
+            this.WindowState = FormWindowState.Maximized;
             //Buscamos las transferencias
             var transferencias = new GestorTransferencias().Transferencias.FindAll((transferencia) => transferencia.CCCDestino.CCC == cuenta.CCC || transferencia.CCCOrigen.CCC == cuenta.CCC);
             this.View = new GraficoResumenCuentaView(cuenta, transferencias);

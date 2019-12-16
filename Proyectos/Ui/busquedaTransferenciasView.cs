@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Proyectos.Ui
 {
@@ -18,6 +19,8 @@ namespace Proyectos.Ui
 
         public busquedaTransferenciasView()
         {
+            this.MaximizeBox = false;
+            this.WindowState = FormWindowState.Maximized;
             this.Build();
             this.AutoScroll = true;
             this.Size = new System.Drawing.Size(925, 600);
