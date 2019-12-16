@@ -115,12 +115,6 @@
     <Compile Include="Ui\Ingresos.Designer.cs">
       <DependentUpon>Ingresos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ui\MainController.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ui\MainView.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Ui\ProductosPersonaController.cs" />
     <Compile Include="Ui\ProductosPersonaView.cs">
       <SubType>Form</SubType>

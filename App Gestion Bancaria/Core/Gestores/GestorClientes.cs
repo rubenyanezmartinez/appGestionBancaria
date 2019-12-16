@@ -152,6 +152,5 @@ namespace App_Gestion_Bancaria.Core.Gestores
 
             return toret;
         }
-
     }
 }

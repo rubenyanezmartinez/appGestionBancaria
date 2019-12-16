@@ -20,7 +20,6 @@ namespace Proyectos.Ui
 
         public TransferenciaView(List<Transferencia> transferencias)
         {
-            this.WindowState = FormWindowState.Maximized;
             mainPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -39,7 +38,6 @@ namespace Proyectos.Ui
         public Button BotonModifyTransferencia { get; private set; }
         public Button BotonAddPanel { get; private set; }
         public Button BotonModifyPanel { get; private set; }
-        public Button BotonSearchTransferencia { get; set; }
 
         public void GetTransferenciasMainPanel(GestorTransferencias gestor)
         {
@@ -82,59 +80,35 @@ namespace Proyectos.Ui
             {
                 Location = new Point(25, 16),
                 Text = "Añadir transferencia",
-                Font = new Font("Arial", 12, FontStyle.Regular),
-                Width = 200,
-                Height = 30,
-                FlatStyle = FlatStyle.Flat
+                Width = 120
             };
 
             panel.Controls.Add(BotonAddPanel);
 
             BotonDeleteTransferencia = new Button()
             {
-                Location = new Point(25, 49),
+                Location = new Point(25, 50),
                 Text = "Eliminar transferencia",
-                Font = new Font("Arial", 12, FontStyle.Regular),
-                Width = 200,
-                Height = 30,
-                FlatStyle = FlatStyle.Flat
+                Width = 120
             };
 
             panel.Controls.Add(BotonDeleteTransferencia);
 
-            BotonSearchTransferencia = new Button()
-            {
-                Location = new Point(455, 16),
-                Text = "Buscar transferencias",
-                Font = new Font("Arial", 12, FontStyle.Regular),
-                Width = 200,
-                Height = 30,
-                FlatStyle = FlatStyle.Flat
-            };
-
-            panel.Controls.Add(BotonSearchTransferencia);
-
 
             BotonModifyPanel = new Button()
             {
-                Location = new Point(240, 16),
+                Location = new Point(160, 16),
                 Text = "Modificar transferencia",
-                Font = new Font("Arial", 12, FontStyle.Regular),
-                Width = 200,
-                Height = 30,
-                FlatStyle = FlatStyle.Flat
+                Width = 120
             };
 
             panel.Controls.Add(BotonModifyPanel);
 
             BotonCerraryGuardar = new Button()
             {
-                Location = new Point(240, 49),
-                Text = "Volver",
-                Font = new Font("Arial", 12, FontStyle.Regular),
-                Width = 200,
-                Height = 30,
-                FlatStyle = FlatStyle.Flat
+                Location = new Point(160, 50),
+                Text = "Cerrar y guardar",
+                Width = 120
             };
 
             panel.Controls.Add(BotonCerraryGuardar);
@@ -146,7 +120,7 @@ namespace Proyectos.Ui
         {
             this.TablaTransferencias = new DataGridView()
             {
-                Dock = DockStyle.Fill,
+                Dock = DockStyle.Left,
                 ColumnCount = 6,
                 MinimumSize = new Size(2000, 1000),
                 AllowUserToAddRows = false,
@@ -154,33 +128,14 @@ namespace Proyectos.Ui
                 ReadOnly = true,
                 ScrollBars = ScrollBars.Vertical,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-                Location = new Point(25, 16),
-                MultiSelect = false
+                Location = new Point(25, 16)
             };
             this.TablaTransferencias.Columns[0].Name = "Id";
-            this.TablaTransferencias.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            this.TablaTransferencias.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
-            this.TablaTransferencias.Columns[0].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
             this.TablaTransferencias.Columns[1].Name = "Tipo";
-            this.TablaTransferencias.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            this.TablaTransferencias.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
-            this.TablaTransferencias.Columns[1].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
             this.TablaTransferencias.Columns[2].Name = "Cuenta origen";
-            this.TablaTransferencias.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            this.TablaTransferencias.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
-            this.TablaTransferencias.Columns[2].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
             this.TablaTransferencias.Columns[3].Name = "Cuenta destino";
-            this.TablaTransferencias.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            this.TablaTransferencias.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
-            this.TablaTransferencias.Columns[3].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
             this.TablaTransferencias.Columns[4].Name = "Importe";
-            this.TablaTransferencias.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            this.TablaTransferencias.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
-            this.TablaTransferencias.Columns[4].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
             this.TablaTransferencias.Columns[5].Name = "Fecha";
-            this.TablaTransferencias.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            this.TablaTransferencias.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
-            this.TablaTransferencias.Columns[5].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
 
             foreach (var t in transferencias)
             {
@@ -259,9 +214,7 @@ namespace Proyectos.Ui
             var etiqueta = new Label
             {
                 Dock = DockStyle.Left,
-                Text = "Tipo",
-                Font = new Font("Arial", 12, FontStyle.Regular),
-
+                Text = "Tipo"
             };
 
             this.Tipo = new ComboBox
@@ -269,8 +222,7 @@ namespace Proyectos.Ui
                 Dock = WFrms.DockStyle.Left,
                 Width = 200,
                 Text = tipo,
-                DropDownStyle = ComboBoxStyle.DropDownList,
-                Font = new Font("Arial", 12, FontStyle.Regular)
+                DropDownStyle = ComboBoxStyle.DropDownList
             };
             this.Tipo.Items.AddRange ( new String[] { "puntual", "periodica" });
 
@@ -290,16 +242,14 @@ namespace Proyectos.Ui
             var etiqueta = new Label
             {
                 Dock = DockStyle.Left,
-                Text = "CCC Origen",
-                Font = new Font("Arial", 12, FontStyle.Regular)
+                Text = "CCC Origen"
             };
 
             this.CCCOrigen = new TextBox
             {
                 Dock = WFrms.DockStyle.Left,
                 Width = 200,
-                Text = cccOrigen,
-                Font = new Font("Arial", 12, FontStyle.Regular)
+                Text = cccOrigen
             };
 
             panel.Controls.Add(this.CCCOrigen);
@@ -317,16 +267,14 @@ namespace Proyectos.Ui
             var etiqueta = new Label
             {
                 Dock = DockStyle.Left,
-                Text = "CCC Destino",
-                Font = new Font("Arial", 12, FontStyle.Regular)
+                Text = "CCC Destino"
             };
 
             this.CCCDestino = new TextBox
             {
                 Dock = WFrms.DockStyle.Left,
                 Width = 200,
-                Text = cccDestino,
-                Font = new Font("Arial", 12, FontStyle.Regular)
+                Text = cccDestino
             };
 
             panel.Controls.Add(this.CCCDestino);
@@ -344,16 +292,14 @@ namespace Proyectos.Ui
             var etiqueta = new Label
             {
                 Dock = DockStyle.Left,
-                Text = "Importe",
-                Font = new Font("Arial", 12, FontStyle.Regular)
+                Text = "Importe"
             };
 
             this.Importe = new TextBox
             {
-                Dock = DockStyle.Left,
+                Dock = WFrms.DockStyle.Left,
                 Width = 200, 
-                Text = importe,
-                Font = new Font("Arial", 12, FontStyle.Regular)
+                Text = importe
             };
 
             panel.Controls.Add(this.Importe);
@@ -365,12 +311,8 @@ namespace Proyectos.Ui
         {
             this.BotonAddTransferencia = new Button()
             {
-                Location = new Point(25, 16),
                 Text = "Insertar",
-                Font = new Font("Arial", 12, FontStyle.Regular),
-                Width = 200,
-                Height = 30,
-                FlatStyle = FlatStyle.Flat
+                Width = 120
             };            
 
             return BotonAddTransferencia;
@@ -379,12 +321,8 @@ namespace Proyectos.Ui
         {
             BotonHome = new Button()
             {
-                Location = new Point(455, 16),
-                Text = "Volver",
-                Font = new Font("Arial", 12, FontStyle.Regular),
-                Width = 200,
-                Height = 30,
-                FlatStyle = FlatStyle.Flat
+                Text = "Home",
+                Width = 120
             };
 
             return BotonHome;
@@ -393,12 +331,8 @@ namespace Proyectos.Ui
         {
             this.BotonModifyTransferencia = new Button()
             {
-                Location = new Point(25, 16),
                 Text = "Modificar",
-                Font = new Font("Arial", 12, FontStyle.Regular),
-                Width = 200,
-                Height = 30,
-                FlatStyle = FlatStyle.Flat
+                Width = 120
             };
 
             return BotonModifyTransferencia;
