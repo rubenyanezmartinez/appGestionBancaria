@@ -16,6 +16,7 @@ namespace Proyectos.Ui
         public CuentaView(GestorCuentas gestor)
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.WindowState = FormWindowState.Maximized;
             this.Size = new Size(650, 700);
             this.ShowIndex(gestor);            
@@ -32,11 +33,11 @@ namespace Proyectos.Ui
             var buttonPanel = new Panel { Dock = DockStyle.Bottom , Font = new Font("Arial", 12, FontStyle.Regular), };
 
             buttonPanel.Controls.Add(this.BuildButtonDetalle());
-            buttonPanel.Controls.Add(this.BuildAddCuentaButton());
+            //buttonPanel.Controls.Add(this.BuildAddCuentaButton());
 
             this.MainPanel.Controls.Add(buttonPanel);
 
-            this.MainPanel.Controls.Add(this.BuildBorrarCuentaButton());
+            //this.MainPanel.Controls.Add(this.BuildBorrarCuentaButton());
 
 
             this.Controls.Add(MainPanel);
@@ -640,17 +641,50 @@ namespace Proyectos.Ui
 
         public Panel BuildButtonDetalle()
         {
-            var pnl = new Panel { Dock = DockStyle.Right,Size=new Size(600,300) };
+
+            var pnl = new Panel { Dock = DockStyle.Left,Size=new Size(600,300) };
+            this.AddCuentaButton = new Button
+            {
+                Location = new Point(10, 45),
+                Size = new Size(200, 30),
+                FlatStyle = FlatStyle.Flat,
+                Text = "Nueva Cuenta",
+                Font = new Font("Arial", 12, FontStyle.Regular),
+            };
             this.ButtonDetalle = new Button
             {
+                Location= new Point(10,10),
                 Width = 200,
                 FlatStyle = FlatStyle.Flat,
                 Height = 30,
                 Text = "Ver seleccionada",
                 Font = new Font("Arial", 12, FontStyle.Regular),
             };
-
+            this.BorrarCuentaButton = new Button
+            {
+                Location = new Point(215, 10),
+                Width = 200,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
+                Text = "Borrar cuenta",
+                Font = new Font("Arial", 12, FontStyle.Regular),
+            };
+            this.VolverButton = new Button
+            {
+                Location = new Point(215, 45),
+                Width = 200,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
+                Text = "Volver",
+                Font = new Font("Arial", 12, FontStyle.Regular),
+            };
             pnl.Controls.Add(this.ButtonDetalle);
+            pnl.Controls.Add(this.AddCuentaButton);
+            pnl.Controls.Add(this.BorrarCuentaButton);
+            pnl.Controls.Add(this.VolverButton);
+
+
+
 
             return pnl;
         }

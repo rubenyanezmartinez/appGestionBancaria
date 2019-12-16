@@ -17,6 +17,7 @@ namespace Proyectos.Ui
 
         public MainView()
         {
+            this.MaximizeBox = false;
             this.WindowState = FormWindowState.Maximized;
             this.Build();      
         }

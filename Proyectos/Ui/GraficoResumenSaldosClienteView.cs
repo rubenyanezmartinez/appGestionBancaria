@@ -14,6 +14,7 @@ namespace Graficos.UI
 
         public GraficoResumenSaldosClienteView(Cliente cliente, List<Cuenta> cuentas, List<Transferencia> transferencias)
         {
+            this.MaximizeBox = false;
             this.WindowState = FormWindowState.Maximized;
             this.Size = new System.Drawing.Size(600*2, 600);
 
