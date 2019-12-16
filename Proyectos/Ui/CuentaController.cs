@@ -21,7 +21,7 @@ namespace Proyectos.Ui
             this.View.ButtonDetalle.Click += new System.EventHandler(AccionButtonDetalle);
             this.View.AddCuentaButton.Click += new System.EventHandler(AddCuenta);
             this.View.BorrarCuentaButton.Click += new System.EventHandler(EliminarCuenta);
-
+            this.View.VolverButton.Click += new System.EventHandler(Volver);
         }
 
         private void IniciarBotonesDetalles()
@@ -121,8 +121,14 @@ namespace Proyectos.Ui
             this.Gestor.Actualizar(this.CuentaSeleccionada);
             this.Gestor.Guardar();
             
-            this.View.ShowIndex(this.Gestor);
+            //this.View.ShowIndex(this.Gestor);
             this.IniciarBotonesIndex();
+        }
+
+        private void Volver(object sender, System.EventArgs e)
+        {
+            Console.WriteLine("VOLVER");
+            this.View.Close();
         }
 
         private void AccionButtonVolver(object sender, System.EventArgs e)
@@ -135,8 +141,8 @@ namespace Proyectos.Ui
         private void AddRetirada(object sender, System.EventArgs e)
         {
             this.View.ShowAddMovimiento(true);
-            this.View.AddRetiradaButton.Click -= new System.EventHandler(AddRetirada);
             this.View.AddRetiradaButton.Click += new System.EventHandler(NewRetirada);
+            this.View.ButtonVolver.Click += new System.EventHandler(AccionButtonVolverMovimiento);
         }
 
         private void NewRetirada(object sender, System.EventArgs e)

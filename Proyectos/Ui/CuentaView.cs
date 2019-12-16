@@ -16,7 +16,7 @@ namespace Proyectos.Ui
         public CuentaView(GestorCuentas gestor)
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+            this.WindowState = FormWindowState.Maximized;
             this.Size = new Size(650, 700);
             this.ShowIndex(gestor);            
         }
@@ -26,9 +26,10 @@ namespace Proyectos.Ui
             this.Controls.Clear();
             this.Text = "Gestión de Cuentas";
             this.MainPanel = new Panel { Dock = DockStyle.Fill };
+            this.MainPanel.Controls.Add(this.Titulo);
             this.MainPanel.Controls.Add(this.BuildTablaCuentas(gestor.Cuentas));
 
-            var buttonPanel = new Panel { Dock = DockStyle.Bottom };
+            var buttonPanel = new Panel { Dock = DockStyle.Bottom , Font = new Font("Arial", 12, FontStyle.Regular), };
 
             buttonPanel.Controls.Add(this.BuildButtonDetalle());
             buttonPanel.Controls.Add(this.BuildAddCuentaButton());
@@ -64,16 +65,11 @@ namespace Proyectos.Ui
 
             this.MainPanel.Controls.Add(BuildTitularesTable(cuenta.Titulares));
 
-            //Boton para mostrar el grafico
-            this.MostrarGraficoButton = new Button
-            {
-                Text = "Ver estadisticas de cuenta",
-                Dock = DockStyle.Fill
-            };
-            this.MainPanel.Controls.Add(this.MostrarGraficoButton);
+
+            //this.MainPanel.Controls.Add(this.MostrarGraficoButton);
 
             var buttonPanel = new Panel { Dock = DockStyle.Bottom };
-            buttonPanel.Controls.Add(BuildButtonVolver());
+            buttonPanel.Controls.Add(BuildButtonVolverVerEstadisticas());
             buttonPanel.Controls.Add(BuildGuardarButton());
 
             this.MainPanel.Controls.Add(buttonPanel);
@@ -98,11 +94,11 @@ namespace Proyectos.Ui
 
             if (isRetirada)
             {
-                this.AddRetiradaButton.Dock = DockStyle.Fill;
+                
                 pnl.Controls.Add(this.AddRetiradaButton);
             } else
             {
-                this.AddDepositoButton.Dock = DockStyle.Fill;
+                
                 pnl.Controls.Add(this.AddDepositoButton);
             }
 
@@ -133,7 +129,7 @@ namespace Proyectos.Ui
         private Panel BuildDniTextBox()
         {
             var pnl = new Panel { Dock = DockStyle.Top };
-            var label = new Label { Dock = DockStyle.Left, Text = "DNI del titular" };
+            var label = new Label { Dock = DockStyle.Left, Text = "DNI del titular", Font = new Font("Arial", 12, FontStyle.Regular) };
             this.DniTextBox = this.BuildTextBox("");
 
             pnl.Controls.Add(label);
@@ -148,7 +144,9 @@ namespace Proyectos.Ui
             var pnl = new Panel { Dock = DockStyle.Right };
             this.ConfirmarTitularButton = new Button
             {
-                Dock = DockStyle.Fill,
+                Width = 200,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
                 Text = "Añadir Titular"
             };
 
@@ -162,22 +160,40 @@ namespace Proyectos.Ui
             var pnl = new Panel { Dock = DockStyle.Bottom };
             this.BorrarCuentaButton = new Button
             {
-                Dock = DockStyle.Fill,
-                Text = "Borrar cuenta"
+                Location = new Point(400, 0),
+                Width = 200,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
+                Text = "Borrar cuenta",
+                Font = new Font("Arial", 12, FontStyle.Regular),
+            };
+
+            this.VolverButton = new Button
+            {
+                Location = new Point(936, 0),
+                Width = 200,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
+                Text = "Volver",
+                Font = new Font("Arial", 12, FontStyle.Regular),
             };
 
             pnl.Controls.Add(this.BorrarCuentaButton);
+            pnl.Controls.Add(this.VolverButton);
 
             return pnl;
         }
 
         private Panel BuildAddCuentaButton()
         {
-            var pnl = new Panel { Dock = DockStyle.Left };
+            var pnl = new Panel { Dock = DockStyle.Left, Size = new Size(600, 50) };
             this.AddCuentaButton = new Button
             {
-                Dock = DockStyle.Fill,
-                Text = "Nueva Cuenta"
+                Location = new Point(pnl.Width - 200, 00),
+                Size = new Size(200, 30),
+                FlatStyle = FlatStyle.Flat,
+                Text = "Nueva Cuenta",
+                Font = new Font("Arial", 12, FontStyle.Regular),
             };
 
             pnl.Controls.Add(this.AddCuentaButton);
@@ -190,8 +206,11 @@ namespace Proyectos.Ui
             var pnl = new Panel { Dock = DockStyle.Right };
             this.GuardarButton = new Button
             {
-                Dock = DockStyle.Fill,
-                Text = "Guardar"
+                Width = 200,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
+                Text = "Guardar",
+                Font = new Font("Arial", 12, FontStyle.Regular),
             };
 
             pnl.Controls.Add(this.GuardarButton);
@@ -205,13 +224,16 @@ namespace Proyectos.Ui
             var labelLeft = new Label
             {
                 Dock = DockStyle.Left,
-                Text = "Cantidad (céntimos)"
+                Text = "Cantidad (céntimos)",
+                Width=300,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             this.CantidadNumeric = new NumericUpDown
             {
                 Dock = DockStyle.Right,
-                Maximum = int.MaxValue
+                Maximum = int.MaxValue,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             pnl.Controls.Add(labelLeft);
@@ -223,12 +245,14 @@ namespace Proyectos.Ui
 
         private Panel BuildFechaMovimientoDate()
         {
-            var label = new Label { Dock = DockStyle.Left, Text = "Fecha" };
+            var label = new Label { Dock = DockStyle.Left, Text = "Fecha", Font = new Font("Arial", 12, FontStyle.Regular) };
             var pnl = new Panel { Dock = DockStyle.Top };
 
             this.FechaMovimientoDate = new DateTimePicker
             {
-                Dock = DockStyle.Right
+                Dock = DockStyle.Right,
+                Font = new Font("Arial", 12, FontStyle.Regular),
+                Width=300,
             };
 
             pnl.Controls.Add(label);
@@ -238,14 +262,53 @@ namespace Proyectos.Ui
             return pnl;
         }
 
-        private Panel BuildButtonVolver()
+        private Panel BuildButtonVolverVerEstadisticas()
         {
-            var pnl = new Panel { Dock = DockStyle.Left };
+            var pnl = new Panel { Dock = DockStyle.Fill};
+            var pnl1 = new Panel { Dock = DockStyle.Left, Size = new Size(500, 200)};
+            var pnl2 = new Panel { Dock = DockStyle.Right,Size=new Size(650,200) };
             this.ButtonVolver = new Button
             {
-                Dock = DockStyle.Fill,
-                Text = "Volver"
+                Width = 200,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
+                Text = "Volver",
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
+
+            //Boton para mostrar el grafico
+            this.MostrarGraficoButton = new Button
+            {
+                Width = 300,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
+                Text = "Ver estadisticas de cuenta",
+                Font = new Font("Arial", 12, FontStyle.Regular),
+
+            };
+            pnl1.Controls.Add(this.MostrarGraficoButton);
+            pnl2.Controls.Add(this.ButtonVolver);
+            pnl.Controls.Add(pnl1);
+            pnl.Controls.Add(pnl2);
+
+
+
+            return pnl;
+        }
+
+        private Panel BuildButtonVolver()
+        {
+            var pnl = new Panel { Dock = DockStyle.Fill };
+
+            this.ButtonVolver = new Button
+            {
+                Width = 200,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
+                Text = "Volver",
+                Font = new Font("Arial", 12, FontStyle.Regular)
+            };
+
 
             pnl.Controls.Add(this.ButtonVolver);
 
@@ -257,7 +320,8 @@ namespace Proyectos.Ui
             var toret = new TextBox
             {
                 Dock = DockStyle.Right,
-                Text = value
+                Text = value,
+                Font = new Font("Arial", 12, FontStyle.Regular),
             };
 
             return toret;
@@ -266,7 +330,7 @@ namespace Proyectos.Ui
         private Panel BuildCCCTextBox(string CCC)
         {
             var pnl = new Panel { Dock = DockStyle.Top };
-            var label = new Label { Dock = DockStyle.Left, Text = "CCC"};
+            var label = new Label { Dock = DockStyle.Left, Text = "CCC", Font = new Font("Arial", 12, FontStyle.Regular)};
 
             this.CCCTextBox = BuildTextBox(CCC);
             this.CCCTextBox.ReadOnly = true;
@@ -279,14 +343,15 @@ namespace Proyectos.Ui
         }
         private Panel BuildSaldoTextBox(int saldo)
         {
-            var label = new Label { Dock = DockStyle.Left, Text = "Saldo (en céntimos)" };
+            var label = new Label { Dock = DockStyle.Left, Text = "Saldo (en céntimos)" , Font = new Font("Arial", 12, FontStyle.Regular),Width=200 };
             var pnl = new Panel { Dock = DockStyle.Top };
 
             this.SaldoNumeric = new NumericUpDown
             {
                 Dock = DockStyle.Right,
                 Maximum = int.MaxValue,
-                Value = saldo
+                Value = saldo,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             pnl.Controls.Add(this.SaldoNumeric);
@@ -295,15 +360,17 @@ namespace Proyectos.Ui
 
             return pnl;
         }
-
+        Label Titulo = new Label() { Text = "GESTIÓN DE CUENTAS", Size = new System.Drawing.Size(1000, 100), Font = new Font("Arial", 35, FontStyle.Regular) };
+       
         private Panel BuildTipoCb(Cuenta.TipoCuenta tipo)
         {
-            var label = new Label { Dock = DockStyle.Left, Text = "Tipo de cuenta" };
+            var label = new Label { Dock = DockStyle.Left, Text = "Tipo de cuenta", Font = new Font("Arial", 12, FontStyle.Regular), Width=200 };
             var pnl = new Panel { Dock = DockStyle.Top };
 
             this.TipoCb = new ComboBox {
                 Dock = DockStyle.Right,
-                DropDownStyle = ComboBoxStyle.DropDownList
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             string[] arrayTipos = { Cuenta.TipoCuenta.VIVIENDA.ToString(), Cuenta.TipoCuenta.AHORRO.ToString(), Cuenta.TipoCuenta.CORRIENTE.ToString() };
@@ -320,12 +387,14 @@ namespace Proyectos.Ui
 
         private Panel BuildFechaAperturaCalendar(DateTime fechaApertura)
         {
-            var label = new Label { Dock = DockStyle.Left, Text = "Fecha de apertura" };
+            var label = new Label { Dock = DockStyle.Left, Text = "Fecha de apertura", Font = new Font("Arial", 12, FontStyle.Regular), Width=200 };
             var pnl = new Panel { Dock = DockStyle.Top };
 
             this.FechaAperturaDatePicker = new DateTimePicker {
                    Dock = DockStyle.Right,
-                   Value = fechaApertura
+                   Value = fechaApertura,
+                   Font = new Font("Arial", 12, FontStyle.Regular),
+                   Width=300,
             };
 
             pnl.Controls.Add(label);
@@ -342,13 +411,16 @@ namespace Proyectos.Ui
             var labelLeft = new Label
             {
                 Dock = DockStyle.Left,
-                Text = "Interés mensual (%)"
+                Text = "Interés mensual (%)",
+                Font = new Font("Arial", 12, FontStyle.Regular),
+                Width=200,
             };
 
             this.InteresMensualNumeric = new NumericUpDown
             {
                 Dock = DockStyle.Right,
-                Value = interes
+                Value = interes,
+                Font = new Font("Arial", 12, FontStyle.Regular)
             };
 
             pnl.Controls.Add(labelLeft);
@@ -361,7 +433,7 @@ namespace Proyectos.Ui
 
         private Panel BuildRetiradasTable(List<Movimiento> retiradas)
         {
-            var label = new Label { Dock = DockStyle.Top, Text = "Retiradas" };
+            var label = new Label { Dock = DockStyle.Top, Text = "Retiradas" , Font = new Font("Arial", 12, FontStyle.Regular), Width=200 };
             var pnl = new Panel { Dock = DockStyle.Left, MaximumSize = new Size (this.ClientSize.Width / 2, int.MaxValue) };
             this.RetiradasTable = new DataGridView
             {
@@ -372,8 +444,10 @@ namespace Proyectos.Ui
                 ReadOnly = true,
                 ScrollBars = ScrollBars.Vertical,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-                Location = new Point(25, 16),
-                Height = 100
+                //Location = new Point(25, 16),
+                Height = 100,
+                Font = new Font("Arial", 12, FontStyle.Regular),
+                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
             };
 
             pnl.MinimumSize = new Size(this.Size.Width / 2, this.RetiradasTable.Height);
@@ -392,8 +466,12 @@ namespace Proyectos.Ui
 
             this.AddRetiradaButton = new Button
             {
+                Width = 200,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
                 Dock = DockStyle.Top,
-                Text = "Nueva Retirada"
+                Text = "Nueva Retirada",
+                Font = new Font("Arial", 12, FontStyle.Regular),
             };
 
             pnl.MinimumSize = new Size(this.RetiradasTable.Height, 0);
@@ -407,7 +485,7 @@ namespace Proyectos.Ui
 
         private Panel BuildDepositosTable(List<Movimiento> depositos)
         {
-            var label = new Label { Dock = DockStyle.Top, Text = "Depósitos" };
+            var label = new Label { Dock = DockStyle.Top, Text = "   Depósitos", Font = new Font("Arial", 12, FontStyle.Regular), Width=200 };
             var pnl = new Panel { Dock = DockStyle.Right, MaximumSize = new Size (this.ClientSize.Width / 2, int.MaxValue), MinimumSize = new Size(Screen.PrimaryScreen.WorkingArea.Size.Width / 2, 0) };
             this.DepositosTable = new DataGridView
             {
@@ -418,8 +496,10 @@ namespace Proyectos.Ui
                 ReadOnly = true,
                 ScrollBars = ScrollBars.Vertical,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-                Location = new Point(25, 16),
-                Height = 100
+                //Location = new Point(25, 16),
+                Height = 100,
+                Font = new Font("Arial", 12, FontStyle.Regular),
+                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
             };
 
             this.DepositosTable.Columns[0].Name = "Cliente";
@@ -438,8 +518,12 @@ namespace Proyectos.Ui
 
             this.AddDepositoButton = new Button
             {
+                Width = 200,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
                 Dock = DockStyle.Top,
-                Text = "Nuevo Depósito"
+                Text = "Nuevo Depósito",
+                Font = new Font("Arial", 12, FontStyle.Regular),
             };
 
             pnl.MinimumSize = new Size(this.Size.Width / 2, this.DepositosTable.Height);
@@ -464,7 +548,9 @@ namespace Proyectos.Ui
                 ScrollBars = ScrollBars.Vertical,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
                 Location = new Point(25, 16),
-                Height = 100
+                Height = 100,
+                Font = new Font("Arial", 12, FontStyle.Regular),
+                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
             };
 
             this.TitularesTable.Columns[0].Name = "DNI";
@@ -478,14 +564,22 @@ namespace Proyectos.Ui
 
             this.AddTitularButton = new Button
             {
+                Width = 200,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
                 Dock = DockStyle.Top,
-                Text = "Añadir titular"
+                Text = "Añadir titular",
+                Font = new Font("Arial", 12, FontStyle.Regular),
             };
 
             this.RemoveTitularButton = new Button
             {
+                Width = 200,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
                 Dock = DockStyle.Bottom,
-                Text = "Eliminar titular"
+                Text = "Eliminar titular",
+                Font = new Font("Arial", 12, FontStyle.Regular),
             };
 
             pnl.Controls.Add(this.AddTitularButton);
@@ -497,10 +591,11 @@ namespace Proyectos.Ui
 
         private Panel BuildTablaCuentas(List<Cuenta> cuentas)
         {
-            var pnl = new Panel { Dock = DockStyle.Fill };
+            var pnl = new Panel { Dock = DockStyle.Fill,Location=new Point(0,100) };
             this.TablaCuentas = new DataGridView()
             {
-                Dock = DockStyle.Fill,
+                Margin= new Padding(20,20,20,20),
+                //Dock = DockStyle.Fill,
                 ColumnCount = 6,
                 MinimumSize = new Size(2000, 1000),
                 AllowUserToAddRows = false,
@@ -508,7 +603,9 @@ namespace Proyectos.Ui
                 ReadOnly = true,
                 ScrollBars = ScrollBars.Vertical,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-                Location = new Point(25, 16),
+                Location = new Point(0, 100),
+                Font = new Font("Arial", 12, FontStyle.Regular),
+                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
             };
 
             this.TablaCuentas.Columns[0].Name = "CCC";
@@ -543,11 +640,14 @@ namespace Proyectos.Ui
 
         public Panel BuildButtonDetalle()
         {
-            var pnl = new Panel { Dock = DockStyle.Right };
+            var pnl = new Panel { Dock = DockStyle.Right,Size=new Size(600,300) };
             this.ButtonDetalle = new Button
             {
-                Dock = DockStyle.Fill,
-                Text = "Ver seleccionada"
+                Width = 200,
+                FlatStyle = FlatStyle.Flat,
+                Height = 30,
+                Text = "Ver seleccionada",
+                Font = new Font("Arial", 12, FontStyle.Regular),
             };
 
             pnl.Controls.Add(this.ButtonDetalle);
@@ -560,6 +660,7 @@ namespace Proyectos.Ui
             this.ShowDetalles(cuenta);
             this.Text = "Nueva Cuenta";
             this.GuardarButton.Text = "Guardar";
+            this.GuardarButton.Font = new Font("Arial", 12, FontStyle.Regular);
         }
 
         private Panel MainPanel;
@@ -599,6 +700,8 @@ namespace Proyectos.Ui
         public Button SaveCuentaButton;
 
         public Button BorrarCuentaButton;
+
+        public Button VolverButton;
 
         public DataGridView TitularesTable;
 
