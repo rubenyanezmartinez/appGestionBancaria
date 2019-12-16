@@ -460,7 +460,7 @@ namespace Proyectos.Ui
                 this.RetiradasTable.Rows.Add(
                     retirada.Cliente.Nombre,
                     retirada.Fecha.Day + "/" + retirada.Fecha.Month + "/" + retirada.Fecha.Year,
-                    string.Format("{0:#.00}", (double)retirada.Cantidad / 100) + "€"
+                    "-"+string.Format("{0:#.00}", (double)retirada.Cantidad / 100) + "€"
                     ) ;
             }
 
@@ -476,7 +476,7 @@ namespace Proyectos.Ui
 
             pnl.MinimumSize = new Size(this.RetiradasTable.Height, 0);
 
-            pnl.Controls.Add(label);
+            //pnl.Controls.Add(label);
             pnl.Controls.Add(this.RetiradasTable);
             pnl.Controls.Add(this.AddRetiradaButton);
 
@@ -512,7 +512,7 @@ namespace Proyectos.Ui
                 this.DepositosTable.Rows.Add(
                     deposito.Cliente.Nombre,
                     deposito.Fecha.Day + "/" + deposito.Fecha.Month + "/" + deposito.Fecha.Year,
-                    string.Format("{0:#.00}", (double)deposito.Cantidad / 100) + "€"
+                    "+"+string.Format("{0:#.00}", (double)deposito.Cantidad / 100) + "€"
                     );
             }
 
@@ -527,7 +527,7 @@ namespace Proyectos.Ui
             };
 
             pnl.MinimumSize = new Size(this.Size.Width / 2, this.DepositosTable.Height);
-            pnl.Controls.Add(label);
+           // pnl.Controls.Add(label);
             pnl.Controls.Add(this.DepositosTable);
             pnl.Controls.Add(this.AddDepositoButton);
 
@@ -547,7 +547,7 @@ namespace Proyectos.Ui
                 ReadOnly = true,
                 ScrollBars = ScrollBars.Vertical,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-                Location = new Point(25, 16),
+                //Location = new Point(25, 16),
                 Height = 100,
                 Font = new Font("Arial", 12, FontStyle.Regular),
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
