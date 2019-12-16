@@ -45,16 +45,16 @@ namespace Graficos.UI
 
             var label = new Label()
             {
-                Text = "Type of visualization",
+                Text = "Tipo de visualización",
                 Dock = DockStyle.Fill
             };
 
             var label2 = new Label()
             {
-                Text = "Year"
+                Text = "Año"
             };
             this.SelectVisualization = new ComboBox();
-            this.SelectVisualization.Items.AddRange(new string[] { "Years", "Months" });
+            this.SelectVisualization.Items.AddRange(new string[] { "Años", "Meses" });
 
             this.SelectYear = new ComboBox();
 
