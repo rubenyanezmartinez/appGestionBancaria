@@ -10,3 +10,4 @@ E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\obj\Debug\Proyectos.csproj.Genera
 E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\obj\Debug\Proyectos.csproj.CopyComplete
 E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\obj\Debug\Proyectos.exe
 E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\obj\Debug\Proyectos.pdb
+E:\proyectos_C#\PracitcasDIA\Trabajo\Proyectos\obj\Debug\Proyectos.Ui.Ingresos.resources

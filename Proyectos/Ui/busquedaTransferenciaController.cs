@@ -39,15 +39,15 @@ namespace Proyectos.Ui
 
             this.View = new busquedaTransferenciasView();
 
-            this.View.searchButton.Click += (sender, e) => this.buscar();
+            this.View.searchButton.Click += new EventHandler(buscar);
         }
 
         void listenerBuscar(object o, EventArgs e)
         {
-            this.buscar();
+            this.buscar(o, e);
         }
 
-        void buscar()
+        void buscar(object sender, EventArgs e)
         {
             string param = this.View.Parametro.Text;
             char operacion = '1';
@@ -62,6 +62,7 @@ namespace Proyectos.Ui
             {
                 Cliente c;
                 Cuenta cc;
+                List<Cuenta> cuentasPorCliente; 
                 List<Transferencia> lt;
                 foreach (wf.ListViewItem l in this.View.gl.Items)
                 {
@@ -84,8 +85,8 @@ namespace Proyectos.Ui
                             lvi.SubItems.Add(t.CCCDestino.CCC.ToString());
                             lvi.SubItems.Add(t.Importe.ToString());
                             lvi.SubItems.Add(t.Fecha.ToString());
-                            lvi.SubItems.Add(t.CCCOrigen.Titulares.First().Dni.ToString());
-                            lvi.SubItems.Add(t.CCCDestino.Titulares.First().Dni.ToString());
+                            lvi.SubItems.Add(cc.Titulares.First().Dni.ToString());
+                            lvi.SubItems.Add(gestorC.GetCuentaByCCC(t.CCCDestino.CCC).Titulares.First().Dni.ToString());
                             this.View.gl.Items.Add(lvi);
                         }
 
@@ -104,47 +105,58 @@ namespace Proyectos.Ui
                             lvi.SubItems.Add(t.CCCDestino.CCC.ToString());
                             lvi.SubItems.Add(t.Importe.ToString());
                             lvi.SubItems.Add(t.Fecha.ToString());
-                            lvi.SubItems.Add(t.CCCOrigen.Titulares.First().Dni.ToString());
-                            lvi.SubItems.Add(t.CCCDestino.Titulares.First().Dni.ToString());
+                            lvi.SubItems.Add(cc.Titulares.First().Dni.ToString());
+                            lvi.SubItems.Add(gestorC.GetCuentaByCCC(t.CCCDestino.CCC).Titulares.First().Dni.ToString());
                             this.View.gl.Items.Add(lvi);
                         }
                         break;
                     case '3':
                         c = this.gestorCC.ConsultarPorDni(param);
-                        lt = this.gestorT.GetTransferenciaClienteEmisor(c);
+                        cuentasPorCliente = this.gestorC.GetCuentasByCliente(c);
 
-                        foreach (var t in lt)
+                        foreach (var cuenta in cuentasPorCliente)
                         {
 
-                            var lvi = new wf.ListViewItem(t.Tipo.ToString());
-                            lvi.Tag = t;
+                            lt = this.gestorT.GetTransferenciaCuentaEmisor(cuenta);
 
-                            lvi.SubItems.Add(t.CCCOrigen.CCC.ToString());
-                            lvi.SubItems.Add(t.CCCDestino.CCC.ToString());
-                            lvi.SubItems.Add(t.Importe.ToString());
-                            lvi.SubItems.Add(t.Fecha.ToString());
-                            lvi.SubItems.Add(param);
-                            lvi.SubItems.Add(t.CCCDestino.Titulares.First().Dni.ToString());
-                            this.View.gl.Items.Add(lvi);
+                            foreach (var t in lt)
+                            {
+
+                                var lvi = new wf.ListViewItem(t.Tipo.ToString());
+                                lvi.Tag = t;
+
+                                lvi.SubItems.Add(t.CCCOrigen.CCC.ToString());
+                                lvi.SubItems.Add(t.CCCDestino.CCC.ToString());
+                                lvi.SubItems.Add(t.Importe.ToString());
+                                lvi.SubItems.Add(t.Fecha.ToString());
+                                lvi.SubItems.Add(param);
+                                lvi.SubItems.Add(gestorC.GetCuentaByCCC(t.CCCDestino.CCC).Titulares.First().Dni.ToString());
+                                this.View.gl.Items.Add(lvi);
+                            }
                         }
 
                         break;
                     case '4':
                         c = this.gestorCC.ConsultarPorDni(param);
-                        lt = this.gestorT.GetTransferenciaClienteReceptor(c);
+                        cuentasPorCliente = this.gestorC.GetCuentasByCliente(c);
 
-                        foreach (var t in lt)
+                        foreach (var cuenta in cuentasPorCliente)
                         {
+                            lt = this.gestorT.GetTransferenciaCuentaEmisor(cuenta);
 
-                            var lvi = new wf.ListViewItem(t.Tipo.ToString());
-                            lvi.Tag = t;
-                            lvi.SubItems.Add(t.CCCOrigen.CCC.ToString());
-                            lvi.SubItems.Add(t.CCCDestino.CCC.ToString());
-                            lvi.SubItems.Add(t.Importe.ToString());
-                            lvi.SubItems.Add(t.Fecha.ToString());
-                            lvi.SubItems.Add(t.CCCOrigen.Titulares.First().Dni.ToString());
-                            lvi.SubItems.Add(param);
-                            this.View.gl.Items.Add(lvi);
+                            foreach (var t in lt)
+                            {
+
+                                var lvi = new wf.ListViewItem(t.Tipo.ToString());
+                                lvi.Tag = t;
+                                lvi.SubItems.Add(t.CCCOrigen.CCC.ToString());
+                                lvi.SubItems.Add(t.CCCDestino.CCC.ToString());
+                                lvi.SubItems.Add(t.Importe.ToString());
+                                lvi.SubItems.Add(t.Fecha.ToString());
+                                lvi.SubItems.Add(gestorC.GetCuentaByCCC(t.CCCDestino.CCC).Titulares.First().Dni.ToString());
+                                lvi.SubItems.Add(param);
+                                this.View.gl.Items.Add(lvi);
+                            }
                         }
                         break;
                 }

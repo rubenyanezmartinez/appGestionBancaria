@@ -18,19 +18,20 @@ namespace Proyectos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            GestorClientes gestorClientes= new GestorClientes();
-            GestorTransferencias gestorTransferencias = new GestorTransferencias();
+            GestorClientes gestorClientes= new GestorClientes();            
             GestorCuentas gestorCuentas = new GestorCuentas();
+            GestorTransferencias gestorTransferencias = new GestorTransferencias();
 
-           //Application.Run(new ClienteController(gestorClientes).View);
+            //Application.Run(new ClienteController(gestorClientes).View);
 
-            Application.Run(new ClienteController(gestorClientes).View);
+            Application.Run(new MainController(gestorClientes, gestorCuentas, gestorTransferencias).View);
+            //Application.Run(new ClienteController(gestorClientes).View);
 
             //Application.Run(new ProductosPersonaController().View);
             //Application.Run(new busquedaTransferenciaController(gestorTransferencias, gestorCuentas, gestorClientes).View);
             //Application.Run(new TransferenciaController(gestorTransferencias, gestorCuentas, gestorClientes).View);
             //Application.Run(new CuentaController().View);
-            Application.Run(new Ingresos());
+            //Application.Run(new Ingresos());
 
         }
     }

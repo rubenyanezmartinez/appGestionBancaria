@@ -84,7 +84,7 @@ namespace Proyectos.Ui
             this.Text = "Nuevo Movimiento: ";
             _ = isRetirada ? this.Text += "RETIRADA" : this.Text += "DEPÓSITO";
             this.MainPanel = new TableLayoutPanel { Dock = DockStyle.Fill };
-            this.MainPanel.Controls.Add(BuildClienteTextBox());
+            this.MainPanel.Controls.Add(BuildDniTextBox());
             this.MainPanel.Controls.Add(BuildCantidadNumeric());
             this.MainPanel.Controls.Add(BuildFechaMovimientoDate());
 
@@ -214,25 +214,6 @@ namespace Proyectos.Ui
             };
 
             pnl.Controls.Add(this.GuardarButton);
-
-            return pnl;
-        }
-
-        private Panel BuildClienteTextBox()
-        {
-            var lable = new Label
-            {
-                Dock = DockStyle.Left,
-                Text = "Cliente"
-            };
-
-            var pnl = new Panel { Dock = DockStyle.Top };
-
-            this.ClienteTextBox = BuildTextBox("");
-
-            pnl.Controls.Add(lable);
-            pnl.Controls.Add(this.ClienteTextBox);
-            pnl.MaximumSize = new Size(int.MaxValue, this.ClienteTextBox.Height * 2);
 
             return pnl;
         }
@@ -707,8 +688,6 @@ namespace Proyectos.Ui
         public Button ButtonVolver;
 
         public Button AddDepositoButton;
-
-        public TextBox ClienteTextBox;
 
         public NumericUpDown CantidadNumeric;
 

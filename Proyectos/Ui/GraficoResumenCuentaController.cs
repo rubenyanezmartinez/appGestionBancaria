@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using App_Gestion_Bancaria.Core.Clases;
+using App_Gestion_Bancaria.Core.Gestores;
+using Proyectos.Ui;
 
 namespace Graficos.UI
 {
     class GraficoResumenCuentaController : Form
-    {/*
+    {
 
-        public GraficoResumenCuentaController(Cuenta cuenta, List<Transferencia> transferencias)
+        public GraficoResumenCuentaController(Cuenta cuenta)
         {
+            //Buscamos las transferencias
+            var transferencias = new GestorTransferencias().Transferencias.FindAll((transferencia) => transferencia.CCCDestino.CCC == cuenta.CCC || transferencia.CCCOrigen.CCC == cuenta.CCC);
             this.View = new GraficoResumenCuentaView(cuenta, transferencias);
 
             this.View.SelectYear.SelectedIndex = 0;
@@ -22,7 +27,7 @@ namespace Graficos.UI
         private void SelectYear_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Actualizamos el primer grafico
-            var graphic = new GraficoResumenCuenta(MainView.graphicsSize, this.View.Cuenta, this.View.Transferencias, (int)this.View.SelectYear.Items[this.View.SelectYear.SelectedIndex]);
+            var graphic = new GraficoResumenCuenta(new System.Drawing.Size(500,500), this.View.Cuenta, this.View.Transferencias, (int)this.View.SelectYear.Items[this.View.SelectYear.SelectedIndex]);
             this.View.PanelGraficoResumenCuenta.Controls.Remove(this.View.Grc);
             this.View.Grc = graphic;
             this.View.PanelGraficoResumenCuenta.Controls.Add(this.View.Grc);
@@ -37,7 +42,7 @@ namespace Graficos.UI
                     //Actualizamos el primer grafico
                     this.View.SelectYear.Hide();
                     this.View.PanelGraficoResumenCuenta.Controls.Remove(this.View.Grc);
-                    this.View.Grc = new GraficoResumenCuenta(MainView.graphicsSize, this.View.Cuenta, this.View.Transferencias);
+                    this.View.Grc = new GraficoResumenCuenta(new System.Drawing.Size(500,500), this.View.Cuenta, this.View.Transferencias);
                     this.View.PanelGraficoResumenCuenta.Controls.Add(this.View.Grc);
                     break;
                 case 1:
@@ -51,7 +56,7 @@ namespace Graficos.UI
         public GraficoResumenCuentaView View
         {
             get; set;
-        }*/
+        }
     }
 
 }

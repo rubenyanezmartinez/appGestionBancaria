@@ -9,16 +9,14 @@ namespace Proyectos.Ui
     public partial class Ingresos : Form
     {
         public List<Cliente> clientes;
-        public List<Movimiento> movimientos;
+            public List<Movimiento> movimientos;
         public List<Cuenta> cuentas;
         public List<Transferencia> transferencias;
+      
 
 
-
-        public Ingresos(Cliente c)
+        public Ingresos()
         {
-            this.Cliente = c;
-           
             this.clientes = new List<Cliente>();
             Cliente cliente1 = new Cliente("312A", "Victor", "123456789", "v@v.es", "calle1");
             Cliente cliente2 = new Cliente("312B", "Alex", "978654321", "a@a.es", "calle2");
@@ -26,9 +24,9 @@ namespace Proyectos.Ui
             this.clientes.Add(cliente2);
             InitializeComponent();
             //MOCK DATOS
+           
 
-
-            Cuenta cuenta1 = new Cuenta("123", Cuenta.TipoCuenta.AHORRO, 1200, new DateTime(2018, 12, 21), 12);
+            Cuenta cuenta1 = new Cuenta("123", Cuenta.TipoCuenta.AHORRO, 1200,  new DateTime(2018,12,21), 12);
             Cuenta cuenta2 = new Cuenta("124", Cuenta.TipoCuenta.AHORRO, 1400, new DateTime(2018, 12, 22), 12);
             cuenta1.Titulares.Add(cliente1);
             cuenta2.Titulares.Add(cliente2);
@@ -68,7 +66,7 @@ namespace Proyectos.Ui
 
 
 
-            movimientosGenerales(movimientos, cuentas, transferencias);
+            movimientosGenerales(movimientos,cuentas,transferencias);
             movimientosPorCliente(cliente1, movimientos, cuentas, transferencias);
 
         }
@@ -80,7 +78,7 @@ namespace Proyectos.Ui
             
         }*/
 
-
+      
 
         //Movimientos Generales
         void movimientosGenerales(List<Movimiento> movimientos, List<Cuenta> cuentas, List<Transferencia> transferencias)
@@ -95,20 +93,20 @@ namespace Proyectos.Ui
                 foreach (Movimiento mov in movimientos)
                 {
 
+                    
+                        chart1.Series["Series1"].Points.AddXY(mov.Fecha, mov.Cantidad);
+                   
+                       // var importeTrans = mov.Tipo.GetType().GetProperty("Importe");
+                        //var fechaTrans = mov.Tipo.GetType().GetProperty("Fecha");
 
-                    chart1.Series["Series1"].Points.AddXY(mov.Fecha, mov.Cantidad);
-
-                    // var importeTrans = mov.Tipo.GetType().GetProperty("Importe");
-                    //var fechaTrans = mov.Tipo.GetType().GetProperty("Fecha");
-
-
-
+                       
+                   
 
                 }
             }
-            foreach (Transferencia transferencia in transferencias)
+            foreach(Transferencia transferencia in transferencias)
             {
-                chart1.Series["Series2"].Points.AddXY(transferencia.Fecha, transferencia.Importe);
+                chart1.Series["Series2"].Points.AddXY(transferencia.Fecha, transferencia.Importe );
             }
         }
 
@@ -129,7 +127,7 @@ namespace Proyectos.Ui
                         chart2.Series["Series1"].Points.AddXY(mov.Fecha, mov.Cantidad);
                     }
 
-
+                    
 
                 }
             }
@@ -137,12 +135,12 @@ namespace Proyectos.Ui
             {
                 if (transferencia.CCCOrigen.Titulares.Contains(cliente))
                 {
-                   
+                    Console.WriteLine("entrrooooo-----------------");
                     chart2.Series["Series2"].Points.AddXY(transferencia.Fecha, transferencia.Importe);
                 }
                 else if (transferencia.CCCDestino.Titulares.Contains(cliente))
                 {
-                   
+                    Console.WriteLine("entrrooooo-----------------");
                     chart2.Series["Series2"].Points.AddXY(transferencia.Fecha, transferencia.Importe);
 
                 }
@@ -155,12 +153,7 @@ namespace Proyectos.Ui
         {
 
         }
-        public Cliente Cliente
-        {
-            get; set;
-        }
-        
-
+      
 
     }
 }
