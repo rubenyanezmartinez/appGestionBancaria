@@ -4,6 +4,7 @@ using App_Gestion_Bancaria.Core.Clases;
 using System.Windows.Forms;
 using System.Linq;
 using Graficos.UI;
+using System.Collections.Generic;
 
 namespace Proyectos.Ui
 {
@@ -22,6 +23,9 @@ namespace Proyectos.Ui
             this.View.AddCuentaButton.Click += new System.EventHandler(AddCuenta);
             this.View.BorrarCuentaButton.Click += new System.EventHandler(EliminarCuenta);
             this.View.VolverButton.Click += new System.EventHandler(Volver);
+            this.View.VerIngresosButton.Click += new System.EventHandler(VerTodosIngresos);
+
+
         }
 
         private void IniciarBotonesDetalles()
@@ -228,6 +232,35 @@ namespace Proyectos.Ui
             }
         }
 
+        private void VerTodosIngresos(object sender, System.EventArgs e)
+        {
+            DataGridViewSelectedRowCollection filasSeleccionadas = this.View.TablaCuentas.SelectedRows;
+            if (filasSeleccionadas != null)
+            {
+
+
+                List<Cuenta> cuentas = new List<Cuenta>();
+                var gestorTransferencias = new GestorTransferencias();
+                List<Transferencia> transferencias = new List<Transferencia>();
+                List<Movimiento> movimientos = new List<Movimiento>();
+                cuentas = this.Gestor.Cuentas;
+                transferencias = gestorTransferencias.Transferencias;
+
+                this.View.Hide();
+
+                new Ingresos(cuentas, transferencias).ShowDialog();
+
+                this.View.Show();
+
+
+
+
+
+            }
+          
+
+
+        }
         private void MostrarGrafico(object sender, System.EventArgs e)
         {
             new GraficoResumenCuentaController(this.CuentaSeleccionada).View.Show();

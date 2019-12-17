@@ -57,7 +57,7 @@ namespace Proyectos.Ui
                 {"Transferencias", data["TRANSFERENCIAS"] }
             };
 
-            var cuentasCliente = allCuentas.FindAll((cuenta) => cuenta.Titulares.Contains(client));
+            var cuentasCliente = allCuentas.FindAll((cuenta) => ContainsCliente(cuenta, client));
 
             int minFechaAperturaCuentas = this.GetMinFechaAperturaCuentas(cuentasCliente);
 
@@ -83,14 +83,14 @@ namespace Proyectos.Ui
             var retiradasByMonth = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             var transferenciasHechasByMonth = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-            var cuentasCliente = cuentas.FindAll((cuenta) => cuenta.Titulares.Contains(cliente));
+            var cuentasCliente = cuentas.FindAll((cuenta) => ContainsCliente(cuenta, cliente));
 
             foreach(Cuenta c in cuentasCliente)
             {
                 
-                c.Depositos.FindAll((dep) => dep.Cliente.Equals(cliente) && dep.Fecha.Year == year).ForEach((dep) => depositosByMonth[dep.Fecha.Month - 1] += dep.Cantidad);
-                c.Retiradas.FindAll((ret) => ret.Cliente.Equals(cliente) && ret.Fecha.Year == year).ForEach((ret) => retiradasByMonth[ret.Fecha.Month - 1] += ret.Cantidad);
-                transferencias.FindAll((trn) => trn.CCCOrigen.Equals(c) && trn.Fecha.Year == year).ForEach((trn) => transferenciasHechasByMonth[trn.Fecha.Month - 1] += (int)trn.Importe);
+                c.Depositos.FindAll((dep) => dep.Cliente.Dni == cliente.Dni && dep.Fecha.Year == year).ForEach((dep) => depositosByMonth[dep.Fecha.Month - 1] += dep.Cantidad);
+                c.Retiradas.FindAll((ret) => ret.Cliente.Dni == cliente.Dni && ret.Fecha.Year == year).ForEach((ret) => retiradasByMonth[ret.Fecha.Month - 1] += ret.Cantidad);
+                transferencias.FindAll((trn) => CuentasIguales(trn.CCCOrigen, c) && trn.Fecha.Year == year).ForEach((trn) => transferenciasHechasByMonth[trn.Fecha.Month - 1] += (int)trn.Importe);
             }
 
             return new Dictionary<string, int[]>()
@@ -100,12 +100,34 @@ namespace Proyectos.Ui
                 {"TRANSFERENCIAS", transferenciasHechasByMonth }
             };
         }
+        bool CuentasIguales(Cuenta c1, Cuenta c2)
+        {
+            return c1.CCC == c2.CCC;
+        }
+
+        bool ContainsCliente(Cuenta c, Cliente cli)
+        {
+            foreach(Cliente p in c.Titulares)
+            {
+                if(p.Dni == cli.Dni)
+                    return true;
+            }
+            return false;
+        }
+
+        void InitializeArray(ref int[] array)
+        {
+            for(int i = 0; i< array.Length; i++)
+            {
+                array[i] = 0;
+            }
+        }
 
         public Dictionary<string, int[]> FetchImportClientYears(Cliente cliente, List<Transferencia> transferencias, List<Cuenta> cuentas)
         {
             Dictionary<string, int[]> toret = new Dictionary<string, int[]>();
 
-            var cuentasCliente = cuentas.FindAll((cuenta) => cuenta.Titulares.Contains(cliente));
+            var cuentasCliente = cuentas.FindAll((cuenta) => ContainsCliente(cuenta, cliente));
 
             int minFechaAperturaCuentas = this.GetMinFechaAperturaCuentas(cuentasCliente);
          
@@ -113,8 +135,11 @@ namespace Proyectos.Ui
             var depositosByYear = new int[DateTime.Now.Year - minFechaAperturaCuentas + 1];
             var retiradasByYear = new int[DateTime.Now.Year - minFechaAperturaCuentas + 1];
             var transferenciasHechasByYear = new int[DateTime.Now.Year - minFechaAperturaCuentas + 1];
+            InitializeArray(ref depositosByYear);
+            InitializeArray(ref retiradasByYear);
+            InitializeArray(ref transferenciasHechasByYear);
 
-            foreach(Cuenta c in cuentasCliente)
+            foreach (Cuenta c in cuentasCliente)
             {
               
                 
@@ -123,6 +148,7 @@ namespace Proyectos.Ui
                 transferencias.FindAll((t) => t.CCCOrigen.Equals(c)).ForEach((t) => transferenciasHechasByYear[t.Fecha.Year - minFechaAperturaCuentas] += (int)t.Importe);
                 
             }
+
 
             
 

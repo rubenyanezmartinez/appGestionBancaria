@@ -80,12 +80,13 @@ namespace Proyectos.Ui
                         this.View.Hide();
 
                         new GraficoResumenSaldosClienteController(clienteRecuperado).View.ShowDialog();
-
+                        
                         this.View.Show();
                     }
                 }
-                catch (Exception)
+                catch (Exception exc)
                 {
+                    Console.WriteLine(exc.StackTrace);
                     this.View.ClienteViewMethod(this.Gestor.ContenedorClientes);
                     this.IniciarBotones();
                 }

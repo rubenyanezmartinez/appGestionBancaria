@@ -29,13 +29,15 @@ namespace Proyectos.Ui
             this.MainPanel = new Panel { Dock = DockStyle.Fill };
             this.MainPanel.Controls.Add(this.Titulo);
             this.MainPanel.Controls.Add(this.BuildTablaCuentas(gestor.Cuentas));
+           
 
             var buttonPanel = new Panel { Dock = DockStyle.Bottom , Font = new Font("Arial", 12, FontStyle.Regular), };
 
             buttonPanel.Controls.Add(this.BuildButtonDetalle());
             //buttonPanel.Controls.Add(this.BuildAddCuentaButton());
-
+            buttonPanel.Controls.Add(this.BuildVerIngresosButton());
             this.MainPanel.Controls.Add(buttonPanel);
+            
 
             //this.MainPanel.Controls.Add(this.BuildBorrarCuentaButton());
 
@@ -696,6 +698,22 @@ namespace Proyectos.Ui
             this.GuardarButton.Text = "Guardar";
             this.GuardarButton.Font = new Font("Arial", 12, FontStyle.Regular);
         }
+        private Panel BuildVerIngresosButton()
+        {
+            var pnl = new Panel { Dock = DockStyle.Left };
+            this.VerIngresosButton = new Button
+            {
+                Location = new Point(0,45),
+                Size = new Size(200, 30),
+                FlatStyle = FlatStyle.Flat,
+                Text = "Ver Ingresos",
+                Font = new Font("Arial", 12, FontStyle.Regular),
+            };
+
+            pnl.Controls.Add(this.VerIngresosButton);
+
+            return pnl;
+        }
 
         private Panel MainPanel;
 
@@ -748,5 +766,6 @@ namespace Proyectos.Ui
         public Button ConfirmarTitularButton;
 
         public Button MostrarGraficoButton { get; set; }
+        public Button VerIngresosButton { get;  set; }
     }
 }

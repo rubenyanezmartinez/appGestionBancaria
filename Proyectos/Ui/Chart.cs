@@ -242,7 +242,7 @@ namespace Proyectos.Ui {
             this.values.ForEach((value) => maxList.Add(value.Max()));
             int maxValue = maxList.Max() == 0 ? 10 : maxList.Max();
 
-            int numLegendsAxisY = maxValue > 6 ? Enumerable.Range(6, 20).Where(i => maxValue % i == 0).Min() : maxValue;
+            int numLegendsAxisY =10;
             
             double axisDiference = (double)maxValue / (double)numLegendsAxisY;
             this.legendValuesY = new Dictionary<string, int>();

@@ -138,6 +138,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Ui\GraficoResumenCuentaView.resx">
+      <DependentUpon>GraficoResumenCuentaView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ui\Ingresos.resx">
       <DependentUpon>Ingresos.cs</DependentUpon>
     </EmbeddedResource>
